@@ -3,7 +3,7 @@ package ija.ija_project;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class UMLController {
     @FXML
     private Label welcomeText;
 

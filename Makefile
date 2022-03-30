@@ -6,5 +6,8 @@ build:
 run:
 	mvn javafx:run
 
+doc:
+	mvn javadoc:javadoc
+
 clean:
 	mvn clean

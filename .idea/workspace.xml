@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0495daa9-9a23-4ba3-b81e-3af8c51188ca" name="Changes" comment="" />
+    <list default="true" id="0495daa9-9a23-4ba3-b81e-3af8c51188ca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Aggregation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Association.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Composition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Class.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Sequence.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Generalization.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Method.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Agregace.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Argument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Argument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Asociace.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Atribut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Attribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Sekvencni.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Trid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Generalizace.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Kompozice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Metoda.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Objekt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Trida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Vztah.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Relation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Zprava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Message.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +34,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2760SSrg5TO1TacPvmDj69tFRJj" />
   <component name="ProjectViewState">
@@ -18,6 +46,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

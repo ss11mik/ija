@@ -1,6 +1,6 @@
 package ija.data_structures;
 
-public class UML_Atribut {
+public class UML_Attribute {
     enum Data_Type{
         INT,
         BOOL,
@@ -8,7 +8,7 @@ public class UML_Atribut {
         FLOAT
     }
 
-    enum Modifikator_Pristupu{
+    enum Acces_Modifier{
         NULL,
         PRIVATE,
         PUBLIC,
@@ -16,7 +16,7 @@ public class UML_Atribut {
         PACKAGE
     }
 
-    protected String nazev;
-    protected Data_Type datovy_typ;
-    protected Modifikator_Pristupu mod_pristupu;
+    protected String name;
+    protected Data_Type data_type;
+    protected Acces_Modifier acces_modifier;
 }

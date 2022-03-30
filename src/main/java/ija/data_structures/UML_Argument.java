@@ -1,6 +1,15 @@
 package ija.data_structures;
 
 public class UML_Argument {
-    protected String name;
+    public String name;
     protected UML_Atribut.Data_Type type; // data type
+
+    public UML_Argument(String name, UML_Atribut.Data_Type type){
+        this.name = name;
+        this.type = type;
+    }
+
+    public String get_name(){
+        return name;
+    }
 }

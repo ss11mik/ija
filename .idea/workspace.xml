@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0495daa9-9a23-4ba3-b81e-3af8c51188ca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Aggregation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Association.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Composition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Sequence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Generalization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Method.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Object.java" afterDir="false" />
+    <list default="true" id="0495daa9-9a23-4ba3-b81e-3af8c51188ca" name="Changes" comment="Překlad do angličtiny">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Agregace.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Aggregation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Aggregation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Argument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Argument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Asociace.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Atribut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Attribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Association.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Association.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Attribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Attribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Composition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Composition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Sekvencni.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Trid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Generalizace.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Kompozice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Metoda.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Objekt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Trida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Class.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Vztah.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Relation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Zprava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Diagram_Sequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Generalization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Generalization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Method.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Method.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Relation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ija/data_structures/UML_Relation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +49,14 @@
       <option name="presentableId" value="Default" />
       <updated>1648625228361</updated>
     </task>
+    <task id="LOCAL-00001" summary="Překlad do angličtiny">
+      <created>1648646962858</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648646962859</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -69,5 +69,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Překlad do angličtiny" />
+    <option name="LAST_COMMIT_MESSAGE" value="Překlad do angličtiny" />
   </component>
 </project>

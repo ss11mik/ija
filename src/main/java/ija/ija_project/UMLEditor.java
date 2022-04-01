@@ -23,7 +23,7 @@ public class UMLEditor extends Application {
     }
 
     public static void main(String[] args) {
-    UML_Diagram a = new UML_Diagram();
+    UML_Diagram a = new UML_Diagram("test");
 
         ImportExport.save(a, "somedatafile.json"); //foo
         UML_Diagram d = ImportExport.load("somedatafile.json"); //foo

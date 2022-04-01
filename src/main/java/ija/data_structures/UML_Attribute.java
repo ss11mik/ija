@@ -29,8 +29,8 @@ public class UML_Attribute {
 
     public UML_Attribute(String name){
         this.name = name;
-        this.data_type = NULL;
-        this.acces_modifier = NULL;
+        this.data_type = Data_Type.NULL;
+        this.acces_modifier = Acces_Modifier.NULL;
     }
 
     public String get_name(){

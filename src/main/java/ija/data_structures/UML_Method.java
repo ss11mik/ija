@@ -10,7 +10,7 @@ public class UML_Method {
 
     public UML_Method(String name){
         this.name = name;
-        this.type = NULL;
+        this.type = UML_Attribute.Data_Type.NULL;
         this.arguments = new ArrayList<>();
     }
 
@@ -20,7 +20,9 @@ public class UML_Method {
         this.arguments = arguments;
     }
 
-    public String get_name(){return name;}
+    public String get_name(){
+        return name;
+    }
 
     public void set_type(UML_Attribute.Data_Type dat_type){
         type = dat_type;

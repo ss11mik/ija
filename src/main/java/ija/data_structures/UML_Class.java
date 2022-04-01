@@ -23,7 +23,7 @@ public class UML_Class {
         this.methods = new ArrayList<>();
     }
 
-    public String getName() {
+    public String get_name() {
         return name;
     }
 

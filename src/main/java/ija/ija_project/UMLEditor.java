@@ -5,7 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import ija.ImportExport;
+
 import java.io.IOException;
+import ija.data_structures.*;
+
 
 public class UMLEditor extends Application {
 
@@ -19,6 +23,11 @@ public class UMLEditor extends Application {
     }
 
     public static void main(String[] args) {
+    UML_Diagram a = new UML_Diagram();
+
+        ImportExport.save(a, "somedatafile.json"); //foo
+        UML_Diagram d = ImportExport.load("somedatafile.json"); //foo
+
         launch();
     }
 

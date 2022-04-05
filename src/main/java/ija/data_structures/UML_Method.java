@@ -50,4 +50,6 @@ public class UML_Method {
         }
     }
 
+    public void delete_all_arguments(){this.arguments = new ArrayList<>();}
+
 }

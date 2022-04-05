@@ -69,8 +69,7 @@ public class UML_Class {
         }
     }
 
+    public void delete_all_attributes(){ this.attributes = new ArrayList<>();}
 
-
-    // TODO  (asi i delete())
-
+    public void delete_all_methods() {this.methods = new ArrayList<>();}
 }

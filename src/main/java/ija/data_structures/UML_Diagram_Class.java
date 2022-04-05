@@ -35,4 +35,6 @@ public class UML_Diagram_Class extends  UML_Diagram{
             index++;
         }
     }
+
+    public void delete_all_classes() {this.classes = new ArrayList<>();}
 }

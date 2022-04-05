@@ -39,5 +39,23 @@ public class UML_Diagram_Sequence extends UML_Diagram{
         messages.add(mess);
     }
 
-    // TODO remove_object(), remove_message()
+    public void remove_object(UML_Class instance){
+        int index = 0;
+        for(UML_Object obj : objects){
+            if(obj.get_instance().equals(instance)){ objects.remove(index);}
+            index++;
+        }
+    }
+
+    public void remove_message(UML_Object from, int time_start){
+        int index = 0;
+        for(UML_Message mess : messages){
+            if(mess.get_from().equals(from) && mess.get_time_start() == time_start) { messages.remove(index);}
+            index++;
+        }
+    }
+
+    public void delete_all_objects(){this.objects = new ArrayList<>();}
+
+    public void delete_all_messages(){this.messages = new ArrayList<>();}
 }

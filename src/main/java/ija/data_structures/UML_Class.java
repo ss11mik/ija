@@ -9,6 +9,7 @@ public class UML_Class {
     protected List<UML_Attribute> attributes;
     protected List<UML_Method> methods;
 
+    // CONSTRUCTORS
     public UML_Class(String name, boolean isclass, List<UML_Attribute> attributes, List<UML_Method> methods){
         this.name = name;
         this.isclass = isclass;
@@ -23,10 +24,27 @@ public class UML_Class {
         this.methods = new ArrayList<>();
     }
 
+    // GETTERS
     public String get_name() {
         return name;
     }
 
+    public boolean get_isclass() {return isclass;}
+
+    public List<UML_Attribute> get_attributes() {return attributes;}
+
+    public List<UML_Method> get_methods() {return methods;}
+
+    // SETTERS
+    public void set_name(String name) {this.name = name;}
+
+    public void set_isclass(boolean isclass) {this.isclass = isclass;}
+
+    public void set_attributes(List<UML_Attribute> attributes) {this.attributes = attributes;}
+
+    public void set_methods(List<UML_Method> methods) {this.methods = methods;}
+
+    // METHODS
     public void add_attribute(UML_Attribute attr){
         attributes.add(attr);
     }
@@ -50,6 +68,7 @@ public class UML_Class {
             index++;
         }
     }
+
 
 
     // TODO  (asi i delete())

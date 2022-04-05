@@ -8,6 +8,7 @@ public class UML_Method {
     protected UML_Attribute.Data_Type type; // navratovy typ
     protected List<UML_Argument> arguments;
 
+    // CONSTRUCTORS
     public UML_Method(String name){
         this.name = name;
         this.type = UML_Attribute.Data_Type.NULL;
@@ -20,14 +21,23 @@ public class UML_Method {
         this.arguments = arguments;
     }
 
-    public String get_name(){
-        return name;
-    }
+    // GETTERS
+    public String get_name() {return name;}
+
+    public UML_Attribute.Data_Type get_type() {return type;}
+
+    public List<UML_Argument> get_arguments() {return arguments;}
+
+    // SETTERS
+    public void set_name(String name) {this.name = name;}
 
     public void set_type(UML_Attribute.Data_Type dat_type){
-        type = dat_type;
+        this.type = dat_type;
     }
 
+    public void set_arguments(List<UML_Argument> arguments) {this.arguments = arguments;}
+
+    // METHODS
     public void add_argument(UML_Argument arg){
         arguments.add(arg);
     }

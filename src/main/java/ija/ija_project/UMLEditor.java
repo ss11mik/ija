@@ -28,6 +28,9 @@ public class UMLEditor extends Application {
         ImportExport.save(a, "somedatafile.json"); //foo
         UML_Diagram d = ImportExport.load("somedatafile.json"); //foo
 
+
+
+
         launch();
     }
 

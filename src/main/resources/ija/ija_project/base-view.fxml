@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ija.ija_project.UMLController">
-    <Pane fx:id="pane" VBox.vgrow="ALWAYS">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ija.ija_project.UMLController">
+    <Pane fx:id="pane" prefHeight="540.0" prefWidth="720.0" VBox.vgrow="ALWAYS">
       <padding>
-          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
       </padding>
 
-      <Canvas fx:id="canvas" height="${pane.height}" width="${pane.width}" onWidthChange="#redrawCanvas" onHeightChange="#redrawCanvas" />
+      <Canvas fx:id="canvas" height="${pane.height}" onHeightChange="#redrawCanvas" onWidthChange="#redrawCanvas" width="${pane.width}" />
+      <MenuBar fx:id="menu">
+        <menus>
+          <Menu fx:id="menu_file" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="menuItem_save" mnemonicParsing="false" text="Save" />
+                  <MenuItem fx:id="menuItem_open" mnemonicParsing="false" text="Open" />
+                  <MenuItem fx:id="menuItem_close" mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu fx:id="menu_diagram" mnemonicParsing="false" text="Diagram">
+            <items>
+              <MenuItem fx:id="menuItem_class" mnemonicParsing="false" text="Class diagram" />
+                  <MenuItem fx:id="menuItem_sequence" mnemonicParsing="false" text="Sequence diagram" />
+            </items>
+          </Menu>
+          <Menu fx:id="menu_help" mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem fx:id="menuItem_help" mnemonicParsing="false" text="Help" />
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Group fx:id="group_class" layoutX="556.0" layoutY="361.0">
+         <children>
+            <Button fx:id="bt_addclass" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Class" />
+            <Button fx:id="bt_addrelation" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Relation" />
+            <Button fx:id="bt_addattribute" layoutY="80.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Attribute" />
+         </children>
+      </Group>
+      <Button fx:id="bt_delete" layoutX="556.0" layoutY="496.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Delete" />
+      <Group fx:id="group_sequnce" layoutX="556.0" layoutY="321.0">
+         <children>
+            <Button fx:id="bt_addobject" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Object" />
+            <Button fx:id="bt_addmessage" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Message" />
+            <Button fx:id="bt_addmethod" layoutY="80.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Method" />
+            <Button fx:id="bt_addargument" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Argument" />
+         </children>
+      </Group>
     </Pane>
 </VBox>

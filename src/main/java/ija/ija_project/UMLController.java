@@ -6,7 +6,15 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TabPane;
 
+import ija.ImportExport;
+
+import ija.data_structures.*;
+
 public class UMLController {
+
+    // the root of data
+    UML_Diagram diagram = new UML_Diagram("test");;
+
     @FXML
     private TabPane tabs;
 
@@ -25,10 +33,14 @@ public class UMLController {
 
     @FXML
     private void menuOpen () {
+        String filename = "foo.json"; //TODO ask user
+        diagram = ImportExport.load(filename);
     }
 
     @FXML
     private void menuSave () {
+        String filename = "foo.json"; //TODO ask user
+        ImportExport.save(diagram, filename);
     }
 
     @FXML

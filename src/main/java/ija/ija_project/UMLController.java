@@ -73,6 +73,11 @@ public class UMLController {
         System.exit(0);
     }
 
+    @FXML
+    private void addClass () {
+
+    }
+
 
 
     @FXML

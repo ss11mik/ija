@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Tab text="Class Diagram">
+<Tab text="Class Diagram" id="tab-class">
     <content>
         <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="${tabPane.height}" prefWidth="${tabPane.height}" style="-fx-background-color: white;">
         <children>

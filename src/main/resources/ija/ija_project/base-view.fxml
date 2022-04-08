@@ -45,13 +45,13 @@
 
       <Group fx:id="group_class" layoutX="556.0" layoutY="361.0">
          <children>
-            <Button fx:id="bt_addclass" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Class" />
+            <Button fx:id="bt_addclass" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Class" onAction="#addClass" />
             <Button fx:id="bt_addrelation" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Relation" />
             <Button fx:id="bt_addattribute" layoutY="80.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Attribute" />
          </children>
       </Group>
       <Button fx:id="bt_delete" layoutX="556.0" layoutY="496.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Delete" />
-      <Group fx:id="group_sequnce" layoutX="556.0" layoutY="321.0">
+      <Group fx:id="group_sequnce" layoutX="556.0" layoutY="321.0" visible="false">
          <children>
             <Button fx:id="bt_addobject" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Object" />
             <Button fx:id="bt_addmessage" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Message" />

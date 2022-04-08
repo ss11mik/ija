@@ -12,7 +12,6 @@
           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
       </padding>
 
-      <Canvas fx:id="canvas" height="${pane.height}" onHeightChange="#redrawCanvas" onWidthChange="#redrawCanvas" width="${pane.width}" />
       <MenuBar fx:id="menu">
         <menus>
           <Menu fx:id="menu_file" mnemonicParsing="false" text="File">
@@ -35,6 +34,23 @@
           </Menu>
         </menus>
       </MenuBar>
+
+      <TabPane fx:id="tabPane" layoutX="0" layoutY="32"
+         prefHeight="361.0" prefWidth="556.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Untitled Diagram">
+            <content>
+              <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="${tabPane.height}" prefWidth="${tabPane.height}">
+                <children>
+
+                </children>
+              </AnchorPane>
+            </content>
+          </Tab>
+
+        </tabs>
+      </TabPane>
+
       <Group fx:id="group_class" layoutX="556.0" layoutY="361.0">
          <children>
             <Button fx:id="bt_addclass" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Class" />

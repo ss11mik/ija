@@ -16,9 +16,9 @@
         <menus>
           <Menu fx:id="menu_file" mnemonicParsing="false" text="File">
             <items>
-              <MenuItem fx:id="menuItem_save" mnemonicParsing="false" text="Save" />
-                  <MenuItem fx:id="menuItem_open" mnemonicParsing="false" text="Open" />
-                  <MenuItem fx:id="menuItem_close" mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="menuItem_save" mnemonicParsing="false" text="Save" onAction="#menuSave" />
+                  <MenuItem fx:id="menuItem_open" mnemonicParsing="false" text="Open" onAction="#menuOpen" />
+                  <MenuItem fx:id="menuItem_close" mnemonicParsing="false" text="Close" onAction="#menuClose" />
             </items>
           </Menu>
           <Menu fx:id="menu_diagram" mnemonicParsing="false" text="New Diagram">
@@ -35,7 +35,7 @@
         </menus>
       </MenuBar>
 
-      <TabPane fx:id="tabPane" layoutX="0" layoutY="32"
+      <TabPane fx:id="tabs" layoutX="0" layoutY="32"
          prefHeight="361.0" prefWidth="556.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Untitled Diagram">

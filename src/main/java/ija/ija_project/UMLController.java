@@ -1,5 +1,7 @@
 package ija.ija_project;
 
+import java.util.List;
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.canvas.Canvas;
@@ -14,34 +16,28 @@ import ija.data_structures.*;
 public class UMLController {
 
     // the root of data
-    UML_Diagram diagram = new UML_Diagram("test");;
+    UML_Diagram class_diagram = new UML_Diagram("test");
+    List<UML_Diagram_Sequence> seq_diagrams = new ArrayList();
 
     @FXML
     private TabPane tabs;
 
     @FXML
     private void redrawCanvas() {
-//         double w=canvas.getWidth();
-//         double h=canvas.getHeight();
-//         System.out.println(w);
-//         GraphicsContext gc=canvas.getGraphicsContext2D();
-//         gc.clearRect(0, 0, w, h);
-//         gc.beginPath();
-//         gc.rect(10, 10, w-200, h-20);
-//         gc.stroke();
+
     }
 
 
     @FXML
     private void menuOpen () {
         String filename = "foo.json"; //TODO ask user
-        diagram = ImportExport.load(filename);
+        class_diagram = ImportExport.load(filename);
     }
 
     @FXML
     private void menuSave () {
         String filename = "foo.json"; //TODO ask user
-        ImportExport.save(diagram, filename);
+        ImportExport.save(class_diagram, filename);
     }
 
     @FXML
@@ -53,6 +49,9 @@ public class UMLController {
     @FXML
     private void menuNewSeq () {
         Tab newTab = new Tab("Sequence diagram" , new Label("foo bar"));
+        UML_Diagram_Sequence newSeq = new UML_Diagram_Sequence("todo");
+
+        seq_diagrams.add(newSeq);
         tabs.getTabs().add(newTab);
     }
 }

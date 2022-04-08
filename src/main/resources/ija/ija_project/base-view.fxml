@@ -24,7 +24,7 @@
           <Menu fx:id="menu_diagram" mnemonicParsing="false" text="New Diagram">
             <items>
               <MenuItem fx:id="menuItem_class" mnemonicParsing="false" text="Class diagram" />
-                  <MenuItem fx:id="menuItem_sequence" mnemonicParsing="false" text="Sequence diagram" />
+                  <MenuItem fx:id="menuItem_sequence" mnemonicParsing="false" text="Sequence diagram" onAction="#menuNewSeq" />
             </items>
           </Menu>
           <Menu fx:id="menu_help" mnemonicParsing="false" text="Help">

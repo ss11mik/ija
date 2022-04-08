@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.Tab;
 
 import ija.ImportExport;
 
@@ -47,5 +48,11 @@ public class UMLController {
     private void menuClose () {
         //TODO ask if save
         System.exit(0);
+    }
+
+    @FXML
+    private void menuNewSeq () {
+        Tab newTab = new Tab("Sequence diagram" , new Label("foo bar"));
+        tabs.getTabs().add(newTab);
     }
 }

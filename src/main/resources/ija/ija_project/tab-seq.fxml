@@ -7,11 +7,20 @@
 <?import javafx.scene.layout.*?>
 
 <Tab text="Sequence Diagram">
-    <content>
-        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="${tabPane.height}" prefWidth="${tabPane.height}" style="-fx-background-color: white;">
-        <children>
+<content>
+    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="500" prefWidth="500" style="-fx-background-color: white;">
+    <children>
+      <VBox prefWidth="500" prefHeight="500">
+      <children>
+        <ScrollPane>
+        <content>
 
-        </children>
-        </AnchorPane>
-    </content>
+            <Button mnemonicParsing="false" prefHeight="3000.0" prefWidth="1500.0" text="Add Class" />
+        </content>
+        </ScrollPane>
+      </children>
+      </VBox>
+    </children>
+    </AnchorPane>
+</content>
 </Tab>

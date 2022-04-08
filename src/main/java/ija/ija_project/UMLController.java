@@ -16,6 +16,7 @@ import java.io.IOException;
 import javafx.scene.control.Alert;
 
 import ija.ImportExport;
+import ija.GUIGener;
 
 import ija.data_structures.*;
 
@@ -36,8 +37,11 @@ public class UMLController {
 
 
     @FXML
-    private void redrawCanvas() {
+    private void generFoo() {
+        UML_Class cl = new UML_Class("aaa", true);
+//         class_diagram.add_class(cl);
 
+        GUIGener.createClass(cl);
     }
 
 

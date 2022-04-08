@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
-<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -23,7 +22,7 @@
           </Menu>
           <Menu fx:id="menu_diagram" mnemonicParsing="false" text="New Diagram">
             <items>
-              <MenuItem fx:id="menuItem_class" mnemonicParsing="false" text="Class diagram" />
+              <MenuItem fx:id="menuItem_class" mnemonicParsing="false" text="Class diagram" onAction="#generFoo" />
                   <MenuItem fx:id="menuItem_sequence" mnemonicParsing="false" text="Sequence diagram" onAction="#menuNewSeq" />
             </items>
           </Menu>
@@ -36,7 +35,7 @@
       </MenuBar>
 
       <TabPane fx:id="tabs" layoutX="0" layoutY="32"
-         prefHeight="361.0" prefWidth="556.0" tabClosingPolicy="UNAVAILABLE">
+         prefHeight="400" prefWidth="500" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <fx:include source="tab-class.fxml"/>
 

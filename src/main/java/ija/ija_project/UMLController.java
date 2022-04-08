@@ -1,5 +1,6 @@
 package ija.ija_project;
 
+import javafx.fxml.FXMLLoader;
 import java.io.File;
 import javafx.scene.layout.VBox;
 import java.util.List;
@@ -11,6 +12,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.Tab;
 import javafx.stage.FileChooser;
+import java.io.IOException;
 
 import ija.ImportExport;
 
@@ -73,11 +75,13 @@ public class UMLController {
 
 
     @FXML
-    private void menuNewSeq () {
-        Tab newTab = new Tab("Sequence diagram" , new Label("foo bar"));
-        UML_Diagram_Sequence newSeq = new UML_Diagram_Sequence("todo");
+    private void menuNewSeq () throws IOException {
 
+        Tab tab = FXMLLoader.load(this.getClass().getResource("tab-seq.fxml"));
+        tabs.getTabs().add(tab);
+
+        UML_Diagram_Sequence newSeq = new UML_Diagram_Sequence("todo");
         seq_diagrams.add(newSeq);
-        tabs.getTabs().add(newTab);
     }
+
 }

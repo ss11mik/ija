@@ -38,15 +38,7 @@
       <TabPane fx:id="tabs" layoutX="0" layoutY="32"
          prefHeight="361.0" prefWidth="556.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Untitled Diagram">
-            <content>
-              <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="${tabPane.height}" prefWidth="${tabPane.height}">
-                <children>
-
-                </children>
-              </AnchorPane>
-            </content>
-          </Tab>
+            <fx:include source="tab-class.fxml"/>
 
         </tabs>
       </TabPane>

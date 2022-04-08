@@ -1,5 +1,7 @@
 package ija.ija_project;
 
+import java.io.File;
+import javafx.scene.layout.VBox;
 import java.util.List;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
@@ -8,6 +10,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.Tab;
+import javafx.stage.FileChooser;
 
 import ija.ImportExport;
 
@@ -20,7 +23,14 @@ public class UMLController {
     List<UML_Diagram_Sequence> seq_diagrams = new ArrayList();
 
     @FXML
+    private VBox root;
+
+    @FXML
     private TabPane tabs;
+
+    private static FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
+
+
 
     @FXML
     private void redrawCanvas() {
@@ -30,14 +40,28 @@ public class UMLController {
 
     @FXML
     private void menuOpen () {
-        String filename = "foo.json"; //TODO ask user
-        class_diagram = ImportExport.load(filename);
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        if(file != null){
+            class_diagram = ImportExport.load(file);
+        }
     }
 
     @FXML
     private void menuSave () {
-        String filename = "foo.json"; //TODO ask user
-        ImportExport.save(class_diagram, filename);
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showSaveDialog(null);
+
+        if(file != null){
+            ImportExport.save(class_diagram, file);
+        }
     }
 
     @FXML
@@ -45,6 +69,8 @@ public class UMLController {
         //TODO ask if save
         System.exit(0);
     }
+
+
 
     @FXML
     private void menuNewSeq () {

@@ -3,6 +3,7 @@ package ija;
 import ija.data_structures.*;
 import java.io.IOException;
 
+import java.io.File;
 import java.io.Writer;
 import java.io.FileWriter;
 import java.io.Reader;
@@ -14,9 +15,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class ImportExport {
 
-    public static void save (UML_Diagram d, String filename) {
+    public static void save (UML_Diagram d, File file) {
 
-        try (Writer writer = new FileWriter(filename)) {
+        try (Writer writer = new FileWriter(file)) {
 
             ObjectMapper mapper = new ObjectMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -35,9 +36,9 @@ public class ImportExport {
     }
 
 
-    public static UML_Diagram load (String filename) {
+    public static UML_Diagram load (File file) {
         UML_Diagram d = null;
-        try (Reader writer = new FileReader(filename)) {
+        try (Reader writer = new FileReader(file)) {
 
             ObjectMapper mapper = new ObjectMapper();
 

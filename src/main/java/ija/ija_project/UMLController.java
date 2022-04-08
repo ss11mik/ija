@@ -13,6 +13,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.Tab;
 import javafx.stage.FileChooser;
 import java.io.IOException;
+import javafx.scene.control.Alert;
 
 import ija.ImportExport;
 
@@ -82,6 +83,15 @@ public class UMLController {
 
         UML_Diagram_Sequence newSeq = new UML_Diagram_Sequence("todo");
         seq_diagrams.add(newSeq);
+    }
+
+    @FXML
+    private void menuHelp () {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("UML Editor IJA '22 Edition");
+        alert.setHeaderText("UML Editor IJA '22 Edition");
+        alert.setContentText("Authors:\nxmikul69,\nxmechl01\n\n @ BUT FIT");
+        alert.showAndWait().ifPresent(rs -> { });
     }
 
 }

@@ -29,6 +29,9 @@ public class GUIGener {
                return null;
             }
 
+            Label name = (Label) vbox.lookup("#name");
+            name.setText(data.get_name());
+
             VBox attrs = (VBox) vbox.lookup("#attrs");
             for (UML_Attribute att : data.get_attributes()) {
                 attrs.getChildren().add(new Label(att.get_name()));

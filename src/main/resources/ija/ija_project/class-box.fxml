@@ -11,7 +11,7 @@
                 -fx-background-color: #c3c3c3;
                 -fx-border-width: 3;" >
 <children>
-    <Label text= "Class name" textAlignment="CENTER"/>
+    <Label id="name" text="Class name" textAlignment="CENTER"/>
 
     <Separator />
     <VBox id="attrs">

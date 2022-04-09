@@ -8,22 +8,23 @@
 
 <VBox style="-fx-border-color: black;
                 -fx-border-insets: 5;
+                -fx-background-color: #c3c3c3;
                 -fx-border-width: 3;" >
 <children>
     <Label text= "Class name" textAlignment="CENTER"/>
 
     <Separator />
-    <Group>
+    <VBox id="attrs">
         <children>
-            <Button id="bt_addprop" mnemonicParsing="false" prefHeight="30.0" text="Add Property" />
+            <Button id="bt_addattr" mnemonicParsing="false" prefHeight="30.0" text="Add Attrribute" />
         </children>
-    </Group>
+    </VBox>
 
-    <Separator />
-    <Group>
+    <Separator/>
+    <VBox id="methods">
         <children>
             <Button id="bt_addmethod" mnemonicParsing="false" prefHeight="30.0" text="Add Method" />
         </children>
-    </Group>
+    </VBox>
 </children>
 </VBox>

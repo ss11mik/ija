@@ -5,6 +5,8 @@ import javafx.scene.paint.Color;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
+import javafx.scene.Group;
+import javafx.scene.control.Label;
 
 import ija.data_structures.*;
 import ija.ija_project.UMLController;
@@ -17,24 +19,24 @@ public class GUIGener {
     private static float strokeWidth = 8;
 
 
-//     public static VBox createClass (Context ctx, UML_Class data) {
     public static VBox createClass (UMLController ctx, UML_Class data) {
-//         Rectangle shape = new Rectangle();
-//
-//         shape.setWidth(300.0f);
-//         shape.setHeight(150.0f);
-//         //Setting other properties
-//         shape.setFill(bgColor);
-//         shape.setStrokeWidth(strokeWidth);
-//         shape.setStroke(strokeColor);
-
 
             VBox vbox = null;
             try {
                 vbox = FXMLLoader.load(ctx.getClass().getResource("class-box.fxml"));
             }
             catch (IOException e) {
-             //   return null;
+               return null;
+            }
+
+            VBox attrs = (VBox) vbox.lookup("#attrs");
+            for (UML_Attribute att : data.get_attributes()) {
+                attrs.getChildren().add(new Label(att.get_name()));
+            }
+
+            VBox methods = (VBox) vbox.lookup("#methods");
+            for (UML_Method meth : data.get_methods()) {
+                methods.getChildren().add(new Label(meth.get_name()));
             }
 
 

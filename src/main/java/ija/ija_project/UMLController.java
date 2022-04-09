@@ -81,7 +81,9 @@ public class UMLController {
     @FXML
     private void addClass () {
     UML_Class cl = new UML_Class("aaa", true);
-
+    cl.add_attribute(new UML_Attribute("help"));
+    cl.add_attribute(new UML_Attribute("aaaa"));
+    cl.add_method(new UML_Method("aaaa"));
 
        VBox newClass = GUIGener.createClass(this, cl);
         ((Pane) tabs.getTabs().get(0).getContent()).getChildren().add(newClass);

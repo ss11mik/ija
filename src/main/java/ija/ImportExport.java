@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class ImportExport {
 
-    public static void save (UML_Diagram d, File file) {
+    public static void save (UML d, File file) {
 
         try (Writer writer = new FileWriter(file)) {
 
@@ -36,19 +36,19 @@ public class ImportExport {
     }
 
 
-    public static UML_Diagram load (File file) {
-        UML_Diagram d = null;
+    public static UML load (File file) {
+        UML uml = null;
         try (Reader writer = new FileReader(file)) {
 
             ObjectMapper mapper = new ObjectMapper();
 
-            d = mapper.readValue(writer, UML_Diagram.class);
+            uml = mapper.readValue(writer, UML.class);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return d;
+        return uml;
     }
 
 }

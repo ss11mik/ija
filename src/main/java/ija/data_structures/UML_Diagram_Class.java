@@ -17,6 +17,11 @@ public class UML_Diagram_Class extends UML_Diagram {
         this.classes = new ArrayList<>();
     }
 
+    public UML_Diagram_Class(){
+        super();
+        this.classes = new ArrayList<>();
+    }
+
     // GETTER
     public List<UML_Class> get_classes() {return classes;}
 

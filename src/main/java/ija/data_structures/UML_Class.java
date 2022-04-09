@@ -24,6 +24,11 @@ public class UML_Class {
         this.methods = new ArrayList<>();
     }
 
+    public UML_Class(){
+        this.attributes = new ArrayList<>();
+        this.methods = new ArrayList<>();
+    }
+
     // GETTERS
     public String get_name() {
         return name;

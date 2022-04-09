@@ -24,8 +24,7 @@ import ija.data_structures.*;
 public class UMLController {
 
     // the root of data
-    UML_Diagram class_diagram = new UML_Diagram("test");
-    List<UML_Diagram_Sequence> seq_diagrams = new ArrayList();
+    UML data = new UML("test");
 
     @FXML
     private VBox root;
@@ -55,7 +54,7 @@ public class UMLController {
         File file = fileChooser.showOpenDialog(null);
 
         if(file != null){
-            class_diagram = ImportExport.load(file);
+            data = ImportExport.load(file);
         }
     }
 
@@ -68,7 +67,7 @@ public class UMLController {
         File file = fileChooser.showSaveDialog(null);
 
         if(file != null){
-            ImportExport.save(class_diagram, file);
+            ImportExport.save(data, file);
         }
     }
 
@@ -80,13 +79,12 @@ public class UMLController {
 
     @FXML
     private void addClass () {
-    UML_Class cl = new UML_Class("aaa", true);
-    cl.add_attribute(new UML_Attribute("help"));
-    cl.add_attribute(new UML_Attribute("aaaa"));
-    cl.add_method(new UML_Method("aaaa"));
+        UML_Class cl = new UML_Class("New Class", true);
 
-       VBox newClass = GUIGener.createClass(this, cl);
+        VBox newClass = GUIGener.createClass(this, cl);
         ((Pane) tabs.getTabs().get(0).getContent()).getChildren().add(newClass);
+
+        data.getClassDiagram().add_class(cl);
     }
 
 
@@ -98,7 +96,7 @@ public class UMLController {
         tabs.getTabs().add(tab);
 
         UML_Diagram_Sequence newSeq = new UML_Diagram_Sequence("todo");
-        seq_diagrams.add(newSeq);
+        data.add_seq_diagram(newSeq);
     }
 
     @FXML

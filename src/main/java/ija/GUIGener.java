@@ -38,33 +38,32 @@ public class GUIGener {
 
 
     public static VBox createClass (UMLController ctx, UML_Class data) {
+        try {
+            final VBox vbox = FXMLLoader.load(ctx.getClass().getResource("class-box.fxml"));
 
 
-            try {
-                final VBox vbox = FXMLLoader.load(ctx.getClass().getResource("class-box.fxml"));
+            Label name = (Label) vbox.lookup("#name");
+            name.setText(data.get_name());
 
-
-                Label name = (Label) vbox.lookup("#name");
-                name.setText(data.get_name());
-
-                VBox attrs = (VBox) vbox.lookup("#attrs");
-                for (UML_Attribute att : data.get_attributes()) {
-                    attrs.getChildren().add(new Label(att.get_name()));
-                }
-
-                VBox methods = (VBox) vbox.lookup("#methods");
-                for (UML_Method meth : data.get_methods()) {
-                    methods.getChildren().add(new Label(meth.get_name()));
-                }
-
-                vbox.setOnMouseDragged(new DragDrop(vbox));
-
-
-                return vbox;
+            VBox attrs = (VBox) vbox.lookup("#attrs");
+            for (UML_Attribute att : data.get_attributes()) {
+                attrs.getChildren().add(new Label(att.get_name()));
             }
-            catch (IOException e) {
-               return null;
+
+            VBox methods = (VBox) vbox.lookup("#methods");
+            for (UML_Method meth : data.get_methods()) {
+                methods.getChildren().add(new Label(meth.get_name()));
             }
+
+            vbox.setOnMouseDragged(new DragDrop(vbox));
+
+
+            return vbox;
+        }
+        catch (IOException e) {
+            return null;
+        }
     }
+
 
 }

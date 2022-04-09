@@ -35,6 +35,10 @@ public class UMLController {
     private static FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
 
 
+    private Pane getCurrentTabContent () {
+        return (Pane) tabs.getSelectionModel().getSelectedItem().getContent();
+    }
+
 
     @FXML
     private void generFoo() {
@@ -82,10 +86,22 @@ public class UMLController {
         UML_Class cl = new UML_Class("New Class", true);
 
         VBox newClass = GUIGener.createClass(this, cl);
-        ((Pane) tabs.getTabs().get(0).getContent()).getChildren().add(newClass);
+        getCurrentTabContent().getChildren().add(newClass);
 
         data.getClassDiagram().add_class(cl);
     }
+
+    @FXML
+    private void addObject () {
+        //TODO
+        UML_Object cl = new UML_Object(new UML_Class("New ObjectClassa", true));
+
+        VBox newClass = GUIGener.createSeqObject(this, cl);
+        getCurrentTabContent().getChildren().add(newClass);
+
+//         data.getClassDiagram().add_class(cl);
+    }
+
 
 
 

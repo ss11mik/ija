@@ -65,5 +65,30 @@ public class GUIGener {
         }
     }
 
+    public static VBox createSeqObject (UMLController ctx, UML_Object data) {
+        try {
+            final VBox vbox = FXMLLoader.load(ctx.getClass().getResource("seq-obj.fxml"));
+
+
+            Label name = (Label) vbox.lookup("#name");
+            name.setText(data.get_instance().get_name());
+/*
+            VBox attrs = (VBox) vbox.lookup("#attrs");
+            for (UML_Attribute att : data.get_attributes()) {
+                attrs.getChildren().add(new Label(att.get_name()));
+            }
+
+            VBox methods = (VBox) vbox.lookup("#methods");
+            for (UML_Method meth : data.get_methods()) {
+                methods.getChildren().add(new Label(meth.get_name()));
+            }*/
+
+
+            return vbox;
+        }
+        catch (IOException e) {
+            return null;
+        }
+    }
 
 }

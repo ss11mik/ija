@@ -14,9 +14,10 @@ import javafx.scene.control.Tab;
 import javafx.stage.FileChooser;
 import java.io.IOException;
 import javafx.scene.control.Alert;
-
 import ija.ImportExport;
 import ija.GUIGener;
+import javafx.scene.layout.Pane;
+
 
 import ija.data_structures.*;
 
@@ -41,7 +42,7 @@ public class UMLController {
         UML_Class cl = new UML_Class("aaa", true);
 //         class_diagram.add_class(cl);
 
-        GUIGener.createClass(cl);
+      //  GUIGener.createClass(cl);
     }
 
 
@@ -79,7 +80,11 @@ public class UMLController {
 
     @FXML
     private void addClass () {
+    UML_Class cl = new UML_Class("aaa", true);
 
+
+       VBox newClass = GUIGener.createClass(this, cl);
+        ((Pane) tabs.getTabs().get(0).getContent()).getChildren().add(newClass);
     }
 
 

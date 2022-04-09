@@ -15,7 +15,7 @@
         <ScrollPane>
         <content>
 
-            <Button mnemonicParsing="false" prefHeight="3000.0" prefWidth="1500.0" text="Add Class" />
+<!--             <Button mnemonicParsing="false" prefHeight="3000.0" prefWidth="1500.0" text="Add Class" /> -->
         </content>
         </ScrollPane>
       </children>

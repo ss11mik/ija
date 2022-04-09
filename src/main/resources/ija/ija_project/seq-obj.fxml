@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox id="attrs">
+<children>
+    <VBox style="-fx-border-color: black;
+                -fx-border-insets: 5;
+                -fx-background-color: #c3c3c3;
+                -fx-border-width: 3;" >
+    <children>
+            <Label id="name" text="Class name" textAlignment="CENTER"/>
+    </children>
+    </VBox>
+
+    <VBox id="attrs">
+        <children>
+            <Button id="bt_addattr" mnemonicParsing="false" prefHeight="30.0" text="Add Attrribute" />
+        </children>
+    </VBox>
+
+    <Separator/>
+    <VBox id="methods">
+        <children>
+            <Button id="bt_addmethod" mnemonicParsing="false" prefHeight="30.0" text="Add Method" />
+        </children>
+    </VBox>
+</children>
+</VBox>

@@ -11,6 +11,8 @@ import javafx.scene.control.Control;
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 
 import ija.data_structures.*;
 import ija.ija_project.UMLController;
@@ -54,6 +56,13 @@ public class GUIGener {
             for (UML_Method meth : data.get_methods()) {
                 methods.getChildren().add(new Label(meth.get_name()));
             }
+
+            Button btnAddMethod = (Button) vbox.lookup("#btn_addmethod");
+            btnAddMethod.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    data.add_method(new UML_Method("aaaaa"));
+                }
+            });
 
             vbox.setOnMouseDragged(new DragDrop(vbox));
 

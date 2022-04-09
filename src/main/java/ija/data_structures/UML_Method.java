@@ -9,6 +9,11 @@ public class UML_Method {
     protected List<UML_Argument> arguments;
 
     // CONSTRUCTORS
+    public UML_Method(){
+        this.type = UML_Attribute.Data_Type.NULL;
+        this.arguments = new ArrayList<>();
+    }
+
     public UML_Method(String name){
         this.name = name;
         this.type = UML_Attribute.Data_Type.NULL;

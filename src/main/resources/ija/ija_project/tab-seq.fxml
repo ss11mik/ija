@@ -8,16 +8,16 @@
 
 <Tab text="Sequence Diagram">
 <content>
-    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="500" prefWidth="500" style="-fx-background-color: white;">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500" prefWidth="500">
     <children>
         <ScrollPane>
         <content>
-      <HBox prefWidth="500" prefHeight="500">
-      <children>
+          <HBox id="Content" spacing="20" style="-fx-background-color: white;">
+          <children>
 
 <!--             <Button mnemonicParsing="false" prefHeight="3000.0" prefWidth="1500.0" text="Add Class" /> -->
-      </children>
-      </HBox>
+          </children>
+          </HBox>
         </content>
         </ScrollPane>
     </children>

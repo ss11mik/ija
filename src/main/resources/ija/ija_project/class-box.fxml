@@ -16,14 +16,14 @@
     <Separator />
     <VBox id="attrs">
         <children>
-            <Button id="bt_addattr" mnemonicParsing="false" prefHeight="30.0" text="Add Attrribute" />
+            <Button id="btn_addattr" mnemonicParsing="false" prefHeight="30.0" text="Add Attrribute" />
         </children>
     </VBox>
 
     <Separator/>
     <VBox id="methods">
         <children>
-            <Button id="bt_addmethod" mnemonicParsing="false" prefHeight="30.0" text="Add Method" />
+            <Button id="btn_addmethod" mnemonicParsing="false" prefHeight="30.0" text="Add Method" />
         </children>
     </VBox>
 </children>

@@ -86,7 +86,7 @@ public class UMLController {
         UML_Class cl = new UML_Class("New Class", true);
 
         VBox newClass = GUIGener.createClass(this, cl);
-        getCurrentTabContent().getChildren().add(newClass);
+        ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
 
         data.getClassDiagram().add_class(cl);
     }
@@ -97,7 +97,7 @@ public class UMLController {
         UML_Object cl = new UML_Object(new UML_Class("New ObjectClassa", true));
 
         VBox newClass = GUIGener.createSeqObject(this, cl);
-        getCurrentTabContent().getChildren().add(newClass);
+        ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
 
 //         data.getClassDiagram().add_class(cl);
     }
@@ -112,7 +112,7 @@ public class UMLController {
         tabs.getTabs().add(tab);
 
         UML_Diagram_Sequence newSeq = new UML_Diagram_Sequence("todo");
-        data.add_seq_diagram(newSeq);
+        data.addSeqDiagram(newSeq);
     }
 
     @FXML

@@ -31,17 +31,17 @@ public class UML {
 
 
 
-    public List<UML_Diagram_Sequence> get_seq() {return seqDiagrams;}
+    public List<UML_Diagram_Sequence> getSeqDiagrams() {return seqDiagrams;}
 
     // SETTER
-    public void set_seqDiagrams(List<UML_Diagram_Sequence> seqDiagrams) {this.seqDiagrams = seqDiagrams;}
+    public void setSeqDiagrams(List<UML_Diagram_Sequence> seqDiagrams) {this.seqDiagrams = seqDiagrams;}
 
     // METHODS
-    public void add_seq_diagram(UML_Diagram_Sequence clas){
+    public void addSeqDiagram(UML_Diagram_Sequence clas){
         seqDiagrams.add(clas);
     }
 
-    public void remove_class(String name){
+    public void removeClass(String name){
         int index = 0;
         for(UML_Diagram_Sequence cl : seqDiagrams){
             if(cl.get_name().equals(name)){ seqDiagrams.remove(index);}

@@ -123,6 +123,7 @@ public class UMLController {
 
     @FXML
     private void menuHelp () {
+    data.getClassDiagram().get_classes().get(0).set_name("Renamed");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("UML Editor IJA '22 Edition");
         alert.setHeaderText("UML Editor IJA '22 Edition");

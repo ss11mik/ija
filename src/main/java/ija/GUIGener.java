@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
-
+import javafx.beans.property.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
@@ -48,7 +48,7 @@ public class GUIGener {
 
 
             Label name = (Label) vbox.lookup("#name");
-            name.setText(data.get_name());
+            name.textProperty().bind(data.getNameProperty());
 
             VBox attrs = (VBox) vbox.lookup("#attrs");
             for (UMLAttribute att : data.get_attributes()) {

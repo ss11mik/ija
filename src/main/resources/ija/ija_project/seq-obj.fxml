@@ -29,5 +29,6 @@
             <Button id="bt_addmethod" mnemonicParsing="false" prefHeight="30.0" text="Add Method" />
         </children>
     </VBox>
+
 </children>
 </VBox>

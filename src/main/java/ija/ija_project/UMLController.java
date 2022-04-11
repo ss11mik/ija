@@ -87,6 +87,7 @@ public class UMLController {
         UMLClass cl = new UMLClass("New Class", true);
 
 //         cl.add_attribute(new UMLAttribute("sdwsa"));
+//         cl.add_method(new UMLMethod("sdwsa"));
         VBox newClass = GUIGener.createClass(this, cl);
 
 

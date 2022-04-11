@@ -32,6 +32,30 @@ public class UMLMethod {
         this.arguments = arguments;
     }
 
+    public String toString () {
+        String t;
+        switch (type) {
+            case INT:
+                t = "int";
+                break;
+            case BOOL:
+                t = "boolean";
+                break;
+            case STRING:
+                t = "string";
+                break;
+            case FLOAT:
+                t = "float";
+                break;
+            default:
+            case NULL:
+                t = "NULL";
+                break;
+        }
+
+        return get_name() + "() : " + t;
+    }
+
     // GETTERS
     public String get_name() {return name;}
 

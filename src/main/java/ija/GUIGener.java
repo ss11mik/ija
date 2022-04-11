@@ -57,7 +57,7 @@ public class GUIGener {
 
             VBox methods = (VBox) vbox.lookup("#methods");
             for (UMLMethod meth : data.get_methods()) {
-                methods.getChildren().add(new Label(meth.get_name()));
+                methods.getChildren().add(new Label(meth.toString()));
             }
 
             Button btnAddMethod = (Button) vbox.lookup("#btn_addmethod");

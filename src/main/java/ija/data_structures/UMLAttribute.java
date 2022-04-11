@@ -40,6 +40,50 @@ public class UMLAttribute {
         this.acces_modifier = Acces_Modifier.NULL;
     }
 
+    public String toString () {
+        String type;
+        switch (data_type) {
+            case INT:
+                type = "int";
+                break;
+            case BOOL:
+                type = "boolean";
+                break;
+            case STRING:
+                type = "string";
+                break;
+            case FLOAT:
+                type = "float";
+                break;
+            default:
+            case NULL:
+                type = "NULL";
+                break;
+        }
+        String access;
+        switch (acces_modifier) {
+            case PRIVATE:
+                access = "-";
+                break;
+            case PUBLIC:
+                access = "+";
+                break;
+            case PROTECTED:
+                access = "TODO";
+                break;
+            case PACKAGE:
+                access = "TODO";
+                break;
+            default:
+            case NULL:
+                access = "NULL";
+                break;
+        }
+
+        return access + " " + name + " : " + type;
+
+    }
+
     // GETTERS
     public String get_name(){
         return name;

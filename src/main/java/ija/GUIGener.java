@@ -52,7 +52,7 @@ public class GUIGener {
 
             VBox attrs = (VBox) vbox.lookup("#attrs");
             for (UMLAttribute att : data.get_attributes()) {
-                attrs.getChildren().add(new Label(att.get_name()));
+                attrs.getChildren().add(new Label(att.toString()));
             }
 
             VBox methods = (VBox) vbox.lookup("#methods");

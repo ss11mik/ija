@@ -86,7 +86,10 @@ public class UMLController {
     private void addClass () {
         UMLClass cl = new UMLClass("New Class", true);
 
+//         cl.add_attribute(new UMLAttribute("sdwsa"));
         VBox newClass = GUIGener.createClass(this, cl);
+
+
         ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
 
         data.getClassDiagram().add_class(cl);

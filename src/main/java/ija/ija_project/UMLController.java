@@ -8,6 +8,7 @@ package ija.ija_project;
 
 import javafx.fxml.FXMLLoader;
 import java.io.File;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXML;
 import javafx.scene.control.TabPane;
@@ -28,7 +29,7 @@ public class UMLController {
     UML data = new UML("test");
 
     @FXML
-    private VBox root;
+    private BorderPane root;
 
     @FXML
     private TabPane tabs;

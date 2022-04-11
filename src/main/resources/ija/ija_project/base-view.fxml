@@ -5,12 +5,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="root" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ija.ija_project.UMLController">
-    <Pane fx:id="pane" prefHeight="540.0" prefWidth="720.0" VBox.vgrow="ALWAYS">
-      <padding>
-          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-      </padding>
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ija.ija_project.UMLController">
 
+    <top>
       <MenuBar fx:id="menu">
         <menus>
           <Menu fx:id="menu_file" mnemonicParsing="false" text="File">
@@ -33,45 +30,67 @@
           </Menu>
         </menus>
       </MenuBar>
+    </top>
 
-      <TabPane fx:id="tabs" layoutX="0" layoutY="32"
-         prefHeight="${pane.height}" prefWidth="500" tabClosingPolicy="UNAVAILABLE">
+    <left>
+    </left>
+
+    <center>
+      <TabPane fx:id="tabs" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <fx:include source="tab-class.fxml"/>
-
         </tabs>
       </TabPane>
+    </center>
 
-      <Group fx:id="group_class" layoutX="556.0" layoutY="361.0">
-         <children>
-            <VBox spacing="15">
-            <children>
-              <Button fx:id="bt_addclass" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Class" onAction="#addClass" />
-              <Button fx:id="bt_addrelation" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Relation" />
-              <Button fx:id="bt_addattribute" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Attribute" />
-            </children>
-            </VBox>
-         </children>
-      </Group>
-
-      <VBox spacing="15" layoutY="496.0" layoutX="556.0" >
+    <right>
+      <VBox spacing="15">
       <children>
-        <Button fx:id="bt_delete" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Delete" />
-        <Button fx:id="bt_rename_dia" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Rename Diagram" />
+
+        <Group>
+        <children>
+
+          <Group fx:id="group_class">
+            <children>
+              <VBox spacing="15">
+              <children>
+                <Button fx:id="bt_addclass" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Class" onAction="#addClass" />
+                <Button fx:id="bt_addrelation" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Relation" />
+                <Button fx:id="bt_addattribute" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Attribute" />
+              </children>
+              </VBox>
+          </children>
+          </Group>
+
+          <Group fx:id="group_sequnce" visible="false">
+            <children>
+                <VBox spacing="15" >
+                <children>
+                  <Button fx:id="bt_addobject" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Object" onAction="#addObject" />
+                  <Button fx:id="bt_addmessage" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Message" />
+                  <Button fx:id="bt_addmethod" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Method" />
+                  <Button fx:id="bt_addargument" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Argument" />
+                </children>
+                </VBox>
+            </children>
+          </Group>
+
+        </children>
+        </Group>
+
+        <VBox spacing="15">
+        <children>
+          <Button fx:id="bt_delete" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Delete" />
+          <Button fx:id="bt_rename_dia" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Rename Diagram" />
+        </children>
+        </VBox>
+
       </children>
       </VBox>
+    </right>
 
-      <Group fx:id="group_sequnce" layoutX="556.0" layoutY="321.0" visible="false">
-         <children>
-            <VBox spacing="15" >
-            <children>
-              <Button fx:id="bt_addobject" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Object" onAction="#addObject" />
-              <Button fx:id="bt_addmessage" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Message" />
-              <Button fx:id="bt_addmethod" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Method" />
-              <Button fx:id="bt_addargument" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Argument" />
-            </children>
-            </VBox>
-         </children>
-      </Group>
-    </Pane>
-</VBox>
+    <bottom>
+    </bottom>
+
+</BorderPane>
+

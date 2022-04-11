@@ -6,7 +6,7 @@
  */
 package ija.data_structures;
 
-public class UML_Attribute {
+public class UMLAttribute {
     enum Data_Type{
         NULL,
         INT,
@@ -28,13 +28,13 @@ public class UML_Attribute {
     protected Acces_Modifier acces_modifier;
 
     // CONSTRUCTORS
-    public UML_Attribute(String name, Data_Type data_type, Acces_Modifier acces_modifier){
+    public UMLAttribute(String name, Data_Type data_type, Acces_Modifier acces_modifier){
         this.name = name;
         this.data_type = data_type;
         this.acces_modifier = acces_modifier;
     }
 
-    public UML_Attribute(String name){
+    public UMLAttribute(String name){
         this.name = name;
         this.data_type = Data_Type.NULL;
         this.acces_modifier = Acces_Modifier.NULL;

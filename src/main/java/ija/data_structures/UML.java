@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class UML {
     protected String name;
 
-    protected UML_Diagram_Class classDiagram;
-    protected List<UML_Diagram_Sequence> seqDiagrams;
+    protected UMLDiagramClass classDiagram;
+    protected List<UMLDiagramSequence> seqDiagrams;
 
     // CONSTRUCTORS
     public UML(){
@@ -23,7 +23,7 @@ public class UML {
     public UML(String name){
         this.name = name;
 
-        classDiagram = new UML_Diagram_Class(name);
+        classDiagram = new UMLDiagramClass(name);
         seqDiagrams = new ArrayList();
     }
 
@@ -36,19 +36,19 @@ public class UML {
 
 
 
-    public List<UML_Diagram_Sequence> getSeqDiagrams() {return seqDiagrams;}
+    public List<UMLDiagramSequence> getSeqDiagrams() {return seqDiagrams;}
 
     // SETTER
-    public void setSeqDiagrams(List<UML_Diagram_Sequence> seqDiagrams) {this.seqDiagrams = seqDiagrams;}
+    public void setSeqDiagrams(List<UMLDiagramSequence> seqDiagrams) {this.seqDiagrams = seqDiagrams;}
 
     // METHODS
-    public void addSeqDiagram(UML_Diagram_Sequence clas){
+    public void addSeqDiagram(UMLDiagramSequence clas){
         seqDiagrams.add(clas);
     }
 
     public void removeClass(String name){
         int index = 0;
-        for(UML_Diagram_Sequence cl : seqDiagrams){
+        for(UMLDiagramSequence cl : seqDiagrams){
             if(cl.get_name().equals(name)){ seqDiagrams.remove(index);}
             index++;
         }
@@ -58,7 +58,7 @@ public class UML {
 
 
 
-    public UML_Diagram_Class getClassDiagram () {
+    public UMLDiagramClass getClassDiagram () {
         return classDiagram;
     }
 

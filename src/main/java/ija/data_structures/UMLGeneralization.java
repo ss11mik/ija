@@ -5,9 +5,9 @@
  */
 package ija.data_structures;
 
-public class UML_Generalization extends UML_Relation{
+public class UMLGeneralization extends UMLRelation {
 
-    public UML_Generalization(UML_Class begin, UML_Class end){
+    public UMLGeneralization(UMLClass begin, UMLClass end){
         super(begin, end);
     }
 }

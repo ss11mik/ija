@@ -5,14 +5,12 @@
  */
 package ija;
 
-import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Label;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
-import javafx.scene.Group;
-import javafx.scene.control.Control;
+
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
@@ -44,7 +42,7 @@ public class GUIGener {
 
 
 
-    public static VBox createClass (UMLController ctx, UML_Class data) {
+    public static VBox createClass (UMLController ctx, UMLClass data) {
         try {
             final VBox vbox = FXMLLoader.load(ctx.getClass().getResource("class-box.fxml"));
 
@@ -53,19 +51,19 @@ public class GUIGener {
             name.setText(data.get_name());
 
             VBox attrs = (VBox) vbox.lookup("#attrs");
-            for (UML_Attribute att : data.get_attributes()) {
+            for (UMLAttribute att : data.get_attributes()) {
                 attrs.getChildren().add(new Label(att.get_name()));
             }
 
             VBox methods = (VBox) vbox.lookup("#methods");
-            for (UML_Method meth : data.get_methods()) {
+            for (UMLMethod meth : data.get_methods()) {
                 methods.getChildren().add(new Label(meth.get_name()));
             }
 
             Button btnAddMethod = (Button) vbox.lookup("#btn_addmethod");
             btnAddMethod.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
-                    data.add_method(new UML_Method("aaaaa"));
+                    data.add_method(new UMLMethod("aaaaa"));
                 }
             });
 
@@ -79,7 +77,7 @@ public class GUIGener {
         }
     }
 
-    public static VBox createSeqObject (UMLController ctx, UML_Object data) {
+    public static VBox createSeqObject (UMLController ctx, UMLObject data) {
         try {
             final VBox vbox = FXMLLoader.load(ctx.getClass().getResource("seq-obj.fxml"));
 

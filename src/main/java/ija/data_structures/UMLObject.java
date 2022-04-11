@@ -6,17 +6,17 @@
  */
 package ija.data_structures;
 
-public class UML_Object {
-    protected UML_Class instance;
+public class UMLObject {
+    protected UMLClass instance;
 
     // CONSTRUCTOR
-    public UML_Object(UML_Class instance){
+    public UMLObject(UMLClass instance){
         this.instance = instance;
     }
 
     // GETTER
-    public UML_Class get_instance() {return instance;}
+    public UMLClass get_instance() {return instance;}
 
     // SETTER
-    public void set_instance(UML_Class instance) {this.instance = instance;}
+    public void set_instance(UMLClass instance) {this.instance = instance;}
 }

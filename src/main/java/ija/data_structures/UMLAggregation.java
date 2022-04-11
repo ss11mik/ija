@@ -5,9 +5,9 @@
  */
 package ija.data_structures;
 
-public class UML_Aggregation extends UML_Relation{
+public class UMLAggregation extends UMLRelation {
 
-    public UML_Aggregation(UML_Class begin, UML_Class end){
+    public UMLAggregation(UMLClass begin, UMLClass end){
         super(begin, end);
     }
 }

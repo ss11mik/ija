@@ -6,29 +6,29 @@
  */
 package ija.data_structures;
 
-public class UML_Relation {
+public class UMLRelation {
 
-    protected UML_Class begin;
-    protected UML_Class end;
+    protected UMLClass begin;
+    protected UMLClass end;
 
-    public UML_Relation(UML_Class begin, UML_Class end){
+    public UMLRelation(UMLClass begin, UMLClass end){
         this.begin = begin;
         this.end = end;
     }
 
-    public UML_Class getEnd() {
+    public UMLClass getEnd() {
         return end;
     }
 
-    public UML_Class getBegin() {
+    public UMLClass getBegin() {
         return begin;
     }
 
-    public void setBegin(UML_Class begin) {
+    public void setBegin(UMLClass begin) {
         this.begin = begin;
     }
 
-    public void setEnd(UML_Class end) {
+    public void setEnd(UMLClass end) {
         this.end = end;
     }
 }

@@ -9,14 +9,7 @@ package ija.ija_project;
 import javafx.fxml.FXMLLoader;
 import java.io.File;
 import javafx.scene.layout.VBox;
-import java.util.List;
-import java.util.ArrayList;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.Tab;
 import javafx.stage.FileChooser;
@@ -50,7 +43,7 @@ public class UMLController {
 
     @FXML
     private void generFoo() {
-        UML_Class cl = new UML_Class("aaa", true);
+        UMLClass cl = new UMLClass("aaa", true);
 //         class_diagram.add_class(cl);
 
       //  GUIGener.createClass(cl);
@@ -91,7 +84,7 @@ public class UMLController {
 
     @FXML
     private void addClass () {
-        UML_Class cl = new UML_Class("New Class", true);
+        UMLClass cl = new UMLClass("New Class", true);
 
         VBox newClass = GUIGener.createClass(this, cl);
         ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
@@ -102,7 +95,7 @@ public class UMLController {
     @FXML
     private void addObject () {
         //TODO
-        UML_Object cl = new UML_Object(new UML_Class("New ObjectClassa", true));
+        UMLObject cl = new UMLObject(new UMLClass("New ObjectClassa", true));
 
         VBox newClass = GUIGener.createSeqObject(this, cl);
         ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
@@ -119,7 +112,7 @@ public class UMLController {
         Tab tab = FXMLLoader.load(this.getClass().getResource("tab-seq.fxml"));
         tabs.getTabs().add(tab);
 
-        UML_Diagram_Sequence newSeq = new UML_Diagram_Sequence("todo");
+        UMLDiagramSequence newSeq = new UMLDiagramSequence("todo");
         data.addSeqDiagram(newSeq);
     }
 

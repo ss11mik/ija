@@ -5,12 +5,12 @@
  */
 package ija.data_structures;
 
-public class UML_Argument {
+public class UMLArgument {
     public String name;
-    protected UML_Attribute.Data_Type type; // data type
+    protected UMLAttribute.Data_Type type; // data type
 
     // CONSTRUCTOR
-    public UML_Argument(String name, UML_Attribute.Data_Type type){
+    public UMLArgument(String name, UMLAttribute.Data_Type type){
         this.name = name;
         this.type = type;
     }
@@ -20,10 +20,10 @@ public class UML_Argument {
         return name;
     }
 
-    public UML_Attribute.Data_Type get_type() {return type;}
+    public UMLAttribute.Data_Type get_type() {return type;}
 
     // SETTERS
     public void set_name(String name) {this.name = name;}
 
-    public void set_type(UML_Attribute.Data_Type type) {this.type = type;}
+    public void set_type(UMLAttribute.Data_Type type) {this.type = type;}
 }

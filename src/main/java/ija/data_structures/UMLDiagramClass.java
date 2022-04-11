@@ -9,39 +9,39 @@ package ija.data_structures;
 import java.util.List;
 import java.util.ArrayList;
 
-public class UML_Diagram_Class extends UML_Diagram {
-    protected List<UML_Class> classes;
+public class UMLDiagramClass extends UMLDiagram {
+    protected List<UMLClass> classes;
 
     // CONSTRUCTORS
-    public UML_Diagram_Class(String name, List<UML_Class> classes){
+    public UMLDiagramClass(String name, List<UMLClass> classes){
         super(name);
         this.classes = classes;
     }
 
-    public UML_Diagram_Class(String name){
+    public UMLDiagramClass(String name){
         super(name);
         this.classes = new ArrayList<>();
     }
 
-    public UML_Diagram_Class(){
+    public UMLDiagramClass(){
         super();
         this.classes = new ArrayList<>();
     }
 
     // GETTER
-    public List<UML_Class> get_classes() {return classes;}
+    public List<UMLClass> get_classes() {return classes;}
 
     // SETTER
-    public void set_classes(List<UML_Class> classes) {this.classes = classes;}
+    public void set_classes(List<UMLClass> classes) {this.classes = classes;}
 
     // METHODS
-    public void add_class(UML_Class clas){
+    public void add_class(UMLClass clas){
         classes.add(clas);
     }
 
     public void remove_class(String name){
         int index = 0;
-        for(UML_Class cl : classes){
+        for(UMLClass cl : classes){
             if(cl.get_name().equals(name)){ classes.remove(index);}
             index++;
         }

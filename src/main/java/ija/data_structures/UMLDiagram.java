@@ -5,15 +5,15 @@
  */
 package ija.data_structures;
 
-public class UML_Diagram {
+public class UMLDiagram {
     protected String name;
 
     // CONSTRUCTORS
-    public UML_Diagram(){
+    public UMLDiagram(){
         // for JSON conversion
     }
 
-    public UML_Diagram(String name){
+    public UMLDiagram(String name){
         this.name = name;
     }
 

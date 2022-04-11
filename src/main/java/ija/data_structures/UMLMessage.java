@@ -6,7 +6,7 @@
  */
 package ija.data_structures;
 
-public class UML_Message {
+public class UMLMessage {
     enum Message_Type{
         NULL,
         SYNCHRONOUS,
@@ -17,13 +17,13 @@ public class UML_Message {
     }
 
     protected Message_Type type;
-    protected UML_Object from;
-    protected UML_Object to;
+    protected UMLObject from;
+    protected UMLObject to;
     protected int time_start;
-    protected UML_Method method;
+    protected UMLMethod method;
 
     // CONSTRUCTORS
-    public UML_Message(Message_Type type, UML_Object from, UML_Object to, int time_start, UML_Method method){
+    public UMLMessage(Message_Type type, UMLObject from, UMLObject to, int time_start, UMLMethod method){
         this.type = type;
         this.from = from;
         this.to = to;
@@ -31,7 +31,7 @@ public class UML_Message {
         this.method = method;
     }
 
-    public UML_Message(Message_Type type, UML_Object from){
+    public UMLMessage(Message_Type type, UMLObject from){
         this.type = type;
         this.from = from;
         this.to = null;
@@ -42,20 +42,20 @@ public class UML_Message {
     // GETTERS
     public Message_Type get_type() {return type;}
 
-    public UML_Object get_from() {return from;}
+    public UMLObject get_from() {return from;}
 
-    public UML_Object get_to() {return to;}
+    public UMLObject get_to() {return to;}
 
     public int get_time_start() {return time_start;}
 
-    public UML_Method get_method() {return method;}
+    public UMLMethod get_method() {return method;}
 
     // SETTERS
     public void set_type(Message_Type mess_type) {this.type = mess_type;}
 
-    public void set_from(UML_Object from) {this.from = from;}
+    public void set_from(UMLObject from) {this.from = from;}
 
-    public void set_to(UML_Object end){
+    public void set_to(UMLObject end){
         this.to = end;
     }
 
@@ -63,7 +63,7 @@ public class UML_Message {
         this.time_start = time;
     }
 
-    public void set_method(UML_Method meth){
+    public void set_method(UMLMethod meth){
         this.method = meth;
     }
 }

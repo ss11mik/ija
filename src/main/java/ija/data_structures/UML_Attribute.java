@@ -1,3 +1,9 @@
+/**
+ * Znazornuje atribut tridy v diagramu trid.
+ * Obsahuje vyctove typy pro datovy typ nebo modifikator pristupu
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 package ija.data_structures;
 
 public class UML_Attribute {

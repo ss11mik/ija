@@ -1,3 +1,9 @@
+/**
+ * Znazornuje zpravu predavanou mezi objekty v sekvencnim diagramu.
+ * Obsahuje vyctovy typ pro typ zpravy, odkud kam vede, cas zaslani a zaslanou metodu, konstruktor, gettery a settery
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 package ija.data_structures;
 
 public class UML_Message {

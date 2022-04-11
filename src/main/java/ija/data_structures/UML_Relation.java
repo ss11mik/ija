@@ -1,3 +1,9 @@
+/**
+ * Znazornuje vazbu mezi tridami v diagramu trid.
+ * Obsahuje odkud kam vede, konstruktor, gettery, settery. Je otcovskou tridou pro ruzne druhy vazeb.
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 package ija.data_structures;
 
 public class UML_Relation {

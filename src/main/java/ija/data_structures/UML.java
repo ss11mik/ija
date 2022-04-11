@@ -1,3 +1,8 @@
+/**
+ * Trida obsahujici vsechny vytvorene diagramy, pro prehlednost a prakticnost pri praci s import/export do souboru.
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 package ija.data_structures;
 
 import java.util.List;

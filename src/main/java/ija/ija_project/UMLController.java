@@ -1,3 +1,9 @@
+/**
+ * Obsluhuje GUI pro tvorbu diagramu.
+ * Obsahuje metody volane pri interakci uzivatele.
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 package ija.ija_project;
 
 import javafx.fxml.FXMLLoader;
@@ -6,6 +12,8 @@ import javafx.scene.layout.VBox;
 import java.util.List;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

@@ -1,3 +1,8 @@
+/**
+ * Obsluhuje spusteni GUI a prvotni nastaveni zobrazeni.
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 package ija.ija_project;
 
 import javafx.application.Application;

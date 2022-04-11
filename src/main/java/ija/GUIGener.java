@@ -1,3 +1,8 @@
+/**
+ * Obsluhuje tvorbu a editaci diagramu.
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 package ija;
 
 import javafx.scene.shape.Rectangle;

@@ -1,3 +1,9 @@
+/**
+ * Znazornuje sekvencni diagram.
+ * Obsahuje objekty diagramu, zpravy predavane mezi nimi, konstruktor, gettery, settery a metody pro upravu objektu a zprav.
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 package ija.data_structures;
 
 import java.util.List;

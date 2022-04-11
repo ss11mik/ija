@@ -1,3 +1,8 @@
+/**
+ * Obsluhuje nacitani diagramu ze souboru a jeho ulozeni do souboru.
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 package ija;
 
 import ija.data_structures.*;

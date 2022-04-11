@@ -1,3 +1,9 @@
+/**
+ * Znazornuje tridu jako objekt diagramu trid.
+ * Obsahuje konstruktory, gettery, settery a metody pro upravu atributu a metod
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 package ija.data_structures;
 
 import java.util.List;

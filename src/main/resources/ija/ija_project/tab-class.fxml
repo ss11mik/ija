@@ -11,7 +11,7 @@
     <children>
         <ScrollPane>
         <content>
-          <VBox style="-fx-background-color: white;">
+          <VBox>
           <children>
 
 <!--             <Button mnemonicParsing="false" prefHeight="3000.0" prefWidth="1500.0" text="Add Class" /> -->

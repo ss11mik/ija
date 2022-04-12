@@ -1,4 +1,4 @@
-package ija.data_structures;
+package ija.dataStructures;
 
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;

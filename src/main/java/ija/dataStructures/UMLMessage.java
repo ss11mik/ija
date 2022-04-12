@@ -1,4 +1,4 @@
-package ija.data_structures;
+package ija.dataStructures;
 
 /**
  * Znazornuje zpravu predavanou mezi objekty v sekvencnim diagramu.

@@ -1,4 +1,4 @@
-package ija.data_structures;
+package ija.dataStructures;
 
 /**
  * Znazornuje vazbu generalizace v diagramu trid.

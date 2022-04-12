@@ -1,8 +1,3 @@
-/**
- * Obsluhuje tvorbu a editaci diagramu.
- *
- *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
- */
 package ija;
 
 import javafx.scene.paint.Color;
@@ -17,23 +12,38 @@ import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
-import ija.data_structures.*;
-import ija.ija_project.UMLController;
+import ija.dataStructures.*;
+import ija.ijaProject.UMLController;
 
-
+/**
+ * Obsluhuje tvorbu a editaci diagramu.
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 public class GUIGener {
 
     private static Color bgColor = Color.DARKCYAN;
     private static Color strokeColor = Color.BLACK;
     private static float strokeWidth = 8;
 
+    /**
+     * Obsluhuje drag and drop funkce pro presouvani objektu
+     */
     private static class DragDrop implements EventHandler<MouseEvent> {
         Pane c;
 
+        /**
+         * Zajistuje focus na graficky objekt, ktery byl chycen
+         * @param n aktivni graficky objekt
+         */
         public DragDrop(Pane n) {
             c = n;
         }
 
+        /**
+         * Zajistuje presouvani grafickych objektu
+         * @param event udalost mysi
+         */
         @Override
         public void handle(MouseEvent event) {
             c.relocate(event.getSceneX() - c.getWidth(), event.getSceneY() - c.getHeight());
@@ -41,7 +51,12 @@ public class GUIGener {
     };
 
 
-
+    /**
+     * Zajistuje prekresleni GUI pri zmene tridy
+     * @param ctx controller pro GUI
+     * @param data data UML tridy
+     * @return Vraci upraveny vertical box pro GUI
+     */
     public static VBox createClass (UMLController ctx, UMLClass data) {
         try {
             final VBox vbox = FXMLLoader.load(ctx.getClass().getResource("class-box.fxml"));
@@ -77,6 +92,12 @@ public class GUIGener {
         }
     }
 
+    /**
+     * Zajistuje prekresleni GUI pri zmene objektu
+     * @param ctx controller pro GUI
+     * @param data data UML objektu
+     * @return Vraci upraveny vertical box pro GUI
+     */
     public static VBox createSeqObject (UMLController ctx, UMLObject data) {
         try {
             final VBox vbox = FXMLLoader.load(ctx.getClass().getResource("seq-obj.fxml"));

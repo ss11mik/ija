@@ -4,8 +4,8 @@ module ija.ija_project {
 
     requires com.fasterxml.jackson.databind;
     opens ija to com.fasterxml.jackson.databind;
-    opens ija.data_structures to com.fasterxml.jackson.databind;
+    opens ija.dataStructures to com.fasterxml.jackson.databind;
 
-    opens ija.ija_project to javafx.fxml;
-    exports ija.ija_project;
+    opens ija.ijaProject to javafx.fxml;
+    exports ija.ijaProject;
 }

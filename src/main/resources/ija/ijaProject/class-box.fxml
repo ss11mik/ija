@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox style="-fx-border-color: black;              -fx-border-insets: 5;              -fx-background-color: #c3c3c3;              -fx-border-width: 3;" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ija.ija_project.UMLController">
+<VBox style="-fx-border-color: black;              -fx-border-insets: 5;              -fx-background-color: #c3c3c3;              -fx-border-width: 3;" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ija.ijaProject.UMLController">
 <children>
     <Label id="name" fx:id="className" text="Class name" textAlignment="CENTER" />
 

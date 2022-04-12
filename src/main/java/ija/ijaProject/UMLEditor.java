@@ -1,23 +1,26 @@
-/**
- * Obsluhuje spusteni GUI a prvotni nastaveni zobrazeni.
- *
- *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
- */
-package ija.ija_project;
+package ija.ijaProject;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.Tab;
 import javafx.scene.Group;
 
 import java.io.IOException;
 
-
+/**
+ * Obsluhuje spusteni GUI a prvotni nastaveni zobrazeni.
+ *
+ *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
+ */
 public class UMLEditor extends Application {
 
+    /**
+     * Nastavi uvodni zobrazeni GUI
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(UMLEditor.class.getResource("base-view.fxml"));
@@ -42,6 +45,10 @@ public class UMLEditor extends Application {
         });
     }
 
+    /**
+     * Nastartuje aplikaci
+     * @param args parametry terminalu
+     */
     public static void main(String[] args) {
         launch();
     }

@@ -9,4 +9,4 @@ xmechl01
 
 compiling:
 (TODO)
-ant make
+mvn make

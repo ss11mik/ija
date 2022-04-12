@@ -18,7 +18,6 @@
           </Menu>
           <Menu fx:id="menu_diagram" mnemonicParsing="false" text="New Diagram">
             <items>
-              <MenuItem fx:id="menuItem_class" mnemonicParsing="false" onAction="#generFoo" text="Class diagram" />
                   <MenuItem fx:id="menuItem_sequence" mnemonicParsing="false" onAction="#menuNewSeq" text="Sequence diagram" />
             </items>
           </Menu>
@@ -53,7 +52,7 @@
             <children>
               <VBox spacing="15">
               <children>
-                              <TextField fx:id="textField_names" promptText="Name" />
+                <TextField fx:id="textField_names" promptText="Name" />
                 <Button fx:id="bt_addclass" mnemonicParsing="false" onAction="#addClass" prefHeight="30.0" prefWidth="150.0" text="Add Class" />
                 <Button fx:id="bt_addrelation" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Relation" />
                 <Button fx:id="bt_addattribute" mnemonicParsing="false" onAction="#addAttribute" prefHeight="30.0" prefWidth="150.0" text="Add Attribute" />

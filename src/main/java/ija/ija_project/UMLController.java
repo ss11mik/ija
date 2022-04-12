@@ -8,14 +8,14 @@ package ija.ija_project;
 
 import javafx.fxml.FXMLLoader;
 import java.io.File;
+
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXML;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.Tab;
 import javafx.stage.FileChooser;
 import java.io.IOException;
-import javafx.scene.control.Alert;
+
 import ija.ImportExport;
 import ija.GUIGener;
 import javafx.scene.layout.Pane;
@@ -33,6 +33,19 @@ public class UMLController {
 
     @FXML
     private TabPane tabs;
+
+    @FXML
+    private TextField text_renameDiagram;
+
+    @FXML
+    private TextField textField_names;
+
+    @FXML
+    private TextArea ta_attributes = new TextArea();
+
+    @FXML
+    private TextArea ta_methods = new TextArea();
+
 
     private static FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
 
@@ -85,7 +98,7 @@ public class UMLController {
 
     @FXML
     private void addClass () {
-        UMLClass cl = new UMLClass("New Class", true);
+        UMLClass cl = new UMLClass(textField_names.getText(), true);
 
 //         cl.add_attribute(new UMLAttribute("sdwsa"));
 //         cl.add_method(new UMLMethod("sdwsa"));
@@ -97,6 +110,7 @@ public class UMLController {
         data.getClassDiagram().add_class(cl);
     }
 
+
     @FXML
     private void addObject () {
         //TODO
@@ -106,9 +120,8 @@ public class UMLController {
         ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
 
 //         data.getClassDiagram().add_class(cl);
+        data.getSeqDiagrams().get(0).add_object(cl);
     }
-
-
 
 
     @FXML
@@ -130,5 +143,33 @@ public class UMLController {
         alert.setContentText("Authors:\nxmikul69,\nxmechl01\n\n @ BUT FIT");
         alert.showAndWait().ifPresent(rs -> { });
     }
+
+    @FXML
+    private void renameDiagram(){
+
+        data.getClassDiagram().set_name(text_renameDiagram.getText());
+    }
+
+    @FXML
+    private void addAttribute(){
+        // prida atribut do diagramu kdyz je volana z base-view, ale nezmeni text v class-box
+        data.getClassDiagram().get_classes().get(0).add_attribute(new UMLAttribute(textField_names.getText()));
+        ta_attributes.setText("pridano"); //ta_attributes.getText() + "\n" + textField_names.getText());
+    }
+
+    @FXML
+    private void writeTextAttr(){
+        // zmeni text v class-box, ale neumi vytvorit atribut v base-view
+        ta_attributes.setText(ta_attributes.getText() + "attribut" + "\n");
+        ta_attributes.setPrefHeight(ta_attributes.getHeight() + 18);
+    }
+
+    @FXML
+    private void writeTextMeth(){
+        ta_methods.setText(ta_methods.getText() + "metoda" + "\n");
+        ta_methods.setPrefHeight(ta_methods.getHeight() + 18);
+    }
+
+
 
 }

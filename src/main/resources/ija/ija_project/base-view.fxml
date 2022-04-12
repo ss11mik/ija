@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -12,20 +11,20 @@
         <menus>
           <Menu fx:id="menu_file" mnemonicParsing="false" text="File">
             <items>
-              <MenuItem fx:id="menuItem_save" mnemonicParsing="false" text="Save" onAction="#menuSave" />
-                  <MenuItem fx:id="menuItem_open" mnemonicParsing="false" text="Open" onAction="#menuOpen" />
-                  <MenuItem fx:id="menuItem_close" mnemonicParsing="false" text="Close" onAction="#menuClose" />
+              <MenuItem fx:id="menuItem_save" mnemonicParsing="false" onAction="#menuSave" text="Save" />
+                  <MenuItem fx:id="menuItem_open" mnemonicParsing="false" onAction="#menuOpen" text="Open" />
+                  <MenuItem fx:id="menuItem_close" mnemonicParsing="false" onAction="#menuClose" text="Close" />
             </items>
           </Menu>
           <Menu fx:id="menu_diagram" mnemonicParsing="false" text="New Diagram">
             <items>
-              <MenuItem fx:id="menuItem_class" mnemonicParsing="false" text="Class diagram" onAction="#generFoo" />
-                  <MenuItem fx:id="menuItem_sequence" mnemonicParsing="false" text="Sequence diagram" onAction="#menuNewSeq" />
+              <MenuItem fx:id="menuItem_class" mnemonicParsing="false" onAction="#generFoo" text="Class diagram" />
+                  <MenuItem fx:id="menuItem_sequence" mnemonicParsing="false" onAction="#menuNewSeq" text="Sequence diagram" />
             </items>
           </Menu>
           <Menu fx:id="menu_help" mnemonicParsing="false" text="Help">
                <items>
-                  <MenuItem fx:id="menuItem_help" mnemonicParsing="false" text="Help" onAction="#menuHelp" />
+                  <MenuItem fx:id="menuItem_help" mnemonicParsing="false" onAction="#menuHelp" text="Help" />
                </items>
           </Menu>
         </menus>
@@ -38,7 +37,7 @@
     <center>
       <TabPane fx:id="tabs" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <fx:include source="tab-class.fxml"/>
+            <fx:include source="tab-class.fxml" />
         </tabs>
       </TabPane>
     </center>
@@ -54,9 +53,10 @@
             <children>
               <VBox spacing="15">
               <children>
-                <Button fx:id="bt_addclass" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Class" onAction="#addClass" />
+                              <TextField fx:id="textField_names" text="Name" />
+                <Button fx:id="bt_addclass" mnemonicParsing="false" onAction="#addClass" prefHeight="30.0" prefWidth="150.0" text="Add Class" />
                 <Button fx:id="bt_addrelation" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Relation" />
-                <Button fx:id="bt_addattribute" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Attribute" />
+                <Button fx:id="bt_addattribute" mnemonicParsing="false" onAction="#addAttribute" prefHeight="30.0" prefWidth="150.0" text="Add Attribute" />
               </children>
               </VBox>
           </children>
@@ -64,9 +64,9 @@
 
           <Group fx:id="group_sequnce" visible="false">
             <children>
-                <VBox spacing="15" >
+                <VBox spacing="15">
                 <children>
-                  <Button fx:id="bt_addobject" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Object" onAction="#addObject" />
+                  <Button fx:id="bt_addobject" mnemonicParsing="false" onAction="#addObject" prefHeight="30.0" prefWidth="150.0" text="Add Object" />
                   <Button fx:id="bt_addmessage" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Message" />
                   <Button fx:id="bt_addmethod" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Method" />
                   <Button fx:id="bt_addargument" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Argument" />
@@ -80,8 +80,10 @@
 
         <VBox spacing="15">
         <children>
-          <Button fx:id="bt_delete" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Delete" />
-          <Button fx:id="bt_rename_dia" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Rename Diagram" />
+                  <Region prefHeight="100.0" prefWidth="150.0" />
+                  <TextField fx:id="text_renameDiagram" prefHeight="26.0" prefWidth="150.0" text="new_name" />
+          <Button fx:id="bt_rename_dia" mnemonicParsing="false" onAction="#renameDiagram" prefHeight="30.0" prefWidth="150.0" text="Rename Diagram" />
+          <Button fx:id="bt_delete" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text=" Delete Diagram" />
         </children>
         </VBox>
 
@@ -93,4 +95,3 @@
     </bottom>
 
 </BorderPane>
-

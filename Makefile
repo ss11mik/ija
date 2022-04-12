@@ -1,7 +1,7 @@
 # just for me
 
 build:
-	mvn compile
+	mvn compile package
 
 run:
 	mvn javafx:run

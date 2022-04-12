@@ -4,6 +4,7 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class UML {
         this.name = new SimpleStringProperty(name);
 
         classDiagram = new UMLDiagramClass(name);
-        seqDiagrams = new SimpleListProperty<>();
+        seqDiagrams = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLMethod>()));
     }
 
     // GETTER

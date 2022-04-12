@@ -1,13 +1,14 @@
+package ija.data_structures;
+
 /**
  * Znazornuje atribut tridy v diagramu trid.
  * Obsahuje vyctove typy pro datovy typ nebo modifikator pristupu
  *
  *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
  */
-package ija.data_structures;
-
 public class UMLAttribute {
-    enum Data_Type{
+    /** Vyctovy typ pro vsechny mozne datove typy atributu */
+    enum DataType {
         NULL,
         INT,
         BOOL,
@@ -15,7 +16,8 @@ public class UMLAttribute {
         FLOAT
     }
 
-    enum Acces_Modifier{
+    /** Vyctovy typ pro vsechny mozne modifikatory pristupu */
+    enum AccesModifier {
         NULL,
         PRIVATE,
         PUBLIC,
@@ -23,26 +25,89 @@ public class UMLAttribute {
         PACKAGE
     }
 
+    /** Nazev atributu */
     protected String name;
-    protected Data_Type data_type;
-    protected Acces_Modifier acces_modifier;
+    /** Datovy typ atributu */
+    protected DataType dataType;
+    /** Modifikator pristupu */
+    protected AccesModifier accesModifier;
 
     // CONSTRUCTORS
-    public UMLAttribute(String name, Data_Type data_type, Acces_Modifier acces_modifier){
+    /**
+     * Vytvori instanci atributu
+     * @param name nazev atributu
+     * @param dataType datovy typ atributu
+     * @param accesModifier modifikator pristupu k atributu
+     */
+    public UMLAttribute(String name, DataType dataType, AccesModifier accesModifier){
         this.name = name;
-        this.data_type = data_type;
-        this.acces_modifier = acces_modifier;
+        this.dataType = dataType;
+        this.accesModifier = accesModifier;
     }
 
+    /**
+     * Vytvori instanci atributu
+     * @param name nazev atributu
+     */
     public UMLAttribute(String name){
         this.name = name;
-        this.data_type = Data_Type.NULL;
-        this.acces_modifier = Acces_Modifier.NULL;
+        this.dataType = dataType.NULL;
+        this.accesModifier = accesModifier.NULL;
     }
 
+
+
+    // GETTERS
+
+    /**
+     * @return Vraci nazev atributu
+     */
+    public String getName(){
+        return name;
+    }
+
+    /**
+     * @return Vraci datovy typ atributu
+     */
+    public DataType getDataType() { return dataType;}
+
+    /**
+     * @return Vraci modifikator pristupu k atributu
+     */
+    public AccesModifier getAccesModifier() {return accesModifier;}
+
+    // SETTERS
+
+    /**
+     * Nastavi nazev atributu
+     * @param name novy nazev atributu
+     */
+    public void setName(String name) {this.name = name;}
+
+    /**
+     * Nastavi datovy typ atributu
+     * @param type novy datovy typ atributu
+     */
+    public void setDataType(DataType type){
+        this.dataType = type;
+    }
+
+    /**
+     * Nastavi modifikator pristupu k atributu
+     * @param modifier novy modifikator pristupu k atributu
+     */
+    public void setAccesModifier(AccesModifier modifier){
+        this.accesModifier = modifier;
+    }
+
+    // METHODS
+    /**
+     *  Prevede objekt atributu na textovy retezec vhodny na vypsani do tridy v diagramu trid
+     * @return Vrati textovy retezec ve formatu "accMod name : datTyp"
+     */
     public String toString () {
         String type;
-        switch (data_type) {
+        switch (dataType) {
             case INT:
                 type = "int";
                 break;
@@ -61,7 +126,7 @@ public class UMLAttribute {
                 break;
         }
         String access;
-        switch (acces_modifier) {
+        switch (accesModifier) {
             case PRIVATE:
                 access = "-";
                 break;
@@ -69,39 +134,18 @@ public class UMLAttribute {
                 access = "+";
                 break;
             case PROTECTED:
-                access = "TODO";
+                access = "#";
                 break;
             case PACKAGE:
-                access = "TODO";
+                access = "~";
                 break;
             default:
             case NULL:
                 access = "NULL";
-                break;
         }
 
         return access + " " + name + " : " + type;
 
-    }
-
-    // GETTERS
-    public String get_name(){
-        return name;
-    }
-
-    public Data_Type get_data_type() { return data_type;}
-
-    public Acces_Modifier get_acces_modifier() {return acces_modifier;}
-
-    // SETTERS
-    public void setName(String name) {this.name = name;}
-
-    public void set_data_type(Data_Type type){
-        this.data_type = type;
-    }
-
-    public void set_acces_modifier(Acces_Modifier modifier){
-        this.acces_modifier = modifier;
     }
 
 }

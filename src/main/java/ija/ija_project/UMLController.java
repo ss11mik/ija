@@ -107,7 +107,7 @@ public class UMLController {
 
         ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
 
-        data.getClassDiagram().add_class(cl);
+        data.getClassDiagram().addClass(cl);
     }
 
 
@@ -120,7 +120,7 @@ public class UMLController {
         ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
 
 //         data.getClassDiagram().add_class(cl);
-        data.getSeqDiagrams().get(0).add_object(cl);
+        data.getSeqDiagrams().get(0).addObject(cl);
     }
 
 
@@ -136,7 +136,7 @@ public class UMLController {
 
     @FXML
     private void menuHelp () {
-    data.getClassDiagram().get_classes().get(0).set_name("Renamed");
+    data.getClassDiagram().getClasses().get(0).setName("Renamed");
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("UML Editor IJA '22 Edition");
@@ -157,13 +157,13 @@ public class UMLController {
     @FXML
     private void renameDiagram(){
 
-        data.getClassDiagram().set_name(text_renameDiagram.getText());
+        data.getClassDiagram().setName(text_renameDiagram.getText());
     }
 
     @FXML
     private void addAttribute(){
         // prida atribut do diagramu kdyz je volana z base-view, ale nezmeni text v class-box
-        data.getClassDiagram().get_classes().get(0).add_attribute(new UMLAttribute(textField_names.getText()));
+        data.getClassDiagram().getClasses().get(0).addAttribute(new UMLAttribute(textField_names.getText()));
         ta_attributes.setText("pridano"); //ta_attributes.getText() + "\n" + textField_names.getText());
     }
 

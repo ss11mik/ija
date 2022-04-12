@@ -1,67 +1,131 @@
+package ija.data_structures;
+
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * Znazornuje sekvencni diagram.
  * Obsahuje objekty diagramu, zpravy predavane mezi nimi, konstruktor, gettery, settery a metody pro upravu objektu a zprav.
  *
  *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
  */
-package ija.data_structures;
-
-import java.util.List;
-import java.util.ArrayList;
-
 public class UMLDiagramSequence extends UMLDiagram {
-    protected List<UMLObject> objects; // seznam objektu
-    protected List<UMLMessage> messages; // seznam zprav
+    /** Seznam objektu sekvencniho diagramu */
+    protected ListProperty<UMLObject> objects;
+    /** Seznam zprav sekvencniho diagramu */
+    protected ListProperty<UMLMessage> messages;
 
     // CONSTRUCTORS
+    /**
+     * Vytvori instanci sekvencniho diagramu
+     * @param name nazev sekvencniho diagramu
+     * @param objects seznam objektu
+     * @param messages seznam zprav
+     */
     public UMLDiagramSequence(String name, List<UMLObject> objects, List<UMLMessage> messages){
         super(name);
-        this.objects = objects;
-        this.messages = messages;
+        this.objects = new SimpleListProperty<UMLObject>(FXCollections.observableArrayList(objects));
+        this.messages = new SimpleListProperty<UMLMessage>(FXCollections.observableArrayList(messages));
     }
 
+    /**
+     * Vytvori instanci sekvencniho diagramu
+     * @param name nazev sekvencniho diagramu
+     */
     public UMLDiagramSequence(String name){
         super(name);
-        this.objects = new ArrayList<>();
-        this.messages = new ArrayList<>();
+        this.objects = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLObject>()));
+        this.messages = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLMessage>()));
     }
 
     // GETTERS
-    public List<UMLObject> get_objects() {return objects;}
+    /**
+     * @return Vrati seznam objektu diagramu
+     */
+    public List<UMLObject> getObjects() {return objects.get();}
 
-    public List<UMLMessage> get_messages() {return messages;}
+    /**
+     * @return Vrati seznam objektu diagramu
+     */
+    public ListProperty<UMLObject> getObjectsProperty() {return objects;}
+
+    /**
+     * @return Vrati seznam zprav diagramu
+     */
+    public List<UMLMessage> getMessages() {return messages.get();}
+
+    /**
+     * @return Vrati seznam zprav diagramu
+     */
+    public ListProperty<UMLMessage> getMessagesProperty() {return messages;}
 
     // SETTERS
-    public void set_objects(List<UMLObject> objects) {this.objects = objects;}
 
-    public void set_messages(List<UMLMessage> messages) {this.messages = messages;}
+    /**
+     * Nastavi seznam objektu diagramu
+     * @param objects novy seznam objektu
+     */
+    public void setObjects(List<UMLObject> objects) {this.objects = new SimpleListProperty(FXCollections.observableArrayList(objects));}
+
+    /**
+     * Nastavi seznam zprav diagramu
+     * @param messages novy seznam zprav diagramu
+     */
+    public void setMessages(List<UMLMessage> messages) {this.messages = new SimpleListProperty(FXCollections.observableArrayList(messages));}
 
     // METHODS
-    public void add_object(UMLObject obj){
+    /**
+     * Prida objekt do seznamu objektu
+     * @param obj novy objekt
+     */
+    public void addObject(UMLObject obj){
         objects.add(obj);
     }
 
-    public void add_message(UMLMessage mess){
+    /**
+     * Prida zpravu do seznamu zprav
+     * @param mess nova zprava
+     */
+    public void addMessage(UMLMessage mess){
         messages.add(mess);
     }
 
-    public void remove_object(UMLClass instance){
+    /**
+     * Odstrani vybrany objekt ze seznamu objektu
+     * @param instance nazev vybraneho objektu
+     */
+    public void removeObject(UMLClass instance){
         int index = 0;
         for(UMLObject obj : objects){
-            if(obj.get_instance().equals(instance)){ objects.remove(index);}
+            if(obj.getInstance().equals(instance)){ objects.remove(index);}
             index++;
         }
     }
 
-    public void remove_message(UMLObject from, int time_start){
+    /**
+     * Odstrani vybranou zpravu ze seznamu zprav
+     * @param from odkud vybrana zprava vychazi
+     * @param time_start cas zaslani vybrane zpravy
+     */
+    public void removeMessage(UMLObject from, int time_start){
         int index = 0;
         for(UMLMessage mess : messages){
-            if(mess.get_from().equals(from) && mess.get_time_start() == time_start) { messages.remove(index);}
+            if(mess.getFrom().equals(from) && mess.getTimeStart() == time_start) { messages.remove(index);}
             index++;
         }
     }
 
-    public void delete_all_objects(){this.objects = new ArrayList<>();}
+    /**
+     * Odstrani vsechny objekty v seznamu
+     */
+    public void deleteAllObjects(){this.objects = new SimpleListProperty();}
 
-    public void delete_all_messages(){this.messages = new ArrayList<>();}
+    /**
+     * Odstrani vsechny zpravy v seznamu
+     */
+    public void deleteAllMessages(){this.messages = new SimpleListProperty();}
 }

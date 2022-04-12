@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
-import javafx.beans.property.*;
+
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
@@ -51,19 +51,19 @@ public class GUIGener {
             name.textProperty().bind(data.getNameProperty());
 
             VBox attrs = (VBox) vbox.lookup("#attrs");
-            for (UMLAttribute att : data.get_attributes()) {
+            for (UMLAttribute att : data.getAttributes()) {
                 attrs.getChildren().add(new Label(att.toString()));
             }
 
             VBox methods = (VBox) vbox.lookup("#methods");
-            for (UMLMethod meth : data.get_methods()) {
+            for (UMLMethod meth : data.getMethods()) {
                 methods.getChildren().add(new Label(meth.toString()));
             }
 
             Button btnAddMethod = (Button) vbox.lookup("#btn_addmethod");
             btnAddMethod.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
-                    data.add_method(new UMLMethod("aaaaa"));
+                    data.addMethod(new UMLMethod("aaaaa"));
                 }
             });
 
@@ -83,7 +83,7 @@ public class GUIGener {
 
 
             Label name = (Label) vbox.lookup("#name");
-            name.setText(data.get_instance().get_name());
+            name.setText(data.getInstance().getName());
 /*
             VBox attrs = (VBox) vbox.lookup("#attrs");
             for (UML_Attribute att : data.get_attributes()) {

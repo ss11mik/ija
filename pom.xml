@@ -47,6 +47,7 @@
     </dependencies>
 
     <build>
+        <outputDirectory>build</outputDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

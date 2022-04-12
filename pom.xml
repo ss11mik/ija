@@ -73,7 +73,6 @@
                 <configuration>
                 <reportOutputDirectory>${project.reporting.outputDirectory}/</reportOutputDirectory>
                 <destDir>../../doc</destDir>
-                ...
                 </configuration>
             </plugin>
             <plugin>

@@ -56,14 +56,14 @@ public class GUIGener {
          */
         @Override
         public void handle(MouseEvent event) {
-//             c.relocate(event.getSceneX() - c.getWidth(), event.getSceneY() - c.getHeight());
+            c.relocate(event.getSceneX() - c.getWidth(), event.getSceneY() - c.getHeight());
 // c.setCenterX(c.getCenterX() + 400);
 
 //             c.setTranslateX(
 //                     event.initialTranslateX
 //                         + event.getX()
 //                         - dragContext.mouseAnchorX);
-            c.setTranslateX(event.getSceneX() - c.getWidth());
+//             c.setTranslateX(event.getSceneX() - c.getWidth());
 //             c.startFullDrag();
 // ctx.root.layout();
 // c.refresh();

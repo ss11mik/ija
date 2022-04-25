@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
@@ -19,6 +20,8 @@ import java.util.Observer;
 import java.util.Observable;
 import javafx.collections.ObservableList;
 import javafx.beans.value.ChangeListener;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 
 /**
  * Obsluhuje tvorbu a editaci diagramu.
@@ -36,13 +39,15 @@ public class GUIGener {
      */
     private static class DragDrop implements EventHandler<MouseEvent> {
         Pane c;
+        UMLController ctx;
 
         /**
          * Zajistuje focus na graficky objekt, ktery byl chycen
          * @param n aktivni graficky objekt
          */
-        public DragDrop(Pane n) {
+        public DragDrop(Pane n, UMLController ctx) {
             c = n;
+            this.ctx = ctx;
         }
 
         /**
@@ -51,7 +56,23 @@ public class GUIGener {
          */
         @Override
         public void handle(MouseEvent event) {
-            c.relocate(event.getSceneX() - c.getWidth(), event.getSceneY() - c.getHeight());
+//             c.relocate(event.getSceneX() - c.getWidth(), event.getSceneY() - c.getHeight());
+// c.setCenterX(c.getCenterX() + 400);
+
+//             c.setTranslateX(
+//                     event.initialTranslateX
+//                         + event.getX()
+//                         - dragContext.mouseAnchorX);
+            c.setTranslateX(event.getSceneX() - c.getWidth());
+//             c.startFullDrag();
+// ctx.root.layout();
+// c.refresh();
+// c.notify();
+//         event.consume();
+// c.getChildren().get(0).fire();
+// TextArea ta_methods = (TextArea) c.lookup("#ta_methods");
+// c.requestFocus();
+// ta_methods.requestFocus();
         }
     };
 
@@ -71,9 +92,25 @@ public class GUIGener {
             name.textProperty().bind(data.getNameProperty());
 
             VBox attrs = (VBox) vbox.lookup("#attrs");
+            TextArea ta_attrs = (TextArea) attrs.lookup("#ta_attributes");
             for (UMLAttribute att : data.getAttributesProperty()) {
                 attrs.getChildren().add(new Label(att.toString()));
             }
+
+            data.getAttributesProperty().addListener((observable, oldValue, newValue) -> {
+                /**
+                * Pripise dalsi atribut mezi atributy tridy
+                */
+                ta_attrs.setText(ta_attrs.getText() + newValue.toString() + "\n");
+                ta_attrs.setPrefHeight(ta_attrs.getHeight() + 18);
+            });
+            Button btnAddAttr = (Button) vbox.lookup("#btn_addAttribute");
+            btnAddAttr.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    data.addAttribute(new UMLAttribute("aaaaa"));
+                    //TODO input box
+                }
+            });
 
 
 
@@ -100,8 +137,7 @@ public class GUIGener {
                 }
             });
 
-            vbox.setOnMouseDragged(new DragDrop(vbox));
-
+            vbox.setOnMouseDragged(new DragDrop(vbox, ctx));
 
             return vbox;
         }

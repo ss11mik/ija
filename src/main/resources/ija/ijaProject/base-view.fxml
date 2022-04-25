@@ -55,7 +55,7 @@
               <children>
                 <TextField fx:id="textField_names" promptText="Name" />
                 <Button fx:id="bt_addclass" mnemonicParsing="false" onAction="#addClass" prefHeight="30.0" prefWidth="150.0" text="Add Class" />
-                <Button fx:id="bt_addrelation" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Relation" />
+                <Button fx:id="bt_addrelation" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" onAction="#addRelation" text="Add Relation" />
               </children>
               </VBox>
           </children>

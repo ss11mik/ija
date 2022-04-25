@@ -5,10 +5,17 @@ import java.io.File;
 
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 import java.io.IOException;
+import javafx.scene.shape.Line;
+import javafx.scene.paint.Color;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.ObjectBinding;
+import javafx.beans.binding.DoubleBinding;
+import javafx.geometry.Bounds;
 
 import ija.ImportExport;
 import ija.GUIGener;
@@ -30,7 +37,7 @@ public class UMLController {
 
     /** Hlavni prvek base-view */
     @FXML
-    private BorderPane root;
+    public BorderPane root;
 
     /** Pro zobrazovani diagramu */
     @FXML
@@ -47,7 +54,6 @@ public class UMLController {
     /** TextArea v okne tridy pro atributy */
     @FXML
     private TextArea ta_attributes = new TextArea();
-
 
     /** filtr pro vyber JSON souboru pro nacteni */
     private static FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
@@ -117,14 +123,15 @@ public class UMLController {
     private void addClass () {
         UMLClass cl = new UMLClass(textField_names.getText(), true);
 
-//         cl.add_attribute(new UMLAttribute("sdwsa"));
-//         cl.add_method(new UMLMethod("sdwsa"));
         VBox newClass = GUIGener.createClass(this, cl);
 
 
         ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
 
         data.getClassDiagram().addClass(cl);
+
+        a = bb;
+        bb = newClass;
     }
 
 
@@ -201,15 +208,47 @@ public class UMLController {
         ta_attributes.setText("pridano"); //ta_attributes.getText() + "\n" + textField_names.getText());
     }
 
-    /**
-     * Pripise dalsi atribut mezi atributy tridy
-     */
+    VBox a, bb;
     @FXML
-    private void writeTextAttr(){
-        // zmeni text v class-box, ale neumi vytvorit atribut v base-view
-        ta_attributes.setText(ta_attributes.getText() + "attribut" + "\n");
-        ta_attributes.setPrefHeight(ta_attributes.getHeight() + 18);
-    }
+    private void addRelation(){
 
+System.out.println("aa");
+        Line line = new Line();
+        line.setStrokeWidth(5);
+        line.setStroke(Color.BLACK);
+
+        Pane content = ((Pane)getCurrentTabContent().lookup("#Content"));
+
+        ObjectBinding<Bounds> label1InStack = Bindings.createObjectBinding(() -> {
+            Bounds label1InScene = a.localToScene(a.getBoundsInLocal());
+            return content.sceneToLocal(label1InScene);
+        }, a.boundsInLocalProperty(), a.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+
+        ObjectBinding<Bounds> label3InStack = Bindings.createObjectBinding(() -> {
+            Bounds label3InScene = bb.localToScene(bb.getBoundsInLocal());
+            return content.sceneToLocal(label3InScene);
+        }, bb.boundsInLocalProperty(), bb.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+
+
+        DoubleBinding startX = Bindings.createDoubleBinding(() -> label1InStack.get().getMaxX(), label1InStack);
+        DoubleBinding startY = Bindings.createDoubleBinding(() -> {
+            Bounds b = label1InStack.get();
+            return b.getMinY() + b.getHeight() / 2 ;
+        }, label1InStack);
+
+
+        DoubleBinding endX = Bindings.createDoubleBinding(() -> label3InStack.get().getMinX(), label3InStack);
+        DoubleBinding endY = Bindings.createDoubleBinding(() -> {
+            Bounds b = label3InStack.get();
+            return b.getMinY() + b.getHeight() / 2 ;
+        }, label3InStack);
+
+        line.startXProperty().bind(startX);
+        line.startYProperty().bind(startY);
+        line.endXProperty().bind(endX);
+        line.endYProperty().bind(endY);
+
+        root.getChildren().add(line);
+    }
 
 }

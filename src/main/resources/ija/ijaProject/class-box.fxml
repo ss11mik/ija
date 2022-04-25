@@ -12,7 +12,7 @@
     <VBox id="attrs">
         <children>
             <TextArea fx:id="ta_attributes" editable="false" prefHeight="15.0" prefWidth="100.0" />
-            <Button id="btn_addattr" fx:id="btn_addAttribut" mnemonicParsing="false" onAction="#writeTextAttr" prefHeight="30.0" text="Add Attrribute" />
+            <Button id="btn_addattr" fx:id="btn_addAttribut" mnemonicParsing="false" prefHeight="30.0" text="Add Attrribute" />
         </children>
     </VBox>
 
@@ -20,7 +20,7 @@
     <VBox id="methods">
         <children>
             <TextArea fx:id="ta_methods" editable="false" prefHeight="15.0" prefWidth="100.0" />
-            <Button id="btn_addmethod" fx:id="btn_addMethod" mnemonicParsing="false" onAction="#writeTextMeth" prefHeight="30.0" text="Add Method" />
+            <Button id="btn_addmethod" fx:id="btn_addMethod" mnemonicParsing="false" prefHeight="30.0" text="Add Method" />
             <Button fx:id="btn_del" mnemonicParsing="false" text="X">
                <font>
                   <Font name="System Bold" size="14.0" />

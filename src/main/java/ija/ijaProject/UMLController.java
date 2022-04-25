@@ -48,9 +48,6 @@ public class UMLController {
     @FXML
     private TextArea ta_attributes = new TextArea();
 
-    /** TextArea v okne tridy pro metody */
-    @FXML
-    private TextArea ta_methods = new TextArea();
 
     /** filtr pro vyber JSON souboru pro nacteni */
     private static FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
@@ -214,13 +211,5 @@ public class UMLController {
         ta_attributes.setPrefHeight(ta_attributes.getHeight() + 18);
     }
 
-    /**
-     * Pripise dalsi metodu mezi metody tridy
-     */
-    @FXML
-    private void writeTextMeth(){
-        ta_methods.setText(ta_methods.getText() + "metoda" + "\n");
-        ta_methods.setPrefHeight(ta_methods.getHeight() + 18);
-    }
 
 }

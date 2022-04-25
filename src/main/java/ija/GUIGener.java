@@ -2,6 +2,7 @@ package ija;
 
 import javafx.scene.paint.Color;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
@@ -14,6 +15,10 @@ import javafx.scene.control.Button;
 
 import ija.dataStructures.*;
 import ija.ijaProject.UMLController;
+import java.util.Observer;
+import java.util.Observable;
+import javafx.collections.ObservableList;
+import javafx.beans.value.ChangeListener;
 
 /**
  * Obsluhuje tvorbu a editaci diagramu.
@@ -66,19 +71,32 @@ public class GUIGener {
             name.textProperty().bind(data.getNameProperty());
 
             VBox attrs = (VBox) vbox.lookup("#attrs");
-            for (UMLAttribute att : data.getAttributes()) {
+            for (UMLAttribute att : data.getAttributesProperty()) {
                 attrs.getChildren().add(new Label(att.toString()));
             }
 
+
+
             VBox methods = (VBox) vbox.lookup("#methods");
-            for (UMLMethod meth : data.getMethods()) {
+            TextArea ta_methods = (TextArea) methods.lookup("#ta_methods");
+
+            for (UMLMethod meth : data.getMethodsProperty()) {
                 methods.getChildren().add(new Label(meth.toString()));
             }
+
+            data.getMethodsProperty().addListener((observable, oldValue, newValue) -> {
+                /**
+                * Pripise dalsi metodu mezi metody tridy
+                */
+                ta_methods.setText(ta_methods.getText() + newValue.toString() + "\n");
+                ta_methods.setPrefHeight(ta_methods.getHeight() + 18);
+            });
 
             Button btnAddMethod = (Button) vbox.lookup("#btn_addmethod");
             btnAddMethod.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
                     data.addMethod(new UMLMethod("aaaaa"));
+                    //TODO input box
                 }
             });
 

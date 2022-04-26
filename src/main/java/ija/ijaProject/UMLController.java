@@ -1,15 +1,22 @@
 package ija.ijaProject;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import java.io.File;
 
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Optional;
+
 import javafx.scene.shape.Line;
 import javafx.scene.paint.Color;
 import javafx.beans.binding.Bindings;
@@ -19,10 +26,11 @@ import javafx.geometry.Bounds;
 
 import ija.ImportExport;
 import ija.GUIGener;
-import javafx.scene.layout.Pane;
 
 
 import ija.dataStructures.*;
+import javafx.stage.Stage;
+import javafx.util.Pair;
 
 /**
  * Obsluhuje GUI pro tvorbu diagramu.
@@ -54,6 +62,10 @@ public class UMLController {
     /** TextArea v okne tridy pro atributy */
     @FXML
     private TextArea ta_attributes = new TextArea();
+
+    @FXML
+    private Button bt_addclass;
+
 
     /** filtr pro vyber JSON souboru pro nacteni */
     private static FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
@@ -125,15 +137,162 @@ public class UMLController {
 
         VBox newClass = GUIGener.createClass(this, cl);
 
-
         ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
+
 
         data.getClassDiagram().addClass(cl);
 
-        a = bb;
-        bb = newClass;
+        //a = bb;
+        //bb = newClass;
     }
 
+    @FXML
+    private void addClassForm () {
+
+        TextInputDialog dialog = new TextInputDialog("enter class name");
+        dialog.setTitle("New Class");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Please enter class name:");
+
+        Optional<String> result = dialog.showAndWait();
+        if(result.isPresent()){
+            System.out.println("class name: " + result.get());
+            UMLClass cl = new UMLClass(result.get(), true);
+            data.getClassDiagram().addClass(cl);
+            //VBox newClass = GUIGener.createClass(this, cl);
+            //((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
+        }
+    }
+
+    @FXML
+    private void addAttribForm () {
+
+        Dialog<Pair<String, String>> dialog = new Dialog();
+        dialog.setTitle("New Attribute");
+        dialog.setHeaderText(null);
+
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20,30,10,30));
+
+        TextField name = new TextField();
+        name.setPromptText("name");
+        TextField datType = new TextField();
+        datType.setPromptText("data type");
+        TextField accMod = new TextField();
+        accMod.setPromptText("access modifier");
+
+        grid.add(new Label("Name:"), 0, 0);
+        grid.add(name,1,0);
+        grid.add(new Label("Data type:"),0,1);
+        grid.add(datType,1,1);
+        grid.add(new Label("Access modifier:"),0,2);
+        grid.add(accMod,1,2);
+
+        dialog.getDialogPane().setContent(grid);
+
+        Platform.runLater(() -> name.requestFocus());
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return new Pair<>(name.getText(), datType.getText());
+            }
+            return null;
+        });
+
+        Optional<Pair<String,String>> result = dialog.showAndWait();
+        result.ifPresent(nameType -> {
+            System.out.println("Name=" + nameType.getKey() + ", Type=" + nameType.getValue());
+        });
+    }
+
+    @FXML
+    private void addMethodForm () {
+
+        Dialog<Pair<String, String>> dialog = new Dialog();
+        dialog.setTitle("New Method");
+        dialog.setHeaderText(null);
+
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20,30,10,30));
+
+        TextField name = new TextField();
+        name.setPromptText("name");
+        TextField datType = new TextField();
+        datType.setPromptText("return data type");
+
+        grid.add(new Label("Name:"), 0, 0);
+        grid.add(name,1,0);
+        grid.add(new Label("Return data type:"),0,1);
+        grid.add(datType,1,1);
+
+
+        dialog.getDialogPane().setContent(grid);
+
+        Platform.runLater(() -> name.requestFocus());
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return new Pair<>(name.getText(), datType.getText());
+            }
+            return null;
+        });
+
+        Optional<Pair<String,String>> result = dialog.showAndWait();
+        result.ifPresent(nameType -> {
+            System.out.println("Name=" + nameType.getKey() + ", Return type=" + nameType.getValue());
+        });
+    }
+
+
+    @FXML
+    private void addArgumentForm () {
+
+        Dialog<Pair<String, String>> dialog = new Dialog();
+        dialog.setTitle("New Argument");
+        dialog.setHeaderText(null);
+
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20,30,10,30));
+
+        TextField name = new TextField();
+        name.setPromptText("name");
+        TextField datType = new TextField();
+        datType.setPromptText("data type");
+
+        grid.add(new Label("Name:"), 0, 0);
+        grid.add(name,1,0);
+        grid.add(new Label("Data type:"),0,1);
+        grid.add(datType,1,1);
+
+
+        dialog.getDialogPane().setContent(grid);
+
+        Platform.runLater(() -> name.requestFocus());
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return new Pair<>(name.getText(), datType.getText());
+            }
+            return null;
+        });
+
+        Optional<Pair<String,String>> result = dialog.showAndWait();
+        result.ifPresent(nameType -> {
+            System.out.println("Name=" + nameType.getKey() + ", Type=" + nameType.getValue());
+        });
+    }
 
     /**
      * Prida novy objekt do diagramu

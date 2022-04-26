@@ -1,8 +1,14 @@
 package ija;
 
+import javafx.application.Platform;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
@@ -12,16 +18,21 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 
 import ija.dataStructures.*;
 import ija.ijaProject.UMLController;
+
+import java.util.ArrayList;
 import java.util.Observer;
 import java.util.Observable;
+import java.util.Optional;
+
 import javafx.collections.ObservableList;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.stage.Stage;
+import javafx.util.Pair;
 
 /**
  * Obsluhuje tvorbu a editaci diagramu.
@@ -101,14 +112,59 @@ public class GUIGener {
                 /**
                 * Pripise dalsi atribut mezi atributy tridy
                 */
-                ta_attrs.setText(ta_attrs.getText() + newValue.toString() + "\n");
-                ta_attrs.setPrefHeight(ta_attrs.getHeight() + 18);
+                ta_attrs.setText("");
+                for(int i = 0; i < newValue.size(); i++){
+                    ta_attrs.setText(ta_attrs.getText() + newValue.get(i).toString() + "\n");
+                    ta_attrs.setPrefHeight(ta_attrs.getHeight() + 18);
+                }
+
             });
             Button btnAddAttr = (Button) vbox.lookup("#btn_addAttribute");
             btnAddAttr.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
-                    data.addAttribute(new UMLAttribute("aaaaa"));
+                    //data.addAttribute(new UMLAttribute("aaaaa"));
                     //TODO input box
+                    Dialog<Pair<String, String>> dialog = new Dialog();
+                    dialog.setTitle("New Attribute");
+                    dialog.setHeaderText(null);
+
+                    dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+                    GridPane grid = new GridPane();
+                    grid.setHgap(10);
+                    grid.setVgap(10);
+                    grid.setPadding(new Insets(20,30,10,30));
+
+                    TextField name = new TextField();
+                    name.setPromptText("name");
+                    TextField datType = new TextField();
+                    datType.setPromptText("data type");
+                    TextField accMod = new TextField();
+                    accMod.setPromptText("access modifier");
+
+                    grid.add(new Label("Name:"), 0, 0);
+                    grid.add(name,1,0);
+                    grid.add(new Label("Data type:"),0,1);
+                    grid.add(datType,1,1);
+                    grid.add(new Label("Access modifier:"),0,2);
+                    grid.add(accMod,1,2);
+
+                    dialog.getDialogPane().setContent(grid);
+
+                    Platform.runLater(() -> name.requestFocus());
+
+                    dialog.setResultConverter(dialogButton -> {
+                        if (dialogButton == ButtonType.OK) {
+                            return new Pair<>(name.getText(), datType.getText());
+                        }
+                        return null;
+                    });
+
+                    Optional<Pair<String,String>> result = dialog.showAndWait();
+                    result.ifPresent(nameType -> {
+                        System.out.println("Name=" + nameType.getKey() + ", Type=" + nameType.getValue());
+                        data.addAttribute(new UMLAttribute(nameType.getKey()));
+                    });
                 }
             });
 
@@ -125,15 +181,56 @@ public class GUIGener {
                 /**
                 * Pripise dalsi metodu mezi metody tridy
                 */
-                ta_methods.setText(ta_methods.getText() + newValue.toString() + "\n");
-                ta_methods.setPrefHeight(ta_methods.getHeight() + 18);
+                ta_methods.setText("");
+                for (int i = 0; i < newValue.size(); i++){
+                    ta_methods.setText(ta_methods.getText() + newValue.get(i).toString() + "\n");
+                    ta_methods.setPrefHeight(ta_methods.getHeight() + 18);
+                }
             });
 
             Button btnAddMethod = (Button) vbox.lookup("#btn_addmethod");
             btnAddMethod.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
-                    data.addMethod(new UMLMethod("aaaaa"));
+                    //data.addMethod(new UMLMethod("aaaaa"));
                     //TODO input box
+                    Dialog<Pair<String, String>> dialog = new Dialog();
+                    dialog.setTitle("New Method");
+                    dialog.setHeaderText(null);
+
+                    dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+                    GridPane grid = new GridPane();
+                    grid.setHgap(10);
+                    grid.setVgap(10);
+                    grid.setPadding(new Insets(20,30,10,30));
+
+                    TextField name = new TextField();
+                    name.setPromptText("name");
+                    TextField datType = new TextField();
+                    datType.setPromptText("return data type");
+
+                    grid.add(new Label("Name:"), 0, 0);
+                    grid.add(name,1,0);
+                    grid.add(new Label("Return data type:"),0,1);
+                    grid.add(datType,1,1);
+
+
+                    dialog.getDialogPane().setContent(grid);
+
+                    Platform.runLater(() -> name.requestFocus());
+
+                    dialog.setResultConverter(dialogButton -> {
+                        if (dialogButton == ButtonType.OK) {
+                            return new Pair<>(name.getText(), datType.getText());
+                        }
+                        return null;
+                    });
+
+                    Optional<Pair<String,String>> result = dialog.showAndWait();
+                    result.ifPresent(nameType -> {
+                        System.out.println("Name=" + nameType.getKey() + ", Return type=" + nameType.getValue());
+                        data.addMethod(new UMLMethod(nameType.getKey()));
+                    });
                 }
             });
 

@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-
-<VBox id="attrs">
+<VBox id="attrs" prefWidth="100.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
 <children>
-    <VBox style="-fx-border-color: black;
-                -fx-border-insets: 5;
-                -fx-background-color: #c3c3c3;
-                -fx-border-width: 3;" >
-    <children>
-            <Label id="name" text="Class name" textAlignment="CENTER"/>
-    </children>
-    </VBox>
-
-    <VBox id="attrs">
-        <children>
-            <Button id="bt_addattr" mnemonicParsing="false" prefHeight="30.0" text="Add Attrribute" />
-        </children>
-    </VBox>
-
-    <Separator/>
-    <VBox id="methods">
-        <children>
-            <Button id="bt_addmethod" mnemonicParsing="false" prefHeight="30.0" text="Add Method" />
-        </children>
-    </VBox>
+      <Label id="name" alignment="CENTER" style="-fx-alignment: center;" text="Class name" textAlignment="CENTER">
+         <VBox.margin>
+            <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+         </VBox.margin>
+      </Label>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="25.0" />
+          <VBox prefHeight="50.0" prefWidth="50.0" style="-fx-border-color: black; -fx-border-insets: 0; -fx-background-color: light gray; -fx-border-width: 0;">
+          <children>
+                  <Line endX="50.0" endY="500.0" layoutX="100.0" startX="50.0">
+                     <VBox.margin>
+                        <Insets left="25.0" right="25.0" />
+                     </VBox.margin>
+                  </Line>
+          </children>
+          </VBox>
+            <VBox prefHeight="200.0" prefWidth="25.0" />
+         </children>
+      </HBox>
 </children>
 </VBox>

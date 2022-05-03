@@ -115,7 +115,7 @@ public class GUIGener {
                 ta_attrs.setText("");
                 for(int i = 0; i < newValue.size(); i++){
                     ta_attrs.setText(ta_attrs.getText() + newValue.get(i).toString() + "\n");
-                    ta_attrs.setPrefHeight(ta_attrs.getHeight() + 18);
+                    ta_attrs.setPrefHeight(ta_attrs.getLength()+5);
                 }
 
             });
@@ -124,7 +124,7 @@ public class GUIGener {
                 @Override public void handle(ActionEvent e) {
                     //data.addAttribute(new UMLAttribute("aaaaa"));
                     //TODO input box
-                    Dialog<Pair<String, String>> dialog = new Dialog();
+                    Dialog<String[]> dialog = new Dialog();
                     dialog.setTitle("New Attribute");
                     dialog.setHeaderText(null);
 
@@ -155,15 +155,55 @@ public class GUIGener {
 
                     dialog.setResultConverter(dialogButton -> {
                         if (dialogButton == ButtonType.OK) {
-                            return new Pair<>(name.getText(), datType.getText());
+                            String[] arr = {name.getText(), datType.getText(), accMod.getText()};
+                            return arr;
                         }
                         return null;
                     });
 
-                    Optional<Pair<String,String>> result = dialog.showAndWait();
+                    Optional<String[]> result = dialog.showAndWait();
                     result.ifPresent(nameType -> {
-                        System.out.println("Name=" + nameType.getKey() + ", Type=" + nameType.getValue());
-                        data.addAttribute(new UMLAttribute(nameType.getKey()));
+                        System.out.println("Name=" + nameType[0] + ", Type=" + nameType[1] + ", Acces=" + nameType[2]);
+                        data.addAttribute(new UMLAttribute(nameType[0]));
+                    });
+                }
+            });
+
+            Button btDelAttr = (Button) vbox.lookup("#btDelAttr");
+            btDelAttr.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    Dialog<String> dialog = new Dialog();
+                    dialog.setTitle("Delete Attribute");
+                    dialog.setHeaderText(null);
+
+                    dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+                    GridPane grid = new GridPane();
+                    grid.setHgap(10);
+                    grid.setVgap(10);
+                    grid.setPadding(new Insets(20,30,10,30));
+
+                    TextField name = new TextField();
+                    name.setPromptText("name");
+
+                    grid.add(new Label("Name:"), 0, 0);
+                    grid.add(name,1,0);
+
+                    dialog.getDialogPane().setContent(grid);
+
+                    Platform.runLater(() -> name.requestFocus());
+
+                    dialog.setResultConverter(dialogButton -> {
+                        if (dialogButton == ButtonType.OK) {
+                            return name.getText();
+                        }
+                        return null;
+                    });
+
+                    Optional<String> result = dialog.showAndWait();
+                    result.ifPresent(nameDel -> {
+                        System.out.println("Name=" + nameDel);
+                        data.removeAttribute(nameDel);
                     });
                 }
             });
@@ -184,7 +224,7 @@ public class GUIGener {
                 ta_methods.setText("");
                 for (int i = 0; i < newValue.size(); i++){
                     ta_methods.setText(ta_methods.getText() + newValue.get(i).toString() + "\n");
-                    ta_methods.setPrefHeight(ta_methods.getHeight() + 18);
+                    ta_methods.setPrefHeight(ta_methods.getLength()+5);
                 }
             });
 
@@ -230,6 +270,45 @@ public class GUIGener {
                     result.ifPresent(nameType -> {
                         System.out.println("Name=" + nameType.getKey() + ", Return type=" + nameType.getValue());
                         data.addMethod(new UMLMethod(nameType.getKey()));
+                    });
+                }
+            });
+
+            Button btDelMeth = (Button) vbox.lookup("#btDelMeth");
+            btDelMeth.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    Dialog<String> dialog = new Dialog();
+                    dialog.setTitle("Delete Method");
+                    dialog.setHeaderText(null);
+
+                    dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+                    GridPane grid = new GridPane();
+                    grid.setHgap(10);
+                    grid.setVgap(10);
+                    grid.setPadding(new Insets(20,30,10,30));
+
+                    TextField name = new TextField();
+                    name.setPromptText("name");
+
+                    grid.add(new Label("Name:"), 0, 0);
+                    grid.add(name,1,0);
+
+                    dialog.getDialogPane().setContent(grid);
+
+                    Platform.runLater(() -> name.requestFocus());
+
+                    dialog.setResultConverter(dialogButton -> {
+                        if (dialogButton == ButtonType.OK) {
+                            return name.getText();
+                        }
+                        return null;
+                    });
+
+                    Optional<String> result = dialog.showAndWait();
+                    result.ifPresent(nameDel -> {
+                        System.out.println("Name=" + nameDel);
+                        data.removeMethod(nameDel);
                     });
                 }
             });

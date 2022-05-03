@@ -147,6 +147,13 @@ public class UMLController {
     }
 
     @FXML
+    private void removeClass(){
+        //TODO
+        //((Pane)getCurrentTabContent().lookup("#Content")).getChildren().remove();
+        //data.getClassDiagram().removeClass(textField_names.getText());
+    }
+
+    @FXML
     private void addClassForm () {
 
         TextInputDialog dialog = new TextInputDialog("enter class name");
@@ -300,7 +307,7 @@ public class UMLController {
     @FXML
     private void addObject () {
         //TODO
-        UMLObject cl = new UMLObject(new UMLClass("New ObjectClassa", true));
+        UMLObject cl = new UMLObject(new UMLClass(textField_names.getText(), true));
 
         VBox newClass = GUIGener.createSeqObject(this, cl);
         ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);

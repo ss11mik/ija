@@ -45,6 +45,7 @@
     <right>
       <VBox spacing="15">
       <children>
+<TextField fx:id="textField_names" promptText="Name" />
 
         <Group>
         <children>
@@ -53,9 +54,9 @@
             <children>
               <VBox spacing="15">
               <children>
-                <TextField fx:id="textField_names" promptText="Name" />
                 <Button fx:id="bt_addclass" mnemonicParsing="false" onAction="#addClass" prefHeight="30.0" prefWidth="150.0" text="Add Class" />
-                <Button fx:id="bt_addrelation" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" onAction="#addRelation" text="Add Relation" />
+                <Button fx:id="bt_addrelation" mnemonicParsing="false" onAction="#addRelation" prefHeight="30.0" prefWidth="150.0" text="Add Relation" />
+                <Button fx:id="bt_removeclass" layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#removeClass" prefHeight="30.0" prefWidth="150.0" text="Remove Class" />
               </children>
               </VBox>
           </children>

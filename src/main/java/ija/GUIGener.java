@@ -140,8 +140,10 @@ public class GUIGener {
                     name.setPromptText("name");
                     ComboBox datType = new ComboBox();
                     datType.getItems().setAll(UMLAttribute.DataType.values());
+                    datType.getSelectionModel().select(0);
                     ComboBox accMod = new ComboBox();
                     accMod.getItems().setAll(UMLAttribute.AccesModifier.values());
+                    accMod.getSelectionModel().select(0);
 
                     grid.add(new Label("Name:"), 0, 0);
                     grid.add(name,1,0);
@@ -249,6 +251,7 @@ public class GUIGener {
                     name.setPromptText("name");
                     ComboBox datType = new ComboBox();
                     datType.getItems().setAll(UMLAttribute.DataType.values());
+                    datType.getSelectionModel().select(0);
 
                     grid.add(new Label("Name:"), 0, 0);
                     grid.add(name,1,0);

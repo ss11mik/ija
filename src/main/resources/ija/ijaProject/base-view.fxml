@@ -67,7 +67,7 @@
                 <VBox spacing="15">
                 <children>
                   <Button fx:id="bt_addobject" mnemonicParsing="false" onAction="#addObject" prefHeight="30.0" prefWidth="150.0" text="Add Object" />
-                  <Button fx:id="bt_addmessage" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Message" />
+                  <Button fx:id="bt_addmessage" mnemonicParsing="false" onAction="#addMessage" prefHeight="30.0" prefWidth="150.0" text="Add Message" />
                 </children>
                 </VBox>
             </children>

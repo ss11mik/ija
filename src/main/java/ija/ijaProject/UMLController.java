@@ -143,8 +143,8 @@ public class UMLController {
 
         data.getClassDiagram().addClass(cl);
 
-        //a = bb;
-        //bb = newClass;
+        a = bb;
+        bb = newClass;
     }
 
     @FXML
@@ -492,5 +492,13 @@ System.out.println("aa");
 
         root.getChildren().add(line);
     }
+    @FXML
+    private void addMessage(){
+
+System.out.println("aa");
+
+
+    }
+
 
 }

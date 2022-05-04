@@ -150,6 +150,10 @@ public class UMLClass {
         }
     }
 
+    public void removeAttribute(UMLAttribute attr){
+        attributes.remove(attr);
+    }
+
     /**
      * Odstrani vybranou metodu ze seznamu
      * @param name nazev metody pro odstraneni

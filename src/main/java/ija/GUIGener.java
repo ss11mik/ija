@@ -175,7 +175,7 @@ public class GUIGener {
             Button btDelAttr = (Button) vbox.lookup("#btDelAttr");
             btDelAttr.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
-                    Dialog<String> dialog = new Dialog();
+                    Dialog<UMLAttribute> dialog = new Dialog();
                     dialog.setTitle("Delete Attribute");
                     dialog.setHeaderText(null);
 
@@ -186,26 +186,27 @@ public class GUIGener {
                     grid.setVgap(10);
                     grid.setPadding(new Insets(20,30,10,30));
 
-                    TextField name = new TextField();
-                    name.setPromptText("name");
+                    ComboBox item = new ComboBox();
+                    item.getItems().setAll(data.getAttributes());
+                    item.getSelectionModel().select(0);
 
                     grid.add(new Label("Name:"), 0, 0);
-                    grid.add(name,1,0);
+                    grid.add(item,1,0);
 
                     dialog.getDialogPane().setContent(grid);
 
-                    Platform.runLater(() -> name.requestFocus());
+                    Platform.runLater(() -> item.requestFocus());
 
                     dialog.setResultConverter(dialogButton -> {
                         if (dialogButton == ButtonType.OK) {
-                            return name.getText();
+                            return (UMLAttribute) item.getSelectionModel().getSelectedItem();
                         }
                         return null;
                     });
 
-                    Optional<String> result = dialog.showAndWait();
+                    Optional<UMLAttribute> result = dialog.showAndWait();
                     result.ifPresent(nameDel -> {
-                        System.out.println("Name=" + nameDel);
+//                         System.out.println("Name=" + nameDel);
                         data.removeAttribute(nameDel);
                     });
                 }

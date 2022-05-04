@@ -151,6 +151,43 @@ public class UMLController {
         //TODO
         //((Pane)getCurrentTabContent().lookup("#Content")).getChildren().remove();
         //data.getClassDiagram().removeClass(textField_names.getText());
+
+
+        Dialog<UMLClass> dialog = new Dialog();
+        dialog.setTitle("Remove Class");
+        dialog.setHeaderText(null);
+
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20,30,10,30));
+
+        ComboBox comBoxClass = new ComboBox();
+        comBoxClass.getItems().setAll(data.getClassDiagram().getClasses());
+        comBoxClass.getSelectionModel().select(0);
+
+        grid.add(new Label("Please enter class to remove:"),0,1);
+        grid.add(comBoxClass,1,1);
+
+        dialog.getDialogPane().setContent(grid);
+
+        Platform.runLater(() -> comBoxClass.requestFocus());
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return (UMLClass) comBoxClass.getSelectionModel().getSelectedItem();
+            }
+            return null;
+        });
+
+        Optional<UMLClass> result = dialog.showAndWait();
+        result.ifPresent(cl -> {
+            data.getClassDiagram().removeClass(cl);
+        });
+
+
     }
 
     @FXML
@@ -347,8 +384,6 @@ public class UMLController {
             //TODO the correct one
             data.getSeqDiagrams().get(0).addObject(obj);
         });
-
-
     }
 
     /**

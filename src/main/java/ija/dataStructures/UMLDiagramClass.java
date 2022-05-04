@@ -84,6 +84,10 @@ public class UMLDiagramClass extends UMLDiagram {
         }
     }
 
+    public void removeClass(UMLClass clas){
+        classes.remove(clas);
+    }
+
     /**
      * Odstrani vsechny tridy ze seznamu trid
      */

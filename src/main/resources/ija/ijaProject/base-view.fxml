@@ -79,7 +79,7 @@
         <VBox spacing="15">
         <children>
                   <Region prefHeight="100.0" prefWidth="150.0" />
-                  <TextField fx:id="text_renameDiagram" prefHeight="26.0" prefWidth="150.0" text="new_name" />
+                  <TextField fx:id="text_renameDiagram" prefHeight="26.0" prefWidth="150.0" promptText="new name" />
           <Button fx:id="bt_rename_dia" mnemonicParsing="false" onAction="#renameDiagram" prefHeight="30.0" prefWidth="150.0" text="Rename Diagram" />
           <Button fx:id="bt_delete" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text=" Delete Diagram" />
         </children>

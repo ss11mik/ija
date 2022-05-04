@@ -234,7 +234,7 @@ public class GUIGener {
                 @Override public void handle(ActionEvent e) {
                     //data.addMethod(new UMLMethod("aaaaa"));
                     //TODO input box
-                    Dialog<Pair<String, String>> dialog = new Dialog();
+                    Dialog<Pair<String, UMLAttribute.DataType>> dialog = new Dialog();
                     dialog.setTitle("New Method");
                     dialog.setHeaderText(null);
 
@@ -247,8 +247,8 @@ public class GUIGener {
 
                     TextField name = new TextField();
                     name.setPromptText("name");
-                    TextField datType = new TextField();
-                    datType.setPromptText("return data type");
+                    ComboBox datType = new ComboBox();
+                    datType.getItems().setAll(UMLAttribute.DataType.values());
 
                     grid.add(new Label("Name:"), 0, 0);
                     grid.add(name,1,0);
@@ -262,15 +262,15 @@ public class GUIGener {
 
                     dialog.setResultConverter(dialogButton -> {
                         if (dialogButton == ButtonType.OK) {
-                            return new Pair<>(name.getText(), datType.getText());
+                            return new Pair<>(name.getText(), (UMLAttribute.DataType) datType.getSelectionModel().getSelectedItem());
                         }
                         return null;
                     });
 
-                    Optional<Pair<String,String>> result = dialog.showAndWait();
+                    Optional<Pair<String, UMLAttribute.DataType>> result = dialog.showAndWait();
                     result.ifPresent(nameType -> {
-                        System.out.println("Name=" + nameType.getKey() + ", Return type=" + nameType.getValue());
-                        data.addMethod(new UMLMethod(nameType.getKey()));
+//                         System.out.println("Name=" + nameType.getKey() + ", Return type=" + nameType.getValue());
+                        data.addMethod(new UMLMethod(nameType.getKey(), nameType.getValue(), new ArrayList()));
                     });
                 }
             });

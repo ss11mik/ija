@@ -15,7 +15,7 @@
           <children>
                   <Line endX="50.0" endY="500.0" layoutX="100.0" startX="50.0">
                      <VBox.margin>
-                        <Insets left="25.0" right="25.0" />
+                        <Insets left="50.0" right="50.0" />
                      </VBox.margin>
                   </Line>
           </children>

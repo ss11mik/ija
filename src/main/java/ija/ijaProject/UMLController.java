@@ -149,9 +149,7 @@ public class UMLController {
     @FXML
     private void removeClass(){
         //TODO
-        //((Pane)getCurrentTabContent().lookup("#Content")).getChildren().remove();
-        //data.getClassDiagram().removeClass(textField_names.getText());
-
+        // in UI
 
         Dialog<UMLClass> dialog = new Dialog();
         dialog.setTitle("Remove Class");

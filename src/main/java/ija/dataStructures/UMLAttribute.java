@@ -8,7 +8,7 @@ package ija.dataStructures;
  */
 public class UMLAttribute {
     /** Vyctovy typ pro vsechny mozne datove typy atributu */
-    enum DataType {
+    public enum DataType {
         NULL,
         INT,
         BOOL,
@@ -17,7 +17,7 @@ public class UMLAttribute {
     }
 
     /** Vyctovy typ pro vsechny mozne modifikatory pristupu */
-    enum AccesModifier {
+    public enum AccesModifier {
         NULL,
         PRIVATE,
         PUBLIC,

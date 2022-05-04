@@ -33,6 +33,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import javafx.scene.control.ComboBox;
 
 /**
  * Obsluhuje tvorbu a editaci diagramu.
@@ -124,7 +125,7 @@ public class GUIGener {
                 @Override public void handle(ActionEvent e) {
                     //data.addAttribute(new UMLAttribute("aaaaa"));
                     //TODO input box
-                    Dialog<String[]> dialog = new Dialog();
+                    Dialog<Object[]> dialog = new Dialog();
                     dialog.setTitle("New Attribute");
                     dialog.setHeaderText(null);
 
@@ -137,10 +138,10 @@ public class GUIGener {
 
                     TextField name = new TextField();
                     name.setPromptText("name");
-                    TextField datType = new TextField();
-                    datType.setPromptText("data type");
-                    TextField accMod = new TextField();
-                    accMod.setPromptText("access modifier");
+                    ComboBox datType = new ComboBox();
+                    datType.getItems().setAll(UMLAttribute.DataType.values());
+                    ComboBox accMod = new ComboBox();
+                    accMod.getItems().setAll(UMLAttribute.AccesModifier.values());
 
                     grid.add(new Label("Name:"), 0, 0);
                     grid.add(name,1,0);
@@ -155,16 +156,16 @@ public class GUIGener {
 
                     dialog.setResultConverter(dialogButton -> {
                         if (dialogButton == ButtonType.OK) {
-                            String[] arr = {name.getText(), datType.getText(), accMod.getText()};
+                            Object[] arr = {name.getText(), datType.getSelectionModel().getSelectedItem(), accMod.getSelectionModel().getSelectedItem()};
                             return arr;
                         }
                         return null;
                     });
 
-                    Optional<String[]> result = dialog.showAndWait();
+                    Optional<Object[]> result = dialog.showAndWait();
                     result.ifPresent(nameType -> {
                         System.out.println("Name=" + nameType[0] + ", Type=" + nameType[1] + ", Acces=" + nameType[2]);
-                        data.addAttribute(new UMLAttribute(nameType[0]));
+                        data.addAttribute(new UMLAttribute(nameType[0].toString(), (UMLAttribute.DataType) nameType[1], (UMLAttribute.AccesModifier) nameType[2]));
                     });
                 }
             });

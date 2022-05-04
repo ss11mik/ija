@@ -162,6 +162,10 @@ public class UMLClass {
         }
     }
 
+    public void removeMethod(UMLMethod meth){
+        methods.remove(meth);
+    }
+
     /**
      * Vymaze cely seznam aributu
      */

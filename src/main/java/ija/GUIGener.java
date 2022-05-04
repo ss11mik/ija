@@ -281,7 +281,7 @@ public class GUIGener {
             Button btDelMeth = (Button) vbox.lookup("#btDelMeth");
             btDelMeth.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
-                    Dialog<String> dialog = new Dialog();
+                    Dialog<UMLMethod> dialog = new Dialog();
                     dialog.setTitle("Delete Method");
                     dialog.setHeaderText(null);
 
@@ -292,26 +292,28 @@ public class GUIGener {
                     grid.setVgap(10);
                     grid.setPadding(new Insets(20,30,10,30));
 
-                    TextField name = new TextField();
-                    name.setPromptText("name");
+                    ComboBox item = new ComboBox();
+                    item.getItems().setAll(data.getMethods());
+                    item.getSelectionModel().select(0);
+
 
                     grid.add(new Label("Name:"), 0, 0);
-                    grid.add(name,1,0);
+                    grid.add(item,1,0);
 
                     dialog.getDialogPane().setContent(grid);
 
-                    Platform.runLater(() -> name.requestFocus());
+                    Platform.runLater(() -> item.requestFocus());
 
                     dialog.setResultConverter(dialogButton -> {
                         if (dialogButton == ButtonType.OK) {
-                            return name.getText();
+                            return (UMLMethod) item.getSelectionModel().getSelectedItem();
                         }
                         return null;
                     });
 
-                    Optional<String> result = dialog.showAndWait();
+                    Optional<UMLMethod> result = dialog.showAndWait();
                     result.ifPresent(nameDel -> {
-                        System.out.println("Name=" + nameDel);
+//                         System.out.println("Name=" + nameDel);
                         data.removeMethod(nameDel);
                     });
                 }

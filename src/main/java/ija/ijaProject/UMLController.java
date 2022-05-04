@@ -399,10 +399,13 @@ public class UMLController {
     @FXML
     private void menuNewSeq () throws IOException {
 
+        UMLDiagramSequence newSeq = new UMLDiagramSequence("Sequence Diagram");
+
         Tab tab = FXMLLoader.load(this.getClass().getResource("tab-seq.fxml"));
+        tab.textProperty().bind(newSeq.getNameProperty());
+
         tabs.getTabs().add(tab);
 
-        UMLDiagramSequence newSeq = new UMLDiagramSequence("todo");
         data.addSeqDiagram(newSeq);
     }
 
@@ -436,8 +439,15 @@ public class UMLController {
      */
     @FXML
     private void renameDiagram(){
+        int i = tabs.getSelectionModel().getSelectedIndex();
 
-        data.getClassDiagram().setName(text_renameDiagram.getText());
+        // expects that class dia is always first
+        if (i == 0) {
+            data.getClassDiagram().setName(text_renameDiagram.getText());
+        }
+        else {
+            data.getSeqDiagrams().get(i-1).setName(text_renameDiagram.getText());
+        }
     }
 
     /**

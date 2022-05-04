@@ -306,14 +306,49 @@ public class UMLController {
      */
     @FXML
     private void addObject () {
-        //TODO
-        UMLObject cl = new UMLObject(new UMLClass(textField_names.getText(), true));
 
-        VBox newClass = GUIGener.createSeqObject(this, cl);
-        ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
+        Dialog<UMLClass> dialog = new Dialog();
+        dialog.setTitle("Add object");
+        dialog.setHeaderText(null);
 
-//         data.getClassDiagram().add_class(cl);
-        data.getSeqDiagrams().get(0).addObject(cl);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20,30,10,30));
+
+        ComboBox comBoxClass = new ComboBox();
+        comBoxClass.getItems().setAll(data.getClassDiagram().getClasses());
+        comBoxClass.getSelectionModel().select(0);
+
+        grid.add(new Label("Class of new object:"),0,1);
+        grid.add(comBoxClass,1,1);
+
+        dialog.getDialogPane().setContent(grid);
+
+        Platform.runLater(() -> comBoxClass.requestFocus());
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return (UMLClass) comBoxClass.getSelectionModel().getSelectedItem();
+            }
+            return null;
+        });
+
+        Optional<UMLClass> result = dialog.showAndWait();
+        result.ifPresent(cl -> {
+
+            UMLObject obj = new UMLObject(cl);
+
+            VBox newClass = GUIGener.createSeqObject(this, obj);
+            ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
+
+            //TODO the correct one
+            data.getSeqDiagrams().get(0).addObject(obj);
+        });
+
+
     }
 
     /**

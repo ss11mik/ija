@@ -16,6 +16,7 @@ import javafx.stage.FileChooser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
+import javafx.scene.Node;
 
 import javafx.scene.shape.Line;
 import javafx.scene.paint.Color;
@@ -183,6 +184,14 @@ public class UMLController {
         Optional<UMLClass> result = dialog.showAndWait();
         result.ifPresent(cl -> {
             data.getClassDiagram().removeClass(cl);
+
+            Node toRemove = null;
+            Pane content = ((Pane) getCurrentTabContent().lookup("#Content"));
+            for (Node e : content.getChildren()) {
+                if (e.lookup("#name") != null && ((Label) e.lookup("#name")).getText().equals(cl.getName()))
+                    toRemove = e;
+            }
+            content.getChildren().remove(toRemove);
         });
 
 

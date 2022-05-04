@@ -15,7 +15,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="25.0" />
-          <VBox prefHeight="50.0" prefWidth="50.0" style="-fx-border-color: black; -fx-border-insets: 0; -fx-background-color: light gray; -fx-border-width: 0;">
+          <VBox prefHeight="50.0" prefWidth="50.0" style="-fx-border-color: black; -fx-border-insets: 0; -fx-border-width: 0;">
           <children>
                   <Line endX="50.0" endY="500.0" layoutX="100.0" startX="50.0">
                      <VBox.margin>

@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import java.io.File;
+import java.net.URL;
 
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -67,6 +68,19 @@ public class UMLController {
     @FXML
     private Button bt_addclass;
 
+
+
+    @FXML
+    protected void initialize() {
+
+        try {
+            Tab tab = FXMLLoader.load(this.getClass().getResource("tab-class.fxml"));
+            tab.textProperty().bind(data.getClassDiagram().getNameProperty());
+
+            tabs.getTabs().add(tab);
+        } catch (IOException e) {
+        }
+    }
 
     /** filtr pro vyber JSON souboru pro nacteni */
     private static FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");

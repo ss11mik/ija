@@ -37,7 +37,7 @@
     <center>
       <TabPane fx:id="tabs" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <fx:include source="tab-class.fxml" />
+<!--             <fx:include source="tab-class.fxml" /> -->
         </tabs>
       </TabPane>
     </center>

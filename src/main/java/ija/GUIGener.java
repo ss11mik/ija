@@ -325,6 +325,7 @@ public class GUIGener {
             return vbox;
         }
         catch (IOException e) {
+            System.out.println(e);
             return null;
         }
     }

@@ -4,14 +4,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefWidth="150" style="-fx-border-color: black;              -fx-border-insets: 5;              -fx-background-color: #c3c3c3;              -fx-border-width: 3;" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ija.ijaProject.UMLController">
+<VBox prefWidth="150" style="-fx-border-color: black;              -fx-border-insets: 5;              -fx-background-color: #c3c3c3;              -fx-border-width: 3;">
 <children>
-    <Label id="name" fx:id="className" prefWidth="120.0" text="Class name" alignment="CENTER" textAlignment="CENTER" />
+    <Label id="name" prefWidth="120.0" text="Class name" alignment="CENTER" textAlignment="CENTER" />
 
     <Separator />
     <VBox id="attrs">
         <children>
-            <TextArea fx:id="ta_attributes" editable="false" prefHeight="15.0" prefWidth="100.0" />
+            <TextArea id="ta_attributes" editable="false" prefHeight="15.0" prefWidth="100.0" />
             <HBox prefWidth="200.0">
                <children>
                   <Button id="btn_addAttribute" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Add Attrribute" />
@@ -27,10 +27,10 @@
     <Separator />
     <VBox id="methods">
         <children>
-            <TextArea fx:id="ta_methods" editable="false" prefHeight="15.0" prefWidth="100.0" />
+            <TextArea id="ta_methods" editable="false" prefHeight="15.0" prefWidth="100.0" />
             <HBox prefWidth="200.0">
                <children>
-                  <Button id="btn_addmethod" fx:id="btn_addMethod" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Add Method" />
+                  <Button id="btn_addmethod" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Add Method" />
                   <Button id="btDelMeth" mnemonicParsing="false" prefHeight="30.0" text="DEL">
                      <HBox.margin>
                         <Insets left="5.0" />

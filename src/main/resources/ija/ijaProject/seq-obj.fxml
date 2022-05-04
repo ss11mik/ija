@@ -7,15 +7,11 @@
 
 <VBox id="attrs" prefWidth="100.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
 <children>
-      <Label id="name" alignment="CENTER" style="-fx-alignment: center;" text="Class name" textAlignment="CENTER">
-         <VBox.margin>
-            <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
-         </VBox.margin>
+      <Label prefHeight="50.0" prefWidth="100.0" id="name" alignment="CENTER" style="-fx-alignment: center; -fx-background-color: grey;" text="Class name" textAlignment="CENTER" >
       </Label>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox minHeight="100.0" prefWidth="200.0" >
          <children>
-            <VBox prefHeight="200.0" prefWidth="25.0" />
-          <VBox prefHeight="50.0" prefWidth="50.0" style="-fx-border-color: black; -fx-border-insets: 0; -fx-border-width: 0;">
+          <VBox prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-insets: 0;  -fx-border-width: 0;">
           <children>
                   <Line endX="50.0" endY="500.0" layoutX="100.0" startX="50.0">
                      <VBox.margin>
@@ -24,7 +20,6 @@
                   </Line>
           </children>
           </VBox>
-            <VBox prefHeight="200.0" prefWidth="25.0" />
          </children>
       </HBox>
 </children>

@@ -11,6 +11,7 @@ import java.io.FileReader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.guava.GuavaModule;
 
 /**
  * Obsluhuje nacitani diagramu ze souboru a jeho ulozeni do souboru.
@@ -31,6 +32,7 @@ public class ImportExport {
             ObjectMapper mapper = new ObjectMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
             mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+
 
             mapper.writeValue(writer, d);
 
@@ -55,6 +57,9 @@ public class ImportExport {
         try (Reader writer = new FileReader(file)) {
 
             ObjectMapper mapper = new ObjectMapper();
+
+            mapper.registerModules(new GuavaModule());
+            mapper.registerSubtypes(UMLDiagramSequence.class);
 
             uml = mapper.readValue(writer, UML.class);
 

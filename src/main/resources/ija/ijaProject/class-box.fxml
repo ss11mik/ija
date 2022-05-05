@@ -3,41 +3,72 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefWidth="150" style="-fx-border-color: black;              -fx-border-insets: 5;              -fx-background-color: #c3c3c3;              -fx-border-width: 3;">
+<VBox minWidth="150.0" prefWidth="150.0" style="-fx-border-color: black;              -fx-border-insets: 5;              -fx-background-color: #c3c3c3;              -fx-border-width: 3;" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
 <children>
-    <Label id="name" prefWidth="120.0" text="Class name" alignment="CENTER" textAlignment="CENTER" />
+    <Label id="name" alignment="CENTER" prefWidth="120.0" text="Class name" textAlignment="CENTER" />
 
     <Separator />
     <VBox id="attrs">
         <children>
-            <TextArea id="ta_attributes" editable="false" prefHeight="15.0" prefWidth="100.0" />
             <HBox prefWidth="200.0">
                <children>
-                  <Button id="btn_addAttribute" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Add Attrribute" />
-                  <Button id="btDelAttr" mnemonicParsing="false" prefHeight="30.0" text="DEL">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="62.0" text="Attributes">
                      <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin></Button>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button id="btn_addAttribute" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="+">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
+                  <Button id="btDelAttr" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="-">
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
                </children>
             </HBox>
+            <Label id="text_attributes" minHeight="30.0" minWidth="130.0">
+               <VBox.margin>
+                  <Insets left="4.0" />
+               </VBox.margin></Label>
         </children>
     </VBox>
 
     <Separator />
     <VBox id="methods">
         <children>
-            <TextArea id="ta_methods" editable="false" prefHeight="15.0" prefWidth="100.0" />
             <HBox prefWidth="200.0">
                <children>
-                  <Button id="btn_addmethod" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Add Method" />
-                  <Button id="btDelMeth" mnemonicParsing="false" prefHeight="30.0" text="DEL">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="62.0" text="Methods">
                      <HBox.margin>
-                        <Insets left="5.0" />
+                        <Insets left="8.0" />
                      </HBox.margin>
+                  </Label>
+                  <Button id="btn_addmethod" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="+">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button id="btDelMeth" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="-">
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>
+            <Label id="text_methods" minHeight="30.0" minWidth="130.0">
+               <VBox.margin>
+                  <Insets left="4.0" />
+               </VBox.margin>
+            </Label>
         </children>
     </VBox>
 </children>

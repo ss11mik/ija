@@ -64,7 +64,8 @@ public class GUIGener {
             name.textProperty().bind(data.getNameProperty());
 
             VBox attrs = (VBox) vbox.lookup("#attrs");
-            TextArea ta_attrs = (TextArea) attrs.lookup("#ta_attributes");
+            Label label_attrs = (Label) attrs.lookup("#text_attributes");
+
             for (UMLAttribute att : data.getAttributesProperty()) {
                 attrs.getChildren().add(new Label(att.toString()));
             }
@@ -73,18 +74,15 @@ public class GUIGener {
                 /**
                 * Pripise dalsi atribut mezi atributy tridy
                 */
-                ta_attrs.setText("");
-                for(int i = 0; i < newValue.size(); i++){
-                    ta_attrs.setText(ta_attrs.getText() + newValue.get(i).toString() + "\n");
-                    ta_attrs.setPrefHeight(ta_attrs.getLength()+5);
+                label_attrs.setText("");
+                for (int i =0; i < newValue.size(); i++){
+                    label_attrs.setText(label_attrs.getText() + newValue.get(i).toString() + "\n");
                 }
 
             });
             Button btnAddAttr = (Button) vbox.lookup("#btn_addAttribute");
             btnAddAttr.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
-                    //data.addAttribute(new UMLAttribute("aaaaa"));
-                    //TODO input box
                     Dialog<Object[]> dialog = new Dialog();
                     dialog.setTitle("New Attribute");
                     dialog.setHeaderText(null);
@@ -175,7 +173,7 @@ public class GUIGener {
 
 
             VBox methods = (VBox) vbox.lookup("#methods");
-            TextArea ta_methods = (TextArea) methods.lookup("#ta_methods");
+            Label label_methods = (Label) methods.lookup("#text_methods");
 
             for (UMLMethod meth : data.getMethodsProperty()) {
                 methods.getChildren().add(new Label(meth.toString()));
@@ -185,18 +183,15 @@ public class GUIGener {
                 /**
                 * Pripise dalsi metodu mezi metody tridy
                 */
-                ta_methods.setText("");
+                label_methods.setText("");
                 for (int i = 0; i < newValue.size(); i++){
-                    ta_methods.setText(ta_methods.getText() + newValue.get(i).toString() + "\n");
-                    ta_methods.setPrefHeight(ta_methods.getLength()+5);
+                    label_methods.setText(label_methods.getText() + newValue.get(i).toString() + "\n");
                 }
             });
 
             Button btnAddMethod = (Button) vbox.lookup("#btn_addmethod");
             btnAddMethod.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
-                    //data.addMethod(new UMLMethod("aaaaa"));
-                    //TODO input box
                     Dialog<Pair<String, UMLAttribute.DataType>> dialog = new Dialog();
                     dialog.setTitle("New Method");
                     dialog.setHeaderText(null);

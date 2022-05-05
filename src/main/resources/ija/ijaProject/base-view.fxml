@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -45,7 +46,6 @@
     <right>
       <VBox spacing="15">
       <children>
-<TextField fx:id="textField_names" promptText="Name" />
 
         <Group>
         <children>
@@ -55,6 +55,7 @@
               <VBox spacing="15">
               <children>
                 <Button fx:id="bt_addclass" mnemonicParsing="false" onAction="#addClass" prefHeight="30.0" prefWidth="150.0" text="Add Class" />
+                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Interface" />
                 <Button fx:id="bt_addrelation" mnemonicParsing="false" onAction="#addRelation" prefHeight="30.0" prefWidth="150.0" text="Add Relation" />
                 <Button fx:id="bt_removeclass" layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#removeClass" prefHeight="30.0" prefWidth="150.0" text="Remove Class" />
               </children>
@@ -74,6 +75,9 @@
           </Group>
 
         </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
         </Group>
 
         <VBox spacing="15">

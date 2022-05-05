@@ -149,17 +149,19 @@ public class UMLController {
      */
     @FXML
     private void addClass () {
-        UMLClass cl = new UMLClass(textField_names.getText(), true);
 
-        VBox newClass = GUIGener.createClass(this, cl);
+        TextInputDialog dialog = new TextInputDialog("enter class name");
+        dialog.setTitle("New Class");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Please enter class name:");
 
-        ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
-
-
-        data.getClassDiagram().addClass(cl);
-
-        a = bb;
-        bb = newClass;
+        Optional<String> result = dialog.showAndWait();
+        if(result.isPresent()) {
+            UMLClass cl = new UMLClass(result.get(), true);
+            VBox newClass = GUIGener.createClass(this, cl);
+            ((Pane) getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
+            data.getClassDiagram().addClass(cl);
+        }
     }
 
     @FXML
@@ -525,8 +527,6 @@ public class UMLController {
         content.getChildren().add(line);
         line.toBack();
     }
-
-
     @FXML
     private void addMessage(){
 

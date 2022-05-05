@@ -28,6 +28,7 @@ import javafx.geometry.Bounds;
 
 import ija.ImportExport;
 import ija.GUIGener;
+import ija.Draggable;
 
 
 import ija.dataStructures.*;
@@ -474,11 +475,10 @@ public class UMLController {
         ta_attributes.setText("pridano"); //ta_attributes.getText() + "\n" + textField_names.getText());
     }
 
-    VBox a, bb;
+    Node a, bb;
     @FXML
     private void addRelation(){
 
-System.out.println("aa");
         Line line = new Line();
         line.setStrokeWidth(5);
         line.setStroke(Color.BLACK);
@@ -486,14 +486,18 @@ System.out.println("aa");
         Pane content = ((Pane)getCurrentTabContent().lookup("#Content"));
 
         ObjectBinding<Bounds> label1InStack = Bindings.createObjectBinding(() -> {
-            Bounds label1InScene = a.localToScene(a.getBoundsInLocal());
-            return content.sceneToLocal(label1InScene);
-        }, a.boundsInLocalProperty(), a.localToSceneTransformProperty(), content.localToSceneTransformProperty());
-
+//             Bounds label1InScene = a.localToScene(a.getBoundsInLocal());
+            Bounds label1InScene = (a.getBoundsInParent());
+            return label1InScene;
+//             return content.sceneToLocal(label1InScene);
+        }, a.boundsInParentProperty(), a.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+// translateProperty
         ObjectBinding<Bounds> label3InStack = Bindings.createObjectBinding(() -> {
-            Bounds label3InScene = bb.localToScene(bb.getBoundsInLocal());
-            return content.sceneToLocal(label3InScene);
-        }, bb.boundsInLocalProperty(), bb.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+//             Bounds label3InScene = bb.localToScene(bb.getBoundsInLocal());
+//             return content.sceneToLocal(label3InScene);
+            Bounds label1InScene = (bb.getBoundsInParent());
+            return label1InScene;
+        }, bb.boundsInParentProperty(), bb.localToSceneTransformProperty(), content.localToSceneTransformProperty());
 
 
         DoubleBinding startX = Bindings.createDoubleBinding(() -> label1InStack.get().getMaxX(), label1InStack);
@@ -516,6 +520,8 @@ System.out.println("aa");
 
         root.getChildren().add(line);
     }
+
+
     @FXML
     private void addMessage(){
 

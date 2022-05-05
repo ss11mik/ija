@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 
 import ija.dataStructures.*;
 import ija.ijaProject.UMLController;
+import ija.Draggable;
 
 import java.util.ArrayList;
 import java.util.Observer;
@@ -98,6 +99,7 @@ public class GUIGener {
     public static VBox createClass (UMLController ctx, UMLClass data) {
         try {
             final VBox vbox = FXMLLoader.load(ctx.getClass().getResource("class-box.fxml"));
+            Draggable.Nature d= new Draggable.Nature(vbox);
 
 
             Label name = (Label) vbox.lookup("#name");
@@ -320,7 +322,7 @@ public class GUIGener {
                 }
             });
 
-            vbox.setOnMouseDragged(new DragDrop(vbox, ctx));
+//             vbox.setOnMouseDragged(new DragDrop(vbox, ctx));
 
             return vbox;
         }

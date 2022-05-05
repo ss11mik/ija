@@ -297,7 +297,7 @@ public class GUIGener {
 
 
             Label name = (Label) vbox.lookup("#name");
-            name.setText(data.getInstance().getName());
+            name.setText(data.getName() + " : " + data.getInstance().getName());
 /*
             VBox attrs = (VBox) vbox.lookup("#attrs");
             for (UML_Attribute att : data.get_attributes()) {

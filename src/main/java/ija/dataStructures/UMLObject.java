@@ -7,15 +7,20 @@ package ija.dataStructures;
  *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
  */
 public class UMLObject {
+    /** Nazev objektu */
+    protected String name;
     /** Trida jehoz instanci je objekt */
     protected UMLClass instance;
+
+
 
     // CONSTRUCTOR
     /**
      * Vytvori instanci objektu
      * @param instance Trida jejiz je objektem
      */
-    public UMLObject(UMLClass instance){
+    public UMLObject(String name, UMLClass instance){
+        this.name = name;
         this.instance = instance;
     }
 
@@ -23,12 +28,17 @@ public class UMLObject {
     }
 
     // GETTER
+    public String getName() {return name;}
+
     /**
      * @return Vrati svou tridu
      */
     public UMLClass getInstance() {return instance;}
 
     // SETTER
+
+    public void setName(String name) {this.name = name;}
+
     /**
      * Nastavi tridu jiz je instanci
      * @param instance nova trida

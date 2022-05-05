@@ -47,48 +47,6 @@ public class GUIGener {
     private static Color strokeColor = Color.BLACK;
     private static float strokeWidth = 8;
 
-    /**
-     * Obsluhuje drag and drop funkce pro presouvani objektu
-     */
-    private static class DragDrop implements EventHandler<MouseEvent> {
-        Pane c;
-        UMLController ctx;
-
-        /**
-         * Zajistuje focus na graficky objekt, ktery byl chycen
-         * @param n aktivni graficky objekt
-         */
-        public DragDrop(Pane n, UMLController ctx) {
-            c = n;
-            this.ctx = ctx;
-        }
-
-        /**
-         * Zajistuje presouvani grafickych objektu
-         * @param event udalost mysi
-         */
-        @Override
-        public void handle(MouseEvent event) {
-            c.relocate(event.getSceneX() - c.getWidth(), event.getSceneY() - c.getHeight());
-// c.setCenterX(c.getCenterX() + 400);
-
-//             c.setTranslateX(
-//                     event.initialTranslateX
-//                         + event.getX()
-//                         - dragContext.mouseAnchorX);
-//             c.setTranslateX(event.getSceneX() - c.getWidth());
-//             c.startFullDrag();
-// ctx.root.layout();
-// c.refresh();
-// c.notify();
-//         event.consume();
-// c.getChildren().get(0).fire();
-// TextArea ta_methods = (TextArea) c.lookup("#ta_methods");
-// c.requestFocus();
-// ta_methods.requestFocus();
-        }
-    };
-
 
     /**
      * Zajistuje prekresleni GUI pri zmene tridy

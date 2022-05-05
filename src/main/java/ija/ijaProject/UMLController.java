@@ -479,46 +479,51 @@ public class UMLController {
     @FXML
     private void addRelation(){
 
+        Node first = a;
+        Node second = bb;
+
         Line line = new Line();
         line.setStrokeWidth(5);
         line.setStroke(Color.BLACK);
 
         Pane content = ((Pane)getCurrentTabContent().lookup("#Content"));
 
-        ObjectBinding<Bounds> label1InStack = Bindings.createObjectBinding(() -> {
-//             Bounds label1InScene = a.localToScene(a.getBoundsInLocal());
-            Bounds label1InScene = (a.getBoundsInParent());
-            return label1InScene;
-//             return content.sceneToLocal(label1InScene);
-        }, a.boundsInParentProperty(), a.localToSceneTransformProperty(), content.localToSceneTransformProperty());
-// translateProperty
-        ObjectBinding<Bounds> label3InStack = Bindings.createObjectBinding(() -> {
-//             Bounds label3InScene = bb.localToScene(bb.getBoundsInLocal());
-//             return content.sceneToLocal(label3InScene);
-            Bounds label1InScene = (bb.getBoundsInParent());
-            return label1InScene;
-        }, bb.boundsInParentProperty(), bb.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+        ObjectBinding<Bounds> l1 = Bindings.createObjectBinding(() -> {
+            return first.getBoundsInParent();
+        }, first.boundsInParentProperty(), first.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+
+        ObjectBinding<Bounds> l2 = Bindings.createObjectBinding(() -> {
+            return second.getBoundsInParent();
+        }, bb.boundsInParentProperty(), second.localToSceneTransformProperty(), content.localToSceneTransformProperty());
 
 
-        DoubleBinding startX = Bindings.createDoubleBinding(() -> label1InStack.get().getMaxX(), label1InStack);
+        DoubleBinding startX = Bindings.createDoubleBinding(() -> {
+            Bounds b = l1.get();
+            return b.getMinX() + b.getWidth() / 2 ;
+        }, l1);
         DoubleBinding startY = Bindings.createDoubleBinding(() -> {
-            Bounds b = label1InStack.get();
+            Bounds b = l1.get();
             return b.getMinY() + b.getHeight() / 2 ;
-        }, label1InStack);
+        }, l1);
 
 
-        DoubleBinding endX = Bindings.createDoubleBinding(() -> label3InStack.get().getMinX(), label3InStack);
+        DoubleBinding endX = Bindings.createDoubleBinding(() -> {
+            Bounds b = l2.get();
+            return b.getMinX() + b.getWidth() / 2 ;
+        }, l2);
         DoubleBinding endY = Bindings.createDoubleBinding(() -> {
-            Bounds b = label3InStack.get();
+            Bounds b = l2.get();
             return b.getMinY() + b.getHeight() / 2 ;
-        }, label3InStack);
+        }, l2);
 
         line.startXProperty().bind(startX);
         line.startYProperty().bind(startY);
         line.endXProperty().bind(endX);
         line.endYProperty().bind(endY);
 
-        root.getChildren().add(line);
+
+        content.getChildren().add(line);
+        line.toBack();
     }
 
 

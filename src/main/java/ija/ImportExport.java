@@ -58,9 +58,6 @@ public class ImportExport {
 
             ObjectMapper mapper = new ObjectMapper();
 
-            mapper.registerModules(new GuavaModule());
-            mapper.registerSubtypes(UMLDiagramSequence.class);
-
             uml = mapper.readValue(writer, UML.class);
 
         } catch (IOException e) {

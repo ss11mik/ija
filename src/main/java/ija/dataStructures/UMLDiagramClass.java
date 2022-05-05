@@ -7,6 +7,8 @@ import javafx.collections.FXCollections;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Znazornuje diagram trid.
  * Obsahuje tridy diagramu, konstruktor, gettery, settery a metody pro upravu trid.
@@ -54,6 +56,7 @@ public class UMLDiagramClass extends UMLDiagram {
     /**
      * @return Vrati seznam trid diagramu
      */
+     @JsonIgnore
     public ListProperty<UMLClass> getClassesProperty() {return classes;}
 
     // SETTER

@@ -19,6 +19,9 @@ public class UMLObject {
         this.instance = instance;
     }
 
+    public UMLObject(){
+    }
+
     // GETTER
     /**
      * @return Vrati svou tridu

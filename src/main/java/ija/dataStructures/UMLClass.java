@@ -5,6 +5,9 @@ import javafx.collections.FXCollections;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Znazornuje tridu jako objekt diagramu trid.
  * Obsahuje konstruktory, gettery, settery a metody pro upravu atributu a metod
@@ -55,6 +58,7 @@ public class UMLClass {
     public UMLClass(){
         this.attributes = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLAttribute>()));
         this.methods = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLMethod>()));
+        this.name = new SimpleStringProperty("");
     }
 
     // GETTERS
@@ -67,11 +71,13 @@ public class UMLClass {
     /**
      * @return Vrati nazev tridy
      */
+     @JsonIgnore
     public StringProperty getNameProperty() {return name;}
 
     /**
      * @return Vrati zda se jedna o tridu (true) nebo o rozhrani (false)
      */
+     @JsonProperty("isclass")
     public boolean isClass() {return isclass;}
 
     /**
@@ -82,6 +88,7 @@ public class UMLClass {
     /**
      * @return Vrati seznam atributu
      */
+     @JsonIgnore
     public ListProperty<UMLAttribute> getAttributesProperty() {return attributes;}
 
     /**
@@ -92,6 +99,7 @@ public class UMLClass {
     /**
      * @return Vrati seznam metod
      */
+     @JsonIgnore
     public ListProperty<UMLMethod> getMethodsProperty() {return methods;}
 
     // SETTERS

@@ -7,6 +7,8 @@ import javafx.beans.property.StringProperty;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 /**
@@ -29,6 +31,7 @@ public class UML {
      */
     public UML(){
         // for JSON conversion
+        this.name = new SimpleStringProperty("");
     }
 
     /**
@@ -52,6 +55,7 @@ public class UML {
     /**
      * @return Vrati nazev souboru
      */
+      @JsonIgnore
     public StringProperty getNameProperty() {return name;}
 
     /**
@@ -62,6 +66,7 @@ public class UML {
     /**
      * @return Vrati list sekvencnich diagramu
      */
+      @JsonIgnore
     public ListProperty<UMLDiagramSequence> getSeqDiagramsProperty() {return seqDiagrams;}
 
     /**

@@ -7,6 +7,8 @@ import javafx.collections.FXCollections;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Znazornuje metodu tridy v diagramu trid.
  * Obsahuje nazev, navratovy datovy typ a argumenty, konstruktor, gettery, settery a metody pro upravu argumentu
@@ -71,6 +73,7 @@ public class UMLMethod {
     /**
      * @return Vrati seznam argumentu metody
      */
+     @JsonIgnore
     public ListProperty<UMLArgument> getArgumentsProperty() {return arguments;}
 
     // SETTERS

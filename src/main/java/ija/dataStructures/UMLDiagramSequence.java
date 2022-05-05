@@ -7,6 +7,8 @@ import javafx.collections.FXCollections;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Znazornuje sekvencni diagram.
  * Obsahuje objekty diagramu, zpravy predavane mezi nimi, konstruktor, gettery, settery a metody pro upravu objektu a zprav.
@@ -42,6 +44,10 @@ public class UMLDiagramSequence extends UMLDiagram {
         this.messages = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLMessage>()));
     }
 
+    public UMLDiagramSequence(){
+        this("");
+    }
+
     // GETTERS
     /**
      * @return Vrati seznam objektu diagramu
@@ -51,6 +57,7 @@ public class UMLDiagramSequence extends UMLDiagram {
     /**
      * @return Vrati seznam objektu diagramu
      */
+     @JsonIgnore
     public ListProperty<UMLObject> getObjectsProperty() {return objects;}
 
     /**
@@ -61,6 +68,7 @@ public class UMLDiagramSequence extends UMLDiagram {
     /**
      * @return Vrati seznam zprav diagramu
      */
+     @JsonIgnore
     public ListProperty<UMLMessage> getMessagesProperty() {return messages;}
 
     // SETTERS

@@ -3,6 +3,10 @@ package ija.dataStructures;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Predstavuje zaklad pro diagramy, obsahuje konstruktor a jmeno.
  *
@@ -18,6 +22,7 @@ public class UMLDiagram {
      */
     public UMLDiagram(){
         // for JSON conversion
+        this.name = new SimpleStringProperty("");
     }
 
     /**
@@ -37,6 +42,7 @@ public class UMLDiagram {
     /**
      * @return Vrati nazev diagramu
      */
+    @JsonIgnore
     public StringProperty getNameProperty() {return name;}
 
     // SETTER

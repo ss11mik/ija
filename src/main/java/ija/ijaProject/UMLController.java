@@ -68,9 +68,6 @@ public class UMLController {
     @FXML
     private TextArea ta_attributes = new TextArea();
 
-    @FXML
-    private Button bt_addclass;
-
 
 
     @FXML
@@ -97,11 +94,6 @@ public class UMLController {
     void refreshTabs (List<UMLDiagramSequence> newValue) {
         for (UMLDiagramSequence seqDia : newValue) {
     System.out.println("aa");
-//                 ta_attrs.setText("");
-//                 for(int i = 0; i < newValue.size(); i++){
-//                     ta_attrs.setText(ta_attrs.getText() + newValue.get(i).toString() + "\n");
-//                     ta_attrs.setPrefHeight(ta_attrs.getLength()+5);
-//                 }
 
         }
     }
@@ -134,15 +126,6 @@ public class UMLController {
     private Pane getCurrentTabContent () {
         return (Pane) tabs.getSelectionModel().getSelectedItem().getContent();
     }
-
-    @FXML
-    private void generFoo() {
-        UMLClass cl = new UMLClass("aaa", true);
-//         class_diagram.add_class(cl);
-
-      //  GUIGener.createClass(cl);
-    }
-
 
     /**
      * Nabidne k prohledani soubory k nacteni (pouze JSON)
@@ -256,153 +239,6 @@ public class UMLController {
 
     }
 
-    @FXML
-    private void addClassForm () {
-
-        TextInputDialog dialog = new TextInputDialog("enter class name");
-        dialog.setTitle("New Class");
-        dialog.setHeaderText(null);
-        dialog.setContentText("Please enter class name:");
-
-        Optional<String> result = dialog.showAndWait();
-        if(result.isPresent()){
-            System.out.println("class name: " + result.get());
-            UMLClass cl = new UMLClass(result.get(), true);
-            data.getClassDiagram().addClass(cl);
-            //VBox newClass = GUIGener.createClass(this, cl);
-            //((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
-        }
-    }
-
-    @FXML
-    private void addAttribForm () {
-
-        Dialog<Pair<String, String>> dialog = new Dialog();
-        dialog.setTitle("New Attribute");
-        dialog.setHeaderText(null);
-
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20,30,10,30));
-
-        TextField name = new TextField();
-        name.setPromptText("name");
-        TextField datType = new TextField();
-        datType.setPromptText("data type");
-        TextField accMod = new TextField();
-        accMod.setPromptText("access modifier");
-
-        grid.add(new Label("Name:"), 0, 0);
-        grid.add(name,1,0);
-        grid.add(new Label("Data type:"),0,1);
-        grid.add(datType,1,1);
-        grid.add(new Label("Access modifier:"),0,2);
-        grid.add(accMod,1,2);
-
-        dialog.getDialogPane().setContent(grid);
-
-        Platform.runLater(() -> name.requestFocus());
-
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == ButtonType.OK) {
-                return new Pair<>(name.getText(), datType.getText());
-            }
-            return null;
-        });
-
-        Optional<Pair<String,String>> result = dialog.showAndWait();
-        result.ifPresent(nameType -> {
-            System.out.println("Name=" + nameType.getKey() + ", Type=" + nameType.getValue());
-        });
-    }
-
-    @FXML
-    private void addMethodForm () {
-
-        Dialog<Pair<String, String>> dialog = new Dialog();
-        dialog.setTitle("New Method");
-        dialog.setHeaderText(null);
-
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20,30,10,30));
-
-        TextField name = new TextField();
-        name.setPromptText("name");
-        TextField datType = new TextField();
-        datType.setPromptText("return data type");
-
-        grid.add(new Label("Name:"), 0, 0);
-        grid.add(name,1,0);
-        grid.add(new Label("Return data type:"),0,1);
-        grid.add(datType,1,1);
-
-
-        dialog.getDialogPane().setContent(grid);
-
-        Platform.runLater(() -> name.requestFocus());
-
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == ButtonType.OK) {
-                return new Pair<>(name.getText(), datType.getText());
-            }
-            return null;
-        });
-
-        Optional<Pair<String,String>> result = dialog.showAndWait();
-        result.ifPresent(nameType -> {
-            System.out.println("Name=" + nameType.getKey() + ", Return type=" + nameType.getValue());
-        });
-    }
-
-
-    @FXML
-    private void addArgumentForm () {
-
-        Dialog<Pair<String, String>> dialog = new Dialog();
-        dialog.setTitle("New Argument");
-        dialog.setHeaderText(null);
-
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20,30,10,30));
-
-        TextField name = new TextField();
-        name.setPromptText("name");
-        TextField datType = new TextField();
-        datType.setPromptText("data type");
-
-        grid.add(new Label("Name:"), 0, 0);
-        grid.add(name,1,0);
-        grid.add(new Label("Data type:"),0,1);
-        grid.add(datType,1,1);
-
-
-        dialog.getDialogPane().setContent(grid);
-
-        Platform.runLater(() -> name.requestFocus());
-
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == ButtonType.OK) {
-                return new Pair<>(name.getText(), datType.getText());
-            }
-            return null;
-        });
-
-        Optional<Pair<String,String>> result = dialog.showAndWait();
-        result.ifPresent(nameType -> {
-            System.out.println("Name=" + nameType.getKey() + ", Type=" + nameType.getValue());
-        });
-    }
 
     /**
      * Prida novy objekt do diagramu
@@ -509,15 +345,6 @@ public class UMLController {
         }
     }
 
-    /**
-     * Prida atribut do tridy
-     */
-    @FXML
-    private void addAttribute(){
-        // prida atribut do diagramu kdyz je volana z base-view, ale nezmeni text v class-box
-        data.getClassDiagram().getClasses().get(0).addAttribute(new UMLAttribute(textField_names.getText()));
-        ta_attributes.setText("pridano"); //ta_attributes.getText() + "\n" + textField_names.getText());
-    }
 
     Node a, bb;
     @FXML

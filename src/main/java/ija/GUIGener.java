@@ -229,7 +229,7 @@ public class GUIGener {
                     Optional<Pair<String, UMLAttribute.DataType>> result = dialog.showAndWait();
                     result.ifPresent(nameType -> {
 //                         System.out.println("Name=" + nameType.getKey() + ", Return type=" + nameType.getValue());
-                        data.addMethod(new UMLMethod(nameType.getKey(), nameType.getValue(), new ArrayList()));
+                        data.addMethod(new UMLMethod(nameType.getKey(), nameType.getValue()));
                     });
                 }
             });

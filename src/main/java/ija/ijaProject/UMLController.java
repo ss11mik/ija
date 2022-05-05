@@ -44,7 +44,7 @@ import javafx.util.Pair;
 public class UMLController {
 
     /** koren dat */
-    UML data = new UML("test");
+    UML data = new UML("New UML Diagram");
 
     /** Hlavni prvek base-view */
     @FXML

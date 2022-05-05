@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 import javafx.scene.Node;
 
+import java.util.List;
+
 import javafx.scene.shape.Line;
 import javafx.scene.paint.Color;
 import javafx.beans.binding.Bindings;
@@ -79,9 +81,49 @@ public class UMLController {
             tab.textProperty().bind(data.getClassDiagram().getNameProperty());
 
             tabs.getTabs().add(tab);
+
+            refreshTabs();
+            data.getSeqDiagramsProperty().addListener((observable, oldValue, newValue) -> {refreshTabs(newValue);});
+
+            refreshClasses(data.getClassDiagram().getClasses());
+            data.getClassDiagram().getClassesProperty().addListener((observable, oldValue, newValue) -> {refreshClasses(newValue);});
         } catch (IOException e) {
         }
     }
+
+    void refreshTabs () {
+        refreshTabs(data.getSeqDiagrams());
+    }
+    void refreshTabs (List<UMLDiagramSequence> newValue) {
+        for (UMLDiagramSequence seqDia : newValue) {
+    System.out.println("aa");
+//                 ta_attrs.setText("");
+//                 for(int i = 0; i < newValue.size(); i++){
+//                     ta_attrs.setText(ta_attrs.getText() + newValue.get(i).toString() + "\n");
+//                     ta_attrs.setPrefHeight(ta_attrs.getLength()+5);
+//                 }
+
+        }
+    }
+
+    void refreshClasses () {
+        refreshClasses(data.getClassDiagram().getClasses());
+    }
+    void refreshClasses (List<UMLClass> newValue) {
+        Pane p = (Pane) getCurrentTabContent().lookup("#Content");
+        ArrayList<Node> toRemove = new ArrayList();
+        for (Node child : p.getChildren()) {
+            if (child instanceof VBox)
+                toRemove.add(child);
+        }
+        p.getChildren().removeAll(toRemove);
+
+        for (UMLClass cl : newValue) {
+            VBox newClass = GUIGener.createClass(this, cl);
+            p.getChildren().add(newClass);
+        }
+    }
+
 
     /** filtr pro vyber JSON souboru pro nacteni */
     private static FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
@@ -115,6 +157,7 @@ public class UMLController {
 
         if(file != null){
             data = ImportExport.load(file);
+            initialize();
         }
     }
 
@@ -158,8 +201,7 @@ public class UMLController {
         Optional<String> result = dialog.showAndWait();
         if(result.isPresent()) {
             UMLClass cl = new UMLClass(result.get(), true);
-            VBox newClass = GUIGener.createClass(this, cl);
-            ((Pane) getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
+            refreshClasses();
             data.getClassDiagram().addClass(cl);
         }
     }

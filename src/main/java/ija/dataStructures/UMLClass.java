@@ -179,4 +179,10 @@ public class UMLClass {
      * Vymaze cely seznam metod
      */
     public void deleteAllMethods() {this.methods = new SimpleListProperty();}
+
+    public String toString(){
+        return getName();
+    }
+
+
 }

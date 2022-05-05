@@ -7,20 +7,33 @@ package ija.dataStructures;
  *  @author Ondrej Mikula (xmikul69) a Marek Mechl (xmechl01)
  */
 public class UMLRelation {
+
+    public enum RelationType {
+        NULL,
+        AGGREGATION,
+        ASSOCIATION,
+        COMPOSITION,
+        GENERALIZATION
+    }
+
     /** Trida odkud vazba vychazi */
     protected UMLClass begin;
     /** Trida kam vazba smeruje */
     protected UMLClass end;
+
+    protected RelationType relationType;
 
     // CONSTRUCTOR
     /**
      * Vytvori instanci vazby
      * @param begin trida okdkud vazba vychazi
      * @param end trida kam vazba smeruje
+     * @param relationType typ vazby
      */
-    public UMLRelation(UMLClass begin, UMLClass end){
+    public UMLRelation(UMLClass begin, UMLClass end, RelationType relationType){
         this.begin = begin;
         this.end = end;
+        this.relationType = relationType;
     }
 
     // GETTERS
@@ -38,6 +51,8 @@ public class UMLRelation {
         return end;
     }
 
+    public RelationType getRelationType() {return relationType;}
+
     // SETTERS
     /**
      * Nastavi tridu odkud vazba vychazi
@@ -53,5 +68,9 @@ public class UMLRelation {
      */
     public void setEnd(UMLClass end) {
         this.end = end;
+    }
+
+    public void setRelationType(RelationType relationType) {
+        this.relationType = relationType;
     }
 }

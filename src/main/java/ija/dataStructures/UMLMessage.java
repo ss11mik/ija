@@ -8,7 +8,7 @@ package ija.dataStructures;
  */
 public class UMLMessage {
     /** Vyctovy typ pro vsechny mozne typy zprav */
-    enum MessageType {
+    public enum MessageType {
         NULL,
         SYNCHRONOUS,
         ASYNCHRONOUS,

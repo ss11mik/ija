@@ -44,4 +44,7 @@ public class UMLObject {
      * @param instance nova trida
      */
     public void setInstance(UMLClass instance) {this.instance = instance;}
+
+
+    public String toString(){return name + " : " + instance;}
 }

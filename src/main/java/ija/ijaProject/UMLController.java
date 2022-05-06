@@ -405,6 +405,75 @@ public class UMLController {
 
 System.out.println("aa");
 
+        Dialog<UMLMessage> dialog = new Dialog();
+        dialog.setTitle("Add message");
+        dialog.setHeaderText(null);
+
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20,30,10,30));
+
+        ComboBox comBoxType = new ComboBox();
+        comBoxType.getItems().setAll(UMLMessage.MessageType.values());
+        comBoxType.getSelectionModel().select(0);
+        ComboBox comBoxObjectfrom = new ComboBox();
+        comBoxObjectfrom.getItems().setAll(data.getSeqDiagrams().get(0).getObjects());
+        comBoxObjectfrom.getSelectionModel().select(0);
+        ComboBox comBoxObjectto = new ComboBox();
+        comBoxObjectto.getItems().setAll(data.getSeqDiagrams().get(0).getObjects());
+        comBoxObjectto.getSelectionModel().select(0);
+        TextField textTime = new TextField();
+        textTime.setPromptText("time in seconds");
+        ComboBox comBoxMethod = new ComboBox();
+
+        comBoxMethod.getItems().setAll(data.getClassDiagram().getClasses().get(0).getMethods());
+        //TODO only first class methods yet
+//        int index = 0;
+//        for (int i = 0; i < data.getClassDiagram().getClasses().size(); i++){
+//            for(int k = 0; k < data.getClassDiagram().getClasses().get(i).getMethods().size(); k++){
+//                comBoxMethod.getItems().set(index++, data.getClassDiagram().getClasses().get(i).getMethods().get(k));
+//            }
+//        }
+        comBoxMethod.getSelectionModel().select(0);
+
+        grid.add(new Label("Message type:"), 0,0);
+        grid.add(comBoxType,1,0);
+        grid.add(new Label("Message from:"),0,1);
+        grid.add(comBoxObjectfrom,1,1);
+        grid.add(new Label("Message to:"),0,2);
+        grid.add(comBoxObjectto,1,2);
+        grid.add(new Label("Time:"),0,3);
+        grid.add(textTime,1,3);
+        grid.add(new Label("Method:"),0,4);
+        grid.add(comBoxMethod,1,4);
+
+
+        dialog.getDialogPane().setContent(grid);
+
+        Platform.runLater(() -> comBoxType.requestFocus());
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return new UMLMessage((UMLMessage.MessageType) comBoxType.getSelectionModel().getSelectedItem(),
+                        (UMLObject) comBoxObjectfrom.getSelectionModel().getSelectedItem(),
+                        (UMLObject) comBoxObjectto.getSelectionModel().getSelectedItem(),
+                        Integer.parseInt(textTime.getText()),
+                        (UMLMethod) comBoxMethod.getSelectionModel().getSelectedItem());
+            }
+            return null;
+        });
+
+        Optional<UMLMessage> result = dialog.showAndWait();
+        result.ifPresent(cl -> {
+
+            UMLMessage msg = new UMLMessage(cl.getType(), cl.getFrom(), cl.getTo(), cl.getTimeStart(), cl.getMethod());
+
+            data.getSeqDiagrams().get(0).addMessage(msg);
+        });
+
 
     }
 

@@ -24,7 +24,29 @@ public class UMLClass {
     /** Seznam metod tridy */
     protected ListProperty<UMLMethod> methods;
 
+    protected double xLocation;
+
+    protected double yLocation;
+
     // CONSTRUCTORS
+    /**
+     * Vytvori instanci tridy
+     * @param name nazev tridy
+     * @param isclass rozhoduje zda se jedna o tridu (true) nebo o rozhrani (false)
+     * @param attributes seznam atributu tridy
+     * @param methods seznam metod tridy
+     * @param xLocation souradnice X v diagramu trid
+     * @param yLocation souradnice Y v diagramu trid
+     */
+    public UMLClass(String name, boolean isclass, List<UMLAttribute> attributes, List<UMLMethod> methods, double xLocation, double yLocation){
+        this.name = new SimpleStringProperty(name);
+        this.isclass = isclass;
+        this.attributes = new SimpleListProperty<UMLAttribute>(FXCollections.observableArrayList(attributes));
+        this.methods = new SimpleListProperty<UMLMethod>(FXCollections.observableArrayList(methods));
+        this.xLocation = xLocation;
+        this.yLocation = yLocation;
+    }
+
 
     /**
      * Vytvori instanci tridy
@@ -38,6 +60,8 @@ public class UMLClass {
         this.isclass = isclass;
         this.attributes = new SimpleListProperty<UMLAttribute>(FXCollections.observableArrayList(attributes));
         this.methods = new SimpleListProperty<UMLMethod>(FXCollections.observableArrayList(methods));
+        this.xLocation = 0.0;
+        this.yLocation = 0.0;
     }
 
     /**
@@ -50,6 +74,8 @@ public class UMLClass {
         this.isclass = isclass;
         this.attributes = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLAttribute>()));
         this.methods = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLMethod>()));
+        this.xLocation = 0.0;
+        this.yLocation = 0.0;
     }
 
     /**
@@ -59,6 +85,8 @@ public class UMLClass {
         this.attributes = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLAttribute>()));
         this.methods = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLMethod>()));
         this.name = new SimpleStringProperty("");
+        this.xLocation = 0.0;
+        this.yLocation = 0.0;
     }
 
     // GETTERS
@@ -102,6 +130,10 @@ public class UMLClass {
      @JsonIgnore
     public ListProperty<UMLMethod> getMethodsProperty() {return methods;}
 
+    public double getXLocation() {return xLocation;}
+
+    public double getYLocation() {return yLocation;}
+
     // SETTERS
 
     /**
@@ -127,6 +159,10 @@ public class UMLClass {
      * @param methods novy seznam metod
      */
     public void setMethods(List<UMLMethod> methods) {this.methods = new SimpleListProperty(FXCollections.observableArrayList(methods));}
+
+    public void setXLocation(double xLocation) {this.xLocation = xLocation;}
+
+    public void setYLocation(double yLocation) {this.yLocation = yLocation;}
 
     // METHODS
 

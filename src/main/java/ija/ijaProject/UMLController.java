@@ -74,16 +74,17 @@ public class UMLController {
     protected void initialize() {
 
         try {
-            Tab tab = FXMLLoader.load(this.getClass().getResource("tab-class.fxml"));
-            tab.textProperty().bind(data.getClassDiagram().getNameProperty());
-
-            tabs.getTabs().add(tab);
 
             refreshTabs();
             data.getSeqDiagramsProperty().addListener((observable, oldValue, newValue) -> {refreshTabs(newValue);});
 
             refreshClasses(data.getClassDiagram().getClasses());
             data.getClassDiagram().getClassesProperty().addListener((observable, oldValue, newValue) -> {refreshClasses(newValue);});
+
+            for (UMLDiagramSequence seq : data.getSeqDiagrams()) {
+                refreshObjects(seq.getObjectsProperty());
+                seq.getObjectsProperty()addListener((observable, oldValue, newValue) -> {refreshObjects(newValue);});
+            }
         } catch (IOException e) {
         }
     }
@@ -92,6 +93,12 @@ public class UMLController {
         refreshTabs(data.getSeqDiagrams());
     }
     void refreshTabs (List<UMLDiagramSequence> newValue) {
+
+        Tab tab = FXMLLoader.load(this.getClass().getResource("tab-class.fxml"));
+        tab.textProperty().bind(data.getClassDiagram().getNameProperty());
+
+        tabs.getTabs().add(tab);
+
         for (UMLDiagramSequence seqDia : newValue) {
     System.out.println("aa");
 
@@ -116,15 +123,30 @@ public class UMLController {
         }
     }
 
+    void refreshObjects (List<UMLObject> newValue) {
+        //TODO, need to know the tab
+    }
+
+
+
 
     /** filtr pro vyber JSON souboru pro nacteni */
     private static FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
+
 
     /**
      * @return Vrati aktivni graficky objekt diagramu
      */
     private Pane getCurrentTabContent () {
         return (Pane) tabs.getSelectionModel().getSelectedItem().getContent();
+    }
+
+    @FXML
+    private void generFoo() {
+        UMLClass cl = new UMLClass("aaa", true);
+//         class_diagram.add_class(cl);
+
+      //  GUIGener.createClass(cl);
     }
 
     /**

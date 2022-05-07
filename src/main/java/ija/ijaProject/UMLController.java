@@ -232,6 +232,22 @@ public class UMLController {
     }
 
     @FXML
+    private void addInterface () {
+
+        TextInputDialog dialog = new TextInputDialog("enter interface name");
+        dialog.setTitle("New Interface");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Please enter interface name:");
+
+        Optional<String> result = dialog.showAndWait();
+        if(result.isPresent()) {
+            UMLClass cl = new UMLClass(result.get(), false);
+            refreshClasses();
+            data.getClassDiagram().addClass(cl);
+        }
+    }
+
+    @FXML
     private void removeClass(){
         //TODO
         // in UI

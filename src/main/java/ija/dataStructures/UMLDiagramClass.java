@@ -81,6 +81,9 @@ public class UMLDiagramClass extends UMLDiagram {
      */
     public void setClasses(List<UMLClass> classes) {this.classes = new SimpleListProperty(FXCollections.observableArrayList(classes));}
 
+    public void setRelations(List<UMLRelation> rel) {this.relations = new SimpleListProperty(FXCollections.observableArrayList(rel));}
+
+
     // METHODS
     /**
      * Prida tridu do seznamu trid

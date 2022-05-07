@@ -36,6 +36,12 @@ public class UMLRelation {
         this.relationType = relationType;
     }
 
+    public UMLRelation(){
+        this.begin = null;
+        this.end = null;
+        this.relationType = RelationType.NULL;
+    }
+
     // GETTERS
     /**
      * @return Vrati tridu odkud vazba vychazi

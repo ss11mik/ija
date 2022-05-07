@@ -316,8 +316,7 @@ public class UMLController {
             VBox newClass = GUIGener.createSeqObject(this, obj);
             ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
 
-            //TODO the correct one
-            data.getSeqDiagrams().get(0).addObject(obj);
+            data.getSeqDiagrams().get(tabs.getSelectionModel().getSelectedIndex()-1).addObject(obj);
         });
     }
 

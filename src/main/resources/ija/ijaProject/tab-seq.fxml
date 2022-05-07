@@ -10,16 +10,16 @@
 <content>
     <AnchorPane style="-fx-background-color: white;">
     <children>
-        <ScrollPane>
-        <content>
+<!--         <ScrollPane> -->
+<!--         <content> -->
           <HBox id="Content" spacing="20" >
           <children>
 
 <!--             <Button mnemonicParsing="false" prefHeight="3000.0" prefWidth="1500.0" text="Add Class" /> -->
           </children>
           </HBox>
-        </content>
-        </ScrollPane>
+<!--         </content> -->
+<!--         </ScrollPane> -->
     </children>
     </AnchorPane>
 </content>

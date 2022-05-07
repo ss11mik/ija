@@ -73,20 +73,17 @@ public class UMLController {
     @FXML
     protected void initialize() {
 
-        try {
+        refreshTabs();
+        data.getSeqDiagramsProperty().addListener((observable, oldValue, newValue) -> {refreshTabs(newValue);});
 
-            refreshTabs();
-            data.getSeqDiagramsProperty().addListener((observable, oldValue, newValue) -> {refreshTabs(newValue);});
+        refreshClasses(data.getClassDiagram().getClasses());
+        data.getClassDiagram().getClassesProperty().addListener((observable, oldValue, newValue) -> {refreshClasses(newValue);});
 
-            refreshClasses(data.getClassDiagram().getClasses());
-            data.getClassDiagram().getClassesProperty().addListener((observable, oldValue, newValue) -> {refreshClasses(newValue);});
-
-            for (UMLDiagramSequence seq : data.getSeqDiagrams()) {
-                refreshObjects(seq.getObjectsProperty());
-                seq.getObjectsProperty()addListener((observable, oldValue, newValue) -> {refreshObjects(newValue);});
-            }
-        } catch (IOException e) {
+        for (UMLDiagramSequence seq : data.getSeqDiagrams()) {
+            refreshObjects(seq.getObjectsProperty());
+            seq.getObjectsProperty().addListener((observable, oldValue, newValue) -> {refreshObjects(newValue);});
         }
+
     }
 
     void refreshTabs () {
@@ -94,14 +91,17 @@ public class UMLController {
     }
     void refreshTabs (List<UMLDiagramSequence> newValue) {
 
-        Tab tab = FXMLLoader.load(this.getClass().getResource("tab-class.fxml"));
-        tab.textProperty().bind(data.getClassDiagram().getNameProperty());
+        try {
+            Tab tab = FXMLLoader.load(this.getClass().getResource("tab-class.fxml"));
+            tab.textProperty().bind(data.getClassDiagram().getNameProperty());
 
-        tabs.getTabs().add(tab);
+            tabs.getTabs().add(tab);
 
-        for (UMLDiagramSequence seqDia : newValue) {
-    System.out.println("aa");
+            for (UMLDiagramSequence seqDia : newValue) {
+        System.out.println("aa");
 
+            }
+        } catch (IOException e) {
         }
     }
 

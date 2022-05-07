@@ -7,23 +7,31 @@
 
 <VBox minWidth="150.0" prefWidth="150.0" style="-fx-border-color: black;              -fx-border-insets: 5;              -fx-background-color: #c3c3c3;              -fx-border-width: 3;" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
 <children>
-    <Label id="name" alignment="CENTER" prefWidth="120.0" text="Class name" textAlignment="CENTER" />
+   <HBox prefWidth="200.0">
+      <children>
+      <Label id="name" alignment="CENTER" prefWidth="120.0" text="Class name" textAlignment="CENTER" />
+      <Button id="btn_editName" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="e">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      </children>
+   </HBox>
 
     <Separator />
     <VBox id="attrs">
         <children>
             <HBox prefWidth="200.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="62.0" text="Attributes">
+                  <Label prefHeight="30.0" prefWidth="62.0" text="Attributes">
                      <HBox.margin>
                         <Insets left="8.0" />
                      </HBox.margin>
                   </Label>
-                  <Button id="btn_addAttribute" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="+">
+                  <Button id="btn_addAttribute"  mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="+">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></Button>
-                  <Button id="btDelAttr" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="-">
+                  <Button id="btDelAttr" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="-">
                      <HBox.margin>
                         <Insets left="2.0" />
                      </HBox.margin>

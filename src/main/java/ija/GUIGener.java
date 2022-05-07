@@ -73,6 +73,21 @@ public class GUIGener {
             });
             name.setText((data.isClass()? "" : "<<interface>>\n") + data.getName());
 
+
+            Button btnEditName = (Button) vbox.lookup("#btn_editName");
+            btnEditName.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    TextInputDialog dialog = new TextInputDialog(data.getName());
+                    dialog.setTitle("Class");
+                    dialog.setHeaderText(null);
+                    dialog.setContentText("Please new enter class name:");
+
+                    Optional<String> result = dialog.showAndWait();
+                    if(result.isPresent()) {
+                        data.setName(result.get());
+                    }
+            }});
+
             VBox attrs = (VBox) vbox.lookup("#attrs");
             Label label_attrs = (Label) attrs.lookup("#text_attributes");
 

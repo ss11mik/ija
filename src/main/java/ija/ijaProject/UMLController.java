@@ -422,10 +422,11 @@ public class UMLController {
         content.getChildren().add(line);
         line.toBack();
     }
+
+
     @FXML
     private void addMessage(){
 
-System.out.println("aa");
 
         Dialog<UMLMessage> dialog = new Dialog();
         dialog.setTitle("Add message");
@@ -449,17 +450,15 @@ System.out.println("aa");
         comBoxObjectto.getSelectionModel().select(0);
         TextField textTime = new TextField();
         textTime.setPromptText("time in seconds");
-        ComboBox comBoxMethod = new ComboBox();
+        ComboBox<UMLMethod> comBoxMethod = new ComboBox();
 
-        comBoxMethod.getItems().setAll(data.getClassDiagram().getClasses().get(0).getMethods());
-        //TODO only first class methods yet
-//        int index = 0;
-//        for (int i = 0; i < data.getClassDiagram().getClasses().size(); i++){
-//            for(int k = 0; k < data.getClassDiagram().getClasses().get(i).getMethods().size(); k++){
-//                comBoxMethod.getItems().set(index++, data.getClassDiagram().getClasses().get(i).getMethods().get(k));
-//            }
-//        }
+        comBoxMethod.getItems().setAll(((UMLObject) comBoxObjectto.valueProperty().get()).getInstance().getMethods());
         comBoxMethod.getSelectionModel().select(0);
+
+        comBoxObjectto.valueProperty().addListener((observable, oldValue, newValue) -> {
+            comBoxMethod.getItems().setAll(((UMLObject) newValue).getInstance().getMethods());
+            comBoxMethod.getSelectionModel().select(0);
+        });
 
         grid.add(new Label("Message type:"), 0,0);
         grid.add(comBoxType,1,0);

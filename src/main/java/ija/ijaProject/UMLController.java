@@ -214,7 +214,12 @@ public class UMLController {
         //TODO, need to know the tab
 
 
+        VBox lifetime = null;
 
+        Pane content = (Pane) (tabs.getTabs().get(diaIndex).getContent().lookup("#formsgs"));
+        if (content == null)
+            return;
+        content.getChildren().clear();
         for (UMLMessage msg : msgs) {
 /*
             Node xfirst = p.lookup("x1");
@@ -247,10 +252,6 @@ public class UMLController {
             line.setStrokeWidth(3);
             line.setStroke(Color.BLACK);
 
-            Pane content = (Pane) (tabs.getTabs().get(diaIndex).getContent().lookup("#formsgs"));
-            if (content == null)
-                return;
-
             line.setStartX(fromX);
             line.setStartY(time);
             line.setEndX(toX);
@@ -261,9 +262,27 @@ public class UMLController {
             l.setTranslateX((toX + fromX)/2);
             l.setTranslateY(time - 20);
 
+
+            if(msg.getType() == UMLMessage.MessageType.CREATE) {
+                lifetime = new VBox();
+                lifetime.setStyle("-fx-background-color: red" );
+                lifetime.setMinWidth(40);
+
+                lifetime.setTranslateX((toX) - 20);
+                lifetime.setTranslateY(time);
+            }
+
+            if(msg.getType() == UMLMessage.MessageType.DELETE && lifetime != null) {
+                lifetime.setMinHeight(time - lifetime.getTranslateY());
+
+                content.getChildren().add(lifetime);
+                lifetime = null;
+            }
+
+
             content.getChildren().add(line);
             content.getChildren().add(l);
-            }
+        }
     }
 
 

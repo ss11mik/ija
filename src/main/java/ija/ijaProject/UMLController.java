@@ -233,7 +233,6 @@ public class UMLController {
 
     @FXML
     private void addInterface () {
-
         TextInputDialog dialog = new TextInputDialog("enter interface name");
         dialog.setTitle("New Interface");
         dialog.setHeaderText(null);

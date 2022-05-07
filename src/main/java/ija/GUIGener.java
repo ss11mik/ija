@@ -36,6 +36,8 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 import javafx.scene.control.ComboBox;
 
+import javafx.beans.property.*;
+
 /**
  * Obsluhuje tvorbu a editaci diagramu.
  *
@@ -66,7 +68,10 @@ public class GUIGener {
 
 
             Label name = (Label) vbox.lookup("#name");
-            name.textProperty().bind(data.getNameProperty());
+            data.getNameProperty().addListener((observable, oldValue, newValue) -> {
+                name.setText((data.isClass()? "" : "<<interface>>\n") + newValue);
+            });
+            name.setText((data.isClass()? "" : "<<interface>>\n") + data.getName());
 
             VBox attrs = (VBox) vbox.lookup("#attrs");
             Label label_attrs = (Label) attrs.lookup("#text_attributes");
@@ -83,8 +88,8 @@ public class GUIGener {
                 for (int i =0; i < newValue.size(); i++){
                     label_attrs.setText(label_attrs.getText() + newValue.get(i).toString() + "\n");
                 }
-
             });
+
             Button btnAddAttr = (Button) vbox.lookup("#btn_addAttribute");
             btnAddAttr.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {

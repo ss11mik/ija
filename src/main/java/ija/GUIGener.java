@@ -57,7 +57,12 @@ public class GUIGener {
     public static VBox createClass (UMLController ctx, UMLClass data) {
         try {
             final VBox vbox = FXMLLoader.load(ctx.getClass().getResource("class-box.fxml"));
-            Draggable.Nature d= new Draggable.Nature(vbox);
+            Draggable.Nature d = new Draggable.Nature(vbox);
+
+            vbox.setTranslateX(data.getXLocation());
+            data.getXLocationProperty().bind(vbox.translateXProperty());
+            vbox.setTranslateY(data.getYLocation());
+            data.getYLocationProperty().bind(vbox.translateYProperty());
 
 
             Label name = (Label) vbox.lookup("#name");
@@ -274,8 +279,6 @@ public class GUIGener {
                     });
                 }
             });
-
-//             vbox.setOnMouseDragged(new DragDrop(vbox, ctx));
 
             return vbox;
         }

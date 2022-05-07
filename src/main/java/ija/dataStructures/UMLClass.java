@@ -24,9 +24,9 @@ public class UMLClass {
     /** Seznam metod tridy */
     protected ListProperty<UMLMethod> methods;
 
-    protected double xLocation;
+    protected DoubleProperty xLocation;
 
-    protected double yLocation;
+    protected DoubleProperty yLocation;
 
     // CONSTRUCTORS
     /**
@@ -43,8 +43,8 @@ public class UMLClass {
         this.isclass = isclass;
         this.attributes = new SimpleListProperty<UMLAttribute>(FXCollections.observableArrayList(attributes));
         this.methods = new SimpleListProperty<UMLMethod>(FXCollections.observableArrayList(methods));
-        this.xLocation = xLocation;
-        this.yLocation = yLocation;
+        this.xLocation = new SimpleDoubleProperty(xLocation);
+        this.yLocation = new SimpleDoubleProperty(yLocation);
     }
 
 
@@ -60,8 +60,8 @@ public class UMLClass {
         this.isclass = isclass;
         this.attributes = new SimpleListProperty<UMLAttribute>(FXCollections.observableArrayList(attributes));
         this.methods = new SimpleListProperty<UMLMethod>(FXCollections.observableArrayList(methods));
-        this.xLocation = 0.0;
-        this.yLocation = 0.0;
+        this.xLocation = new SimpleDoubleProperty(0.0);
+        this.yLocation = new SimpleDoubleProperty(0.0);
     }
 
     /**
@@ -74,8 +74,8 @@ public class UMLClass {
         this.isclass = isclass;
         this.attributes = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLAttribute>()));
         this.methods = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLMethod>()));
-        this.xLocation = 0.0;
-        this.yLocation = 0.0;
+        this.xLocation = new SimpleDoubleProperty(0.0);
+        this.yLocation = new SimpleDoubleProperty(0.0);
     }
 
     /**
@@ -85,8 +85,8 @@ public class UMLClass {
         this.attributes = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLAttribute>()));
         this.methods = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLMethod>()));
         this.name = new SimpleStringProperty("");
-        this.xLocation = 0.0;
-        this.yLocation = 0.0;
+        this.xLocation = new SimpleDoubleProperty(0.0);
+        this.yLocation = new SimpleDoubleProperty(0.0);
     }
 
     // GETTERS
@@ -130,10 +130,15 @@ public class UMLClass {
      @JsonIgnore
     public ListProperty<UMLMethod> getMethodsProperty() {return methods;}
 
-    public double getXLocation() {return xLocation;}
+    public double getXLocation() {return xLocation.get();}
 
-    public double getYLocation() {return yLocation;}
+    public double getYLocation() {return yLocation.get();}
 
+    @JsonIgnore
+    public DoubleProperty getXLocationProperty() {return xLocation;}
+
+    @JsonIgnore
+    public DoubleProperty getYLocationProperty() {return yLocation;}
     // SETTERS
 
     /**
@@ -160,9 +165,9 @@ public class UMLClass {
      */
     public void setMethods(List<UMLMethod> methods) {this.methods = new SimpleListProperty(FXCollections.observableArrayList(methods));}
 
-    public void setXLocation(double xLocation) {this.xLocation = xLocation;}
+    public void setXLocation(double xLocation) {this.xLocation.set(xLocation);}
 
-    public void setYLocation(double yLocation) {this.yLocation = yLocation;}
+    public void setYLocation(double yLocation) {this.yLocation.set(yLocation);}
 
     // METHODS
 

@@ -471,7 +471,7 @@ public class UMLController {
     private void addRelation(){
 
         Dialog<UMLRelation> dialog = new Dialog();
-        dialog.setTitle("Add message");
+        dialog.setTitle("Add relation");
         dialog.setHeaderText(null);
 
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);

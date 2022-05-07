@@ -31,16 +31,18 @@ public class UMLEditor extends Application {
 
         TabPane tabs = (TabPane) scene.lookup("#tabs");
         tabs.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
-            Group groupClass = (Group) scene.lookup("#group_class");
-            Group groupSequence = (Group) scene.lookup("#group_sequnce");
+            if (newTab != null) {
+                Group groupClass = (Group) scene.lookup("#group_class");
+                Group groupSequence = (Group) scene.lookup("#group_sequnce");
 
-            if (newTab.getId() != null && newTab.getId().equals("tab-class")) {
-                groupClass.setVisible(true);
-                groupSequence.setVisible(false);
-            }
-            else {
-                groupClass.setVisible(false);
-                groupSequence.setVisible(true);
+                if (newTab.getId() != null && newTab.getId().equals("tab-class")) {
+                    groupClass.setVisible(true);
+                    groupSequence.setVisible(false);
+                }
+                else {
+                    groupClass.setVisible(false);
+                    groupSequence.setVisible(true);
+                }
             }
         });
     }

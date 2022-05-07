@@ -72,7 +72,7 @@ public class GUIGener {
             Label label_attrs = (Label) attrs.lookup("#text_attributes");
 
             for (UMLAttribute att : data.getAttributesProperty()) {
-                attrs.getChildren().add(new Label(att.toString()));
+                label_attrs.setText(label_attrs.getText() + att.toString() + "\n");
             }
 
             data.getAttributesProperty().addListener((observable, oldValue, newValue) -> {
@@ -181,7 +181,7 @@ public class GUIGener {
             Label label_methods = (Label) methods.lookup("#text_methods");
 
             for (UMLMethod meth : data.getMethodsProperty()) {
-                methods.getChildren().add(new Label(meth.toString()));
+                label_methods.setText(label_methods.getText() + meth.toString() + "\n");
             }
 
             data.getMethodsProperty().addListener((observable, oldValue, newValue) -> {

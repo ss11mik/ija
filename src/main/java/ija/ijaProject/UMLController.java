@@ -78,6 +78,7 @@ public class UMLController {
 
 //         refreshClasses(data.getClassDiagram().getClasses());
         data.getClassDiagram().getClassesProperty().addListener((observable, oldValue, newValue) -> {refreshClasses(newValue);});
+        data.getClassDiagram().getRelationsProperty().addListener((observable, oldValue, newValue) -> {refreshClasses();});
 
             int i =1;
         for (UMLDiagramSequence seq : data.getSeqDiagrams()) {
@@ -122,10 +123,11 @@ public class UMLController {
         refreshClasses(data.getClassDiagram().getClasses());
     }
     void refreshClasses (List<UMLClass> newValue) {
+
         Pane p = (Pane) getCurrentTabContent().lookup("#Content");
         ArrayList<Node> toRemove = new ArrayList();
         for (Node child : p.getChildren()) {
-            if (child instanceof VBox)
+//             if (child instanceof VBox)
                 toRemove.add(child);
         }
         p.getChildren().removeAll(toRemove);
@@ -134,7 +136,71 @@ public class UMLController {
             VBox newClass = GUIGener.createClass(this, cl);
             p.getChildren().add(newClass);
         }
+
+        for (UMLRelation rel : data.getClassDiagram().getRelations()) {
+            Node xfirst = null;
+            Node xsecond = null;
+
+            for (Node box : p.getChildren()) {
+                try{
+                    if (((Label) box.lookup("#name")).getText().equals(rel.getBegin().getName()))
+                        xfirst = box;
+                    if (((Label) box.lookup("#name")).getText().equals(rel.getEnd().getName()))
+                        xsecond = box;
+                }catch(NullPointerException e) {}
+            }
+
+            if (xfirst == null || xsecond == null)
+                continue;
+
+            final Node first = xfirst;
+            final Node second = xsecond;
+
+            Line line = new Line();
+            line.setStrokeWidth(5);
+            line.setStroke(Color.BLACK);
+
+            Pane content = ((Pane)getCurrentTabContent().lookup("#Content"));
+
+            ObjectBinding<Bounds> l1 = Bindings.createObjectBinding(() -> {
+                return first.getBoundsInParent();
+            }, first.boundsInParentProperty(), first.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+
+            ObjectBinding<Bounds> l2 = Bindings.createObjectBinding(() -> {
+                return second.getBoundsInParent();
+            }, second.boundsInParentProperty(), second.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+
+
+            DoubleBinding startX = Bindings.createDoubleBinding(() -> {
+                Bounds b = l1.get();
+                return b.getMinX() + b.getWidth() / 2 ;
+            }, l1);
+            DoubleBinding startY = Bindings.createDoubleBinding(() -> {
+                Bounds b = l1.get();
+                return b.getMinY() + b.getHeight() / 2 ;
+            }, l1);
+
+
+            DoubleBinding endX = Bindings.createDoubleBinding(() -> {
+                Bounds b = l2.get();
+                return b.getMinX() + b.getWidth() / 2 ;
+            }, l2);
+            DoubleBinding endY = Bindings.createDoubleBinding(() -> {
+                Bounds b = l2.get();
+                return b.getMinY() + b.getHeight() / 2 ;
+            }, l2);
+
+            line.startXProperty().bind(startX);
+            line.startYProperty().bind(startY);
+            line.endXProperty().bind(endX);
+            line.endYProperty().bind(endY);
+
+
+            content.getChildren().add(line);
+            line.toBack();
+        }
     }
+
 
     void refreshObjects (List<UMLObject> newValue, int diaIndex) {
     System.out.println("qqq");
@@ -451,54 +517,8 @@ public class UMLController {
 
         Optional<UMLRelation> result = dialog.showAndWait();
         result.ifPresent(rel -> {
-
             data.getClassDiagram().addRelation(rel);
-/*
-            Node first = a;
-            Node second = bb;
-
-            Line line = new Line();
-            line.setStrokeWidth(5);
-            line.setStroke(Color.BLACK);
-
-            Pane content = ((Pane)getCurrentTabContent().lookup("#Content"));
-
-            ObjectBinding<Bounds> l1 = Bindings.createObjectBinding(() -> {
-                return first.getBoundsInParent();
-            }, first.boundsInParentProperty(), first.localToSceneTransformProperty(), content.localToSceneTransformProperty());
-
-            ObjectBinding<Bounds> l2 = Bindings.createObjectBinding(() -> {
-                return second.getBoundsInParent();
-            }, bb.boundsInParentProperty(), second.localToSceneTransformProperty(), content.localToSceneTransformProperty());
-
-
-            DoubleBinding startX = Bindings.createDoubleBinding(() -> {
-                Bounds b = l1.get();
-                return b.getMinX() + b.getWidth() / 2 ;
-            }, l1);
-            DoubleBinding startY = Bindings.createDoubleBinding(() -> {
-                Bounds b = l1.get();
-                return b.getMinY() + b.getHeight() / 2 ;
-            }, l1);
-
-
-            DoubleBinding endX = Bindings.createDoubleBinding(() -> {
-                Bounds b = l2.get();
-                return b.getMinX() + b.getWidth() / 2 ;
-            }, l2);
-            DoubleBinding endY = Bindings.createDoubleBinding(() -> {
-                Bounds b = l2.get();
-                return b.getMinY() + b.getHeight() / 2 ;
-            }, l2);
-
-            line.startXProperty().bind(startX);
-            line.startYProperty().bind(startY);
-            line.endXProperty().bind(endX);
-            line.endYProperty().bind(endY);
-
-
-            content.getChildren().add(line);
-            line.toBack();*/
+            refreshClasses();
         });
     }
 

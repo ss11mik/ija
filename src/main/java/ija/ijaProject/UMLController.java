@@ -83,8 +83,11 @@ public class UMLController {
         tabs.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
             int i = (Integer)(newValue);
             if( i <=0) return;
-            refreshObjects(data.getSeqDiagrams().get(i-1).getObjectsProperty(), i);
-            data.getSeqDiagrams().get(i-1).getObjectsProperty().addListener((observable1, oldValue1, newValue1) -> {refreshObjects(newValue1, i);});
+            refreshObjects(data.getSeqDiagrams().get(i-1).getObjectsProperty(), data.getSeqDiagrams().get(i-1).getMessages(), i);
+
+            data.getSeqDiagrams().get(i-1).getObjectsProperty().addListener((observable1, oldValue1, newValue1) -> {refreshObjects(newValue1, data.getSeqDiagrams().get(i-1).getMessages(), i);});
+
+            data.getSeqDiagrams().get(i-1).getMessagesProperty().addListener((observable1, oldValue1, newValue1) -> {refreshObjects(data.getSeqDiagrams().get(i-1).getObjectsProperty(), newValue1, i);});
             });
         }
 
@@ -199,7 +202,7 @@ public class UMLController {
     }
 
 
-    void refreshObjects (List<UMLObject> newValue, int diaIndex) {
+    void refreshObjects (List<UMLObject> newValue, List<UMLMessage> msgs, int diaIndex) {
         Pane p = (Pane) tabs.getTabs().get(diaIndex).getContent().lookup("#Content");
         if (p == null)
             return;
@@ -209,6 +212,58 @@ public class UMLController {
             (p).getChildren().add(newClass);
         }
         //TODO, need to know the tab
+
+
+
+        for (UMLMessage msg : msgs) {
+/*
+            Node xfirst = p.lookup("x1");
+            Node xsecond = p.lookup("x2") ;*/
+/*
+
+            Node xfirst = null;
+            Node xsecond = null;
+
+            for (Node box : p.getChildren()) {
+                try{
+                    if (((Label) box.lookup("#name")).getText().equals(rel.getBegin().getName()))
+                        xfirst = box;
+                    if (((Label) box.lookup("#name")).getText().equals(rel.getEnd().getName()))
+                        xsecond = box;
+                }catch(NullPointerException e) {}
+            }
+
+            if (xfirst == null || xsecond == null)
+                continue;*/
+/*
+            final Node first = xfirst;
+            final Node second = xsecond;*/
+
+            double fromX = 120 * msg.getFrom().index + 50;
+            double toX = 120 * msg.getTo().index + 50;
+            double time = msg.getTimeStart() + 80;
+
+            Line line = new Line();
+            line.setStrokeWidth(3);
+            line.setStroke(Color.BLACK);
+
+            Pane content = (Pane) (tabs.getTabs().get(diaIndex).getContent().lookup("#formsgs"));
+            if (content == null)
+                return;
+
+            line.setStartX(fromX);
+            line.setStartY(time);
+            line.setEndX(toX);
+            line.setEndY(time);
+
+            Label l = new Label();
+            l.setText(msg.getMethod().toString());
+            l.setTranslateX((toX + fromX)/2);
+            l.setTranslateY(time - 20);
+
+            content.getChildren().add(line);
+            content.getChildren().add(l);
+            }
     }
 
 
@@ -589,57 +644,6 @@ public class UMLController {
         result.ifPresent(msg -> {
 
             current.addMessage(msg);
-
-
-
-
-
-
-Pane p = (Pane)tabs.getTabs().get(1).getContent().lookup("#Content");
-
-            Node xfirst = p.lookup("x1");
-            Node xsecond = p.lookup("x2") ;
-/*
-
-            Node xfirst = null;
-            Node xsecond = null;
-
-            for (Node box : p.getChildren()) {
-                try{
-                    if (((Label) box.lookup("#name")).getText().equals(rel.getBegin().getName()))
-                        xfirst = box;
-                    if (((Label) box.lookup("#name")).getText().equals(rel.getEnd().getName()))
-                        xsecond = box;
-                }catch(NullPointerException e) {}
-            }
-
-            if (xfirst == null || xsecond == null)
-                continue;*/
-
-            final Node first = xfirst;
-            final Node second = xsecond;
-
-            double fromX = 120 * msg.getFrom().index + 50;
-            double toX = 120 * msg.getTo().index + 50;
-
-            Line line = new Line();
-            line.setStrokeWidth(5);
-            line.setStroke(Color.BLACK);
-
-            Pane content = ((Pane)getCurrentTabContent().lookup("#formsgs"));
-
-            line.setStartX(fromX);
-            line.setStartY(msg.getTimeStart());
-            line.setEndX(toX);
-            line.setEndY(msg.getTimeStart());
-
-            Label l = new Label();
-            l.setText(msg.getMethod().toString());
-            l.setTranslateX((toX + fromX)/2);
-            l.setTranslateY(msg.getTimeStart() - 20);
-
-            content.getChildren().add(line);
-            content.getChildren().add(l);
 
 
         });

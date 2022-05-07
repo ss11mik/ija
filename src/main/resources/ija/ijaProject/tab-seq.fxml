@@ -20,9 +20,9 @@
           </HBox>
 
           <AnchorPane style="-fx-background-color: transparent;" id="formsgs">
-    <children>
-      </children>
-    </AnchorPane>
+        <children>
+          </children>
+        </AnchorPane>
 <!--         </content> -->
 <!--         </ScrollPane> -->
     </children>

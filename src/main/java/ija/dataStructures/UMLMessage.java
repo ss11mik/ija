@@ -58,6 +58,14 @@ public class UMLMessage {
         this.method = null;
     }
 
+    public UMLMessage(){
+        this.type = MessageType.NULL;
+        this.from = null;
+        this.to = null;
+        this.time_start = 0;
+        this.method = null;
+    }
+
     // GETTERS
 
     /**

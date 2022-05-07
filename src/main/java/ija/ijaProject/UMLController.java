@@ -619,24 +619,27 @@ Pane p = (Pane)tabs.getTabs().get(1).getContent().lookup("#Content");
             final Node first = xfirst;
             final Node second = xsecond;
 
+            double fromX = 120 * msg.getFrom().index + 50;
+            double toX = 120 * msg.getTo().index + 50;
+
             Line line = new Line();
             line.setStrokeWidth(5);
             line.setStroke(Color.BLACK);
 
             Pane content = ((Pane)getCurrentTabContent().lookup("#formsgs"));
 
-            line.setStartX(120 * msg.getFrom().index + 50);
+            line.setStartX(fromX);
             line.setStartY(msg.getTimeStart());
-            line.setEndX(120 * msg.getTo().index + 50);
+            line.setEndX(toX);
             line.setEndY(msg.getTimeStart());
 
+            Label l = new Label();
+            l.setText(msg.getMethod().toString());
+            l.setTranslateX((toX + fromX)/2);
+            l.setTranslateY(msg.getTimeStart() - 20);
 
             content.getChildren().add(line);
-            line.toBack();
-
-
-
-
+            content.getChildren().add(l);
 
 
         });

@@ -265,11 +265,13 @@ public class UMLController {
 
             if(msg.getType() == UMLMessage.MessageType.CREATE) {
                 lifetime = new VBox();
-                lifetime.setStyle("-fx-background-color: red" );
+                lifetime.setStyle("-fx-background-color: grey" );
                 lifetime.setMinWidth(40);
 
                 lifetime.setTranslateX((toX) - 20);
                 lifetime.setTranslateY(time);
+
+                l.setText("Create");
             }
 
             if(msg.getType() == UMLMessage.MessageType.DELETE && lifetime != null) {
@@ -277,6 +279,8 @@ public class UMLController {
 
                 content.getChildren().add(lifetime);
                 lifetime = null;
+
+                l.setText("Delete");
             }
 
 

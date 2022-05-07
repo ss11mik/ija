@@ -12,6 +12,7 @@ public class UMLObject {
     /** Trida jehoz instanci je objekt */
     protected UMLClass instance;
 
+    public int index = 0;
 
 
     // CONSTRUCTOR

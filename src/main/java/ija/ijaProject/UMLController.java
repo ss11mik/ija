@@ -404,6 +404,7 @@ public class UMLController {
         result.ifPresent(cl -> {
 
             UMLObject obj = new UMLObject(cl.getKey(), cl.getValue());
+            obj.index = data.getSeqDiagrams().get(tabs.getSelectionModel().getSelectedIndex()-1).getObjects().size();
 
             data.getSeqDiagrams().get(tabs.getSelectionModel().getSelectedIndex()-1).addObject(obj);
         });
@@ -585,9 +586,59 @@ public class UMLController {
         });
 
         Optional<UMLMessage> result = dialog.showAndWait();
-        result.ifPresent(cl -> {
+        result.ifPresent(msg -> {
 
-            current.addMessage(cl);
+            current.addMessage(msg);
+
+
+
+
+
+
+Pane p = (Pane)tabs.getTabs().get(1).getContent().lookup("#Content");
+
+            Node xfirst = p.lookup("x1");
+            Node xsecond = p.lookup("x2") ;
+/*
+
+            Node xfirst = null;
+            Node xsecond = null;
+
+            for (Node box : p.getChildren()) {
+                try{
+                    if (((Label) box.lookup("#name")).getText().equals(rel.getBegin().getName()))
+                        xfirst = box;
+                    if (((Label) box.lookup("#name")).getText().equals(rel.getEnd().getName()))
+                        xsecond = box;
+                }catch(NullPointerException e) {}
+            }
+
+            if (xfirst == null || xsecond == null)
+                continue;*/
+
+            final Node first = xfirst;
+            final Node second = xsecond;
+
+            Line line = new Line();
+            line.setStrokeWidth(5);
+            line.setStroke(Color.BLACK);
+
+            Pane content = ((Pane)getCurrentTabContent().lookup("#formsgs"));
+
+            line.setStartX(120 * msg.getFrom().index + 50);
+            line.setStartY(msg.getTimeStart());
+            line.setEndX(120 * msg.getTo().index + 50);
+            line.setEndY(msg.getTimeStart());
+
+
+            content.getChildren().add(line);
+            line.toBack();
+
+
+
+
+
+
         });
     }
 

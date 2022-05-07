@@ -18,6 +18,11 @@
 <!--             <Button mnemonicParsing="false" prefHeight="3000.0" prefWidth="1500.0" text="Add Class" /> -->
           </children>
           </HBox>
+
+          <AnchorPane style="-fx-background-color: transparent;" id="formsgs">
+    <children>
+      </children>
+    </AnchorPane>
 <!--         </content> -->
 <!--         </ScrollPane> -->
     </children>

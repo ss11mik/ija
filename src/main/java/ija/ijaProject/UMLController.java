@@ -76,7 +76,7 @@ public class UMLController {
         refreshTabs();
         data.getSeqDiagramsProperty().addListener((observable, oldValue, newValue) -> {refreshTabs(newValue);});
 
-        refreshClasses(data.getClassDiagram().getClasses());
+//         refreshClasses(data.getClassDiagram().getClasses());
         data.getClassDiagram().getClassesProperty().addListener((observable, oldValue, newValue) -> {refreshClasses(newValue);});
 
         for (UMLDiagramSequence seq : data.getSeqDiagrams()) {
@@ -95,9 +95,16 @@ public class UMLController {
             Tab tab = FXMLLoader.load(this.getClass().getResource("tab-class.fxml"));
             tab.textProperty().bind(data.getClassDiagram().getNameProperty());
 
+            tabs.getTabs().clear();
             tabs.getTabs().add(tab);
+            refreshClasses(data.getClassDiagram().getClasses());
 
             for (UMLDiagramSequence seqDia : newValue) {
+
+                tab = FXMLLoader.load(this.getClass().getResource("tab-seq.fxml"));
+                tab.textProperty().bind(seqDia.getNameProperty());
+
+                tabs.getTabs().add(tab);
         System.out.println("aa");
 
             }
@@ -322,10 +329,7 @@ public class UMLController {
 
         UMLDiagramSequence newSeq = new UMLDiagramSequence("Sequence Diagram");
 
-        Tab tab = FXMLLoader.load(this.getClass().getResource("tab-seq.fxml"));
-        tab.textProperty().bind(newSeq.getNameProperty());
-
-        tabs.getTabs().add(tab);
+//         tabs.getTabs().add(tab);
 
         data.addSeqDiagram(newSeq);
     }

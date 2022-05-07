@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class UMLDiagramClass extends UMLDiagram {
     /** Seznam trid diagramu */
     protected ListProperty<UMLClass> classes;
+    protected ListProperty<UMLRelation> relations;
 
     // CONSTRUCTORS
     /**
@@ -28,6 +29,7 @@ public class UMLDiagramClass extends UMLDiagram {
     public UMLDiagramClass(String name, List<UMLClass> classes){
         super(name);
         this.classes = new SimpleListProperty<UMLClass>(FXCollections.observableArrayList(classes));
+        this.relations = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLRelation>()));
     }
 
     /**
@@ -37,6 +39,7 @@ public class UMLDiagramClass extends UMLDiagram {
     public UMLDiagramClass(String name){
         super(name);
         this.classes = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLClass>()));
+        this.relations = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLRelation>()));
     }
 
     /**
@@ -45,6 +48,7 @@ public class UMLDiagramClass extends UMLDiagram {
     public UMLDiagramClass(){
         super();
         this.classes = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLClass>()));
+        this.relations = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLRelation>()));
     }
 
     // GETTER
@@ -58,6 +62,17 @@ public class UMLDiagramClass extends UMLDiagram {
      */
      @JsonIgnore
     public ListProperty<UMLClass> getClassesProperty() {return classes;}
+
+    /**
+     * @return Vrati seznam relaci diagramu
+     */
+    public List<UMLRelation> getRelations() {return relations.get();}
+
+    /**
+     * @return Vrati seznam relaci diagramu
+     */
+     @JsonIgnore
+    public ListProperty<UMLRelation> getRelationsProperty() {return relations;}
 
     // SETTER
     /**
@@ -75,6 +90,15 @@ public class UMLDiagramClass extends UMLDiagram {
         classes.add(clas);
     }
 
+       /**
+     * Prida tridu do seznamu relaci
+     * @param clas nova relace
+     */
+    public void addRelation(UMLRelation rel){
+        relations.add(rel);
+    }
+
+
     /**
      * Odstrani vybranou tridu ze seznamu
      * @param name Nazev vybrane tridy pro odstraneni
@@ -91,6 +115,9 @@ public class UMLDiagramClass extends UMLDiagram {
         classes.remove(clas);
     }
 
+    public void removeRelation(UMLRelation rel){
+        relations.remove(rel);
+    }
     /**
      * Odstrani vsechny tridy ze seznamu trid
      */

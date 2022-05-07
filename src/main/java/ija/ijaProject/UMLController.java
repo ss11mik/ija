@@ -137,6 +137,7 @@ public class UMLController {
     }
 
     void refreshObjects (List<UMLObject> newValue, int diaIndex) {
+    System.out.println("qqq");
         Pane p = (Pane) getCurrentTabContent().lookup("#Content");
         p.getChildren().clear();
 
@@ -400,55 +401,105 @@ public class UMLController {
     }
 
 
-    Node a, bb;
     @FXML
     private void addRelation(){
 
-        Node first = a;
-        Node second = bb;
+        Dialog<UMLRelation> dialog = new Dialog();
+        dialog.setTitle("Add message");
+        dialog.setHeaderText(null);
 
-        Line line = new Line();
-        line.setStrokeWidth(5);
-        line.setStroke(Color.BLACK);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
-        Pane content = ((Pane)getCurrentTabContent().lookup("#Content"));
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20,30,10,30));
 
-        ObjectBinding<Bounds> l1 = Bindings.createObjectBinding(() -> {
-            return first.getBoundsInParent();
-        }, first.boundsInParentProperty(), first.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+        ComboBox comBoxType = new ComboBox();
+        comBoxType.getItems().setAll(UMLRelation.RelationType.values());
+        comBoxType.getSelectionModel().select(0);
 
-        ObjectBinding<Bounds> l2 = Bindings.createObjectBinding(() -> {
-            return second.getBoundsInParent();
-        }, bb.boundsInParentProperty(), second.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+        ComboBox comBoxObjectfrom = new ComboBox();
+        comBoxObjectfrom.getItems().setAll(data.getClassDiagram().getClasses());
+        comBoxObjectfrom.getSelectionModel().select(0);
 
-
-        DoubleBinding startX = Bindings.createDoubleBinding(() -> {
-            Bounds b = l1.get();
-            return b.getMinX() + b.getWidth() / 2 ;
-        }, l1);
-        DoubleBinding startY = Bindings.createDoubleBinding(() -> {
-            Bounds b = l1.get();
-            return b.getMinY() + b.getHeight() / 2 ;
-        }, l1);
+        ComboBox comBoxObjectto = new ComboBox();
+        comBoxObjectto.getItems().setAll(data.getClassDiagram().getClasses());
+        comBoxObjectto.getSelectionModel().select(0);
 
 
-        DoubleBinding endX = Bindings.createDoubleBinding(() -> {
-            Bounds b = l2.get();
-            return b.getMinX() + b.getWidth() / 2 ;
-        }, l2);
-        DoubleBinding endY = Bindings.createDoubleBinding(() -> {
-            Bounds b = l2.get();
-            return b.getMinY() + b.getHeight() / 2 ;
-        }, l2);
-
-        line.startXProperty().bind(startX);
-        line.startYProperty().bind(startY);
-        line.endXProperty().bind(endX);
-        line.endYProperty().bind(endY);
+        grid.add(new Label("Relation type:"), 0,0);
+        grid.add(comBoxType,1,0);
+        grid.add(new Label("Relation from:"),0,1);
+        grid.add(comBoxObjectfrom,1,1);
+        grid.add(new Label("Relation to:"),0,2);
+        grid.add(comBoxObjectto,1,2);
 
 
-        content.getChildren().add(line);
-        line.toBack();
+
+        dialog.getDialogPane().setContent(grid);
+
+        Platform.runLater(() -> comBoxType.requestFocus());
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return new UMLRelation((UMLClass) comBoxObjectfrom.getSelectionModel().getSelectedItem(),
+                        (UMLClass) comBoxObjectto.getSelectionModel().getSelectedItem(),(UMLRelation.RelationType) comBoxType.getSelectionModel().getSelectedItem());
+            }
+            return null;
+        });
+
+        Optional<UMLRelation> result = dialog.showAndWait();
+        result.ifPresent(rel -> {
+
+            data.getClassDiagram().addRelation(rel);
+/*
+            Node first = a;
+            Node second = bb;
+
+            Line line = new Line();
+            line.setStrokeWidth(5);
+            line.setStroke(Color.BLACK);
+
+            Pane content = ((Pane)getCurrentTabContent().lookup("#Content"));
+
+            ObjectBinding<Bounds> l1 = Bindings.createObjectBinding(() -> {
+                return first.getBoundsInParent();
+            }, first.boundsInParentProperty(), first.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+
+            ObjectBinding<Bounds> l2 = Bindings.createObjectBinding(() -> {
+                return second.getBoundsInParent();
+            }, bb.boundsInParentProperty(), second.localToSceneTransformProperty(), content.localToSceneTransformProperty());
+
+
+            DoubleBinding startX = Bindings.createDoubleBinding(() -> {
+                Bounds b = l1.get();
+                return b.getMinX() + b.getWidth() / 2 ;
+            }, l1);
+            DoubleBinding startY = Bindings.createDoubleBinding(() -> {
+                Bounds b = l1.get();
+                return b.getMinY() + b.getHeight() / 2 ;
+            }, l1);
+
+
+            DoubleBinding endX = Bindings.createDoubleBinding(() -> {
+                Bounds b = l2.get();
+                return b.getMinX() + b.getWidth() / 2 ;
+            }, l2);
+            DoubleBinding endY = Bindings.createDoubleBinding(() -> {
+                Bounds b = l2.get();
+                return b.getMinY() + b.getHeight() / 2 ;
+            }, l2);
+
+            line.startXProperty().bind(startX);
+            line.startYProperty().bind(startY);
+            line.endXProperty().bind(endX);
+            line.endYProperty().bind(endY);
+
+
+            content.getChildren().add(line);
+            line.toBack();*/
+        });
     }
 
 
@@ -519,12 +570,8 @@ public class UMLController {
         Optional<UMLMessage> result = dialog.showAndWait();
         result.ifPresent(cl -> {
 
-            UMLMessage msg = new UMLMessage(cl.getType(), cl.getFrom(), cl.getTo(), cl.getTimeStart(), cl.getMethod());
-
-            current.addMessage(msg);
+            current.addMessage(cl);
         });
-
-
     }
 
 

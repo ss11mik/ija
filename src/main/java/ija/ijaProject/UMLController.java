@@ -80,15 +80,13 @@ public class UMLController {
         data.getClassDiagram().getClassesProperty().addListener((observable, oldValue, newValue) -> {refreshClasses(newValue);});
         data.getClassDiagram().getRelationsProperty().addListener((observable, oldValue, newValue) -> {refreshClasses();});
 
-            int i =1;
-        for (UMLDiagramSequence seq : data.getSeqDiagrams()) {
-            final int thisI = i;
-//             refreshObjects(seq.getObjectsProperty(), i);
-            seq.getObjectsProperty().addListener((observable, oldValue, newValue) -> {refreshObjects(newValue, thisI);});
-            i++;
+        tabs.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            int i = (Integer)(newValue);
+            if( i <=0) return;
+            refreshObjects(data.getSeqDiagrams().get(i-1).getObjectsProperty(), i);
+            data.getSeqDiagrams().get(i-1).getObjectsProperty().addListener((observable1, oldValue1, newValue1) -> {refreshObjects(newValue1, i);});
+            });
         }
-
-    }
 
     void refreshTabs () {
         refreshTabs(data.getSeqDiagrams());
@@ -104,7 +102,6 @@ public class UMLController {
             refreshClasses(data.getClassDiagram().getClasses());
 
             for (UMLDiagramSequence seqDia : newValue) {
-
                 tab = FXMLLoader.load(this.getClass().getResource("tab-seq.fxml"));
                 tab.textProperty().bind(seqDia.getNameProperty());
 
@@ -203,10 +200,10 @@ public class UMLController {
 
 
     void refreshObjects (List<UMLObject> newValue, int diaIndex) {
-    System.out.println("qqq");
-        Pane p = (Pane) getCurrentTabContent().lookup("#Content");
+        Pane p = (Pane) tabs.getTabs().get(diaIndex).getContent().lookup("#Content");
+        if (p == null)
+            return;
         p.getChildren().clear();
-
         for (UMLObject obj : newValue) {
             VBox newClass = GUIGener.createSeqObject(this, obj);
             (p).getChildren().add(newClass);

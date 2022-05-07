@@ -79,9 +79,12 @@ public class UMLController {
 //         refreshClasses(data.getClassDiagram().getClasses());
         data.getClassDiagram().getClassesProperty().addListener((observable, oldValue, newValue) -> {refreshClasses(newValue);});
 
+            int i =1;
         for (UMLDiagramSequence seq : data.getSeqDiagrams()) {
-            refreshObjects(seq.getObjectsProperty());
-            seq.getObjectsProperty().addListener((observable, oldValue, newValue) -> {refreshObjects(newValue);});
+            final int thisI = i;
+//             refreshObjects(seq.getObjectsProperty(), i);
+            seq.getObjectsProperty().addListener((observable, oldValue, newValue) -> {refreshObjects(newValue, thisI);});
+            i++;
         }
 
     }
@@ -105,8 +108,11 @@ public class UMLController {
                 tab.textProperty().bind(seqDia.getNameProperty());
 
                 tabs.getTabs().add(tab);
-        System.out.println("aa");
 
+                for (UMLObject obj : seqDia.getObjectsProperty()) {
+                    VBox newClass = GUIGener.createSeqObject(this, obj);
+//                     ((Pane) (tab.getContent()).lookup("#Content")).getChildren().add(newClass);
+                }
             }
         } catch (IOException e) {
         }
@@ -130,7 +136,14 @@ public class UMLController {
         }
     }
 
-    void refreshObjects (List<UMLObject> newValue) {
+    void refreshObjects (List<UMLObject> newValue, int diaIndex) {
+        Pane p = (Pane) getCurrentTabContent().lookup("#Content");
+        p.getChildren().clear();
+
+        for (UMLObject obj : newValue) {
+            VBox newClass = GUIGener.createSeqObject(this, obj);
+            (p).getChildren().add(newClass);
+        }
         //TODO, need to know the tab
     }
 
@@ -313,9 +326,6 @@ public class UMLController {
 
             UMLObject obj = new UMLObject(cl.getKey(), cl.getValue());
 
-            VBox newClass = GUIGener.createSeqObject(this, obj);
-            ((Pane)getCurrentTabContent().lookup("#Content")).getChildren().add(newClass);
-
             data.getSeqDiagrams().get(tabs.getSelectionModel().getSelectedIndex()-1).addObject(obj);
         });
     }
@@ -430,6 +440,7 @@ public class UMLController {
     @FXML
     private void addMessage(){
 
+        UMLDiagramSequence current = data.getSeqDiagrams().get(tabs.getSelectionModel().getSelectedIndex()-1);
 
         Dialog<UMLMessage> dialog = new Dialog();
         dialog.setTitle("Add message");
@@ -446,10 +457,10 @@ public class UMLController {
         comBoxType.getItems().setAll(UMLMessage.MessageType.values());
         comBoxType.getSelectionModel().select(0);
         ComboBox comBoxObjectfrom = new ComboBox();
-        comBoxObjectfrom.getItems().setAll(data.getSeqDiagrams().get(0).getObjects());
+        comBoxObjectfrom.getItems().setAll(current.getObjects());
         comBoxObjectfrom.getSelectionModel().select(0);
         ComboBox comBoxObjectto = new ComboBox();
-        comBoxObjectto.getItems().setAll(data.getSeqDiagrams().get(0).getObjects());
+        comBoxObjectto.getItems().setAll(current.getObjects());
         comBoxObjectto.getSelectionModel().select(0);
         TextField textTime = new TextField();
         textTime.setPromptText("time in seconds");
@@ -495,7 +506,7 @@ public class UMLController {
 
             UMLMessage msg = new UMLMessage(cl.getType(), cl.getFrom(), cl.getTo(), cl.getTimeStart(), cl.getMethod());
 
-            data.getSeqDiagrams().get(0).addMessage(msg);
+            current.addMessage(msg);
         });
 
 

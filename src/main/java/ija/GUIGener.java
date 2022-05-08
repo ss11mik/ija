@@ -169,6 +169,15 @@ public class GUIGener {
                     grid.setVgap(10);
                     grid.setPadding(new Insets(20,30,10,30));
 
+
+                    if(data.getAttributes().size() == 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText("No attributes to remove!");
+                        alert.setContentText("No attributes to remove!");
+                        alert.showAndWait().ifPresent(rs -> {});
+                        return;
+                    }
+
                     ComboBox item = new ComboBox();
                     item.getItems().setAll(data.getAttributes());
                     item.getSelectionModel().select(0);
@@ -272,6 +281,14 @@ public class GUIGener {
                     grid.setHgap(10);
                     grid.setVgap(10);
                     grid.setPadding(new Insets(20,30,10,30));
+
+                    if(data.getMethods().size() == 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText("No methods to remove!");
+                        alert.setContentText("No methods to remove!");
+                        alert.showAndWait().ifPresent(rs -> {});
+                        return;
+                    }
 
                     ComboBox item = new ComboBox();
                     item.getItems().setAll(data.getMethods());

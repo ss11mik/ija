@@ -9,7 +9,6 @@ package ija.dataStructures;
 public class UMLMessage {
     /** Vyctovy typ pro vsechny mozne typy zprav */
     public enum MessageType {
-        NULL,
         SYNCHRONOUS,
         ASYNCHRONOUS,
         RETURN,
@@ -59,7 +58,7 @@ public class UMLMessage {
     }
 
     public UMLMessage(){
-        this.type = MessageType.NULL;
+        this.type = null;
         this.from = null;
         this.to = null;
         this.time_start = 0;

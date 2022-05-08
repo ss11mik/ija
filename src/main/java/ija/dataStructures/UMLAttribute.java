@@ -18,7 +18,6 @@ public class UMLAttribute {
 
     /** Vyctovy typ pro vsechny mozne modifikatory pristupu */
     public enum AccesModifier {
-        NULL,
         PRIVATE,
         PUBLIC,
         PROTECTED,
@@ -52,7 +51,7 @@ public class UMLAttribute {
     public UMLAttribute(String name){
         this.name = name;
         this.dataType = dataType.NULL;
-        this.accesModifier = accesModifier.NULL;
+        this.accesModifier = null;
     }
 
 
@@ -140,7 +139,6 @@ public class UMLAttribute {
                 access = "~";
                 break;
             default:
-            case NULL:
                 access = "NULL";
         }
 

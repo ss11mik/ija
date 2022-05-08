@@ -461,6 +461,14 @@ public class UMLController {
         TextField name = new TextField();
         name.setPromptText("name");
         ComboBox comBoxClass = new ComboBox();
+
+        if (data.getClassDiagram().getClasses().size() == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("No classes to instantiate!");
+            alert.setContentText("No classes to instantiate!");
+            alert.showAndWait().ifPresent(rs -> {});
+            return;
+        }
         comBoxClass.getItems().setAll(data.getClassDiagram().getClasses());
         comBoxClass.getSelectionModel().select(0);
 
@@ -630,7 +638,15 @@ public class UMLController {
         textTime.setPromptText("time in seconds");
         ComboBox<UMLMethod> comBoxMethod = new ComboBox();
 
+        try{
         comBoxMethod.getItems().setAll(((UMLObject) comBoxObjectto.valueProperty().get()).getInstance().getMethods());
+        } catch(NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("No objects to send messages!");
+            alert.setContentText("No objects to send messages!");
+            alert.showAndWait().ifPresent(rs -> {});
+            return;
+        }
         comBoxMethod.getSelectionModel().select(0);
 
         comBoxObjectto.valueProperty().addListener((observable, oldValue, newValue) -> {

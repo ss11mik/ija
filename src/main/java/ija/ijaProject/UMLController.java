@@ -604,6 +604,14 @@ public class UMLController {
         comBoxType.getItems().setAll(UMLRelation.RelationType.values());
         comBoxType.getSelectionModel().select(0);
 
+        if(data.getClassDiagram().getClasses().size() == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("No classes to add relation to!");
+            alert.setContentText("No classes to add relation to!");
+            alert.showAndWait().ifPresent(rs -> {});
+            return;
+        }
+
         ComboBox comBoxObjectfrom = new ComboBox();
         comBoxObjectfrom.getItems().setAll(data.getClassDiagram().getClasses());
         comBoxObjectfrom.getSelectionModel().select(0);

@@ -133,7 +133,6 @@ public final class Arrow extends Path{
                 this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", 15);
                 break;
 
-            case NULL:
             default:
                 this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
                 this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);

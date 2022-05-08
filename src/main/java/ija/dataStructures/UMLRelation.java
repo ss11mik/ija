@@ -9,7 +9,6 @@ package ija.dataStructures;
 public class UMLRelation {
 
     public enum RelationType {
-        NULL,
         AGGREGATION,
         ASSOCIATION,
         COMPOSITION,
@@ -39,7 +38,7 @@ public class UMLRelation {
     public UMLRelation(){
         this.begin = null;
         this.end = null;
-        this.relationType = RelationType.NULL;
+        this.relationType = null;
     }
 
     // GETTERS

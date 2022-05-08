@@ -524,6 +524,15 @@ public class UMLController {
 
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
+
+                if(name.getText().length() == 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Object name cannot be empty!");
+                    alert.setContentText("Object name cannot be empty!");
+                    alert.showAndWait().ifPresent(rs -> {});
+                    return null;
+                }
+
                 return new Pair<>(name.getText(), (UMLClass) comBoxClass.getSelectionModel().getSelectedItem());
             }
             return null;

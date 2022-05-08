@@ -80,7 +80,7 @@ public class UMLController {
 
     protected void refresh() {
         refreshTabs();
-        menuHelp();
+
         data.getSeqDiagramsProperty().addListener((observable, oldValue, newValue) -> {refreshTabs(newValue);});
 
 //         refreshClasses(data.getClassDiagram().getClasses());
@@ -604,7 +604,7 @@ public class UMLController {
                 "\tUložení diagramu -> 'file' -> 'save'\n" +
                 "\t\tpo zvolení umístění uloží ve formátu JSON\n" +
                 "\tNačtení diagramu -> 'file' -> 'load'\n" +
-                "\t\tpo zvolení souboru formátu JSON načte diagram\n" +
+                "\t\tpo zvolení souboru ve formátu JSON načte diagram\n" +
                 "\tZavření aplikace -> 'file' -> 'close'\n" +
                 "\tPřidat sekvenční diagram -> 'new Diagram' -> 'Sequence Diagram'\n" +
                 "\tNápověda -> 'Help' -> 'Help'" +

@@ -9,15 +9,7 @@
 <content>
     <AnchorPane id="Content" style="-fx-background-color: white;">
     <children>
-        <ScrollPane>
-        <content>
-          <VBox>
-          <children>
 
-          </children>
-          </VBox>
-        </content>
-        </ScrollPane>
     </children>
     </AnchorPane>
 </content>

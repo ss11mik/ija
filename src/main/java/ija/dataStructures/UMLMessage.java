@@ -57,6 +57,9 @@ public class UMLMessage {
         this.method = null;
     }
 
+    /**
+     * Vytvori instanci zpravy
+     */
     public UMLMessage(){
         this.type = null;
         this.from = null;

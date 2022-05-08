@@ -81,8 +81,11 @@ public class UMLDiagramClass extends UMLDiagram {
      */
     public void setClasses(List<UMLClass> classes) {this.classes = new SimpleListProperty(FXCollections.observableArrayList(classes));}
 
+    /**
+     * Nastavi seznam vazeb diagramu
+     * @param rel novy seznam vazeb diagramu
+     */
     public void setRelations(List<UMLRelation> rel) {this.relations = new SimpleListProperty(FXCollections.observableArrayList(rel));}
-
 
     // METHODS
     /**
@@ -94,30 +97,25 @@ public class UMLDiagramClass extends UMLDiagram {
     }
 
        /**
-     * Prida tridu do seznamu relaci
-     * @param clas nova relace
+     * Prida vazbu do seznamu vazeb
+     * @param rel nova vazba
      */
     public void addRelation(UMLRelation rel){
         relations.add(rel);
     }
 
-
     /**
      * Odstrani vybranou tridu ze seznamu
-     * @param name Nazev vybrane tridy pro odstraneni
+     * @param clas vybrana trida pro odstraneni
      */
-    public void removeClass(String name){
-        int index = 0;
-        for(UMLClass cl : classes){
-            if(cl.getName().equals(name)){ classes.remove(index);}
-            index++;
-        }
-    }
-
     public void removeClass(UMLClass clas){
         classes.remove(clas);
     }
 
+    /**
+     * Odstrani vybranou vazbu ze seznamu
+     * @param rel vybrana vazba pro odstraneni
+     */
     public void removeRelation(UMLRelation rel){
         relations.remove(rel);
     }

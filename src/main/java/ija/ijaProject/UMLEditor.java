@@ -8,6 +8,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.Group;
 
 import java.io.IOException;
+import ija.ijaProject.UMLController;
 
 /**
  * Obsluhuje spusteni GUI a prvotni nastaveni zobrazeni.

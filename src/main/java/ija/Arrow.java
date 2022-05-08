@@ -1,8 +1,5 @@
 package ija;
 
-// adapted from
-//https://github.com/wayne1512/JavaFXArrow
-
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
@@ -18,6 +15,12 @@ import javafx.scene.paint.Color;
 
 import ija.dataStructures.*;
 
+
+/**
+ * Vykresluje sipky
+ *
+ *  @author Prevzato z: https://github.com/wayne1512/JavaFXArrow
+ */
 public final class Arrow extends Path{
 
     private final SimpleDoubleProperty startX;

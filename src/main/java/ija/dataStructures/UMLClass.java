@@ -23,9 +23,9 @@ public class UMLClass {
     protected ListProperty<UMLAttribute> attributes;
     /** Seznam metod tridy */
     protected ListProperty<UMLMethod> methods;
-
+    /** X pozice tridy v GUI */
     protected DoubleProperty xLocation;
-
+    /** Y pozice tridy v GUI */
     protected DoubleProperty yLocation;
 
     // CONSTRUCTORS
@@ -130,8 +130,14 @@ public class UMLClass {
      @JsonIgnore
     public ListProperty<UMLMethod> getMethodsProperty() {return methods;}
 
+    /**
+     * @return Vrati X souradnici tridy v GUI
+     */
     public double getXLocation() {return xLocation.get();}
 
+    /**
+     * @return Vrati Y souradnici tridy v GUI
+     */
     public double getYLocation() {return yLocation.get();}
 
     @JsonIgnore
@@ -165,8 +171,16 @@ public class UMLClass {
      */
     public void setMethods(List<UMLMethod> methods) {this.methods = new SimpleListProperty(FXCollections.observableArrayList(methods));}
 
+    /**
+     * Nastavi X souradnici tridy v GUI
+     * @param xLocation souradnice na ose x
+     */
     public void setXLocation(double xLocation) {this.xLocation.set(xLocation);}
 
+    /**
+     * Nastavi Y souradnici tridy v GUI
+     * @param yLocation souradnice na ose y
+     */
     public void setYLocation(double yLocation) {this.yLocation.set(yLocation);}
 
     // METHODS
@@ -189,32 +203,16 @@ public class UMLClass {
 
     /**
      * Odstrani vybrany atribut ze seznamu
-     * @param name nazev atributu pro odstraneni
+     * @param attr atribut pro odstraneni
      */
-    public void removeAttribute(String name){
-        int index = 0;
-        for(UMLAttribute attr : attributes){
-            if(attr.getName().equals(name)){ attributes.remove(index);}
-            index++;
-        }
-    }
-
     public void removeAttribute(UMLAttribute attr){
         attributes.remove(attr);
     }
 
     /**
      * Odstrani vybranou metodu ze seznamu
-     * @param name nazev metody pro odstraneni
+     * @param meth metoda pro odstraneni
      */
-    public void removeMethod(String name){
-        int index = 0;
-        for(UMLMethod meth : methods){
-            if(meth.getName().equals(name)){ methods.remove(index);}
-            index++;
-        }
-    }
-
     public void removeMethod(UMLMethod meth){
         methods.remove(meth);
     }
@@ -229,6 +227,9 @@ public class UMLClass {
      */
     public void deleteAllMethods() {this.methods = new SimpleListProperty();}
 
+    /**
+     * @return Vrati nazev tridy ve formatu String
+     */
     public String toString(){
         return getName();
     }

@@ -1,8 +1,5 @@
 package ija;
 
-// adapted from
-// https://stackoverflow.com/a/46696687
-
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Node;
@@ -13,7 +10,7 @@ import java.util.Arrays;
 /**
  * Generalised implementation of 'Draggability' of a {@link Node}. The Draggable class is used as a 'namespace' for the internal
  * class/interfaces/enum.
- * @author phill
+ * @author phill - převzato z: https://stackoverflow.com/a/46696687
  *
  */
 public class Draggable {

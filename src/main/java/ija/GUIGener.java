@@ -272,7 +272,6 @@ public class GUIGener {
 
                     Optional<Pair<String, UMLAttribute.DataType>> result = dialog.showAndWait();
                     result.ifPresent(nameType -> {
-//                         System.out.println("Name=" + nameType.getKey() + ", Return type=" + nameType.getValue());
                         data.addMethod(new UMLMethod(nameType.getKey(), nameType.getValue()));
                     });
                 }
@@ -321,7 +320,6 @@ public class GUIGener {
 
                     Optional<UMLMethod> result = dialog.showAndWait();
                     result.ifPresent(nameDel -> {
-//                         System.out.println("Name=" + nameDel);
                         data.removeMethod(nameDel);
                     });
                 }
@@ -348,17 +346,6 @@ public class GUIGener {
 
             Label name = (Label) vbox.lookup("#name");
             name.setText(data.getName() + " : " + data.getInstance().getName());
-/*
-            VBox attrs = (VBox) vbox.lookup("#attrs");
-            for (UML_Attribute att : data.get_attributes()) {
-                attrs.getChildren().add(new Label(att.get_name()));
-            }
-
-            VBox methods = (VBox) vbox.lookup("#methods");
-            for (UML_Method meth : data.get_methods()) {
-                methods.getChildren().add(new Label(meth.get_name()));
-            }*/
-
 
             return vbox;
         }

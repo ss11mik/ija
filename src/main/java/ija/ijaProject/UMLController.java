@@ -56,31 +56,18 @@ public class UMLController {
     @FXML
     private TabPane tabs;
 
-    /** TextField v prave dolni casti */
-    @FXML
-    private TextField text_renameDiagram;
 
-    /** TextField v pravem hornim rohu */
-    @FXML
-    private TextField textField_names;
-
-    /** TextArea v okne tridy pro atributy */
-    @FXML
-    private TextArea ta_attributes = new TextArea();
-
-
-
+    /**
+     * Pripravi spusteni aplikace a vypise napovedu
+     */
     @FXML
     protected void initialize() {
-
         menuHelp();
-
         refresh();
     }
 
     protected void refresh() {
         refreshTabs();
-        menuHelp();
         data.getSeqDiagramsProperty().addListener((observable, oldValue, newValue) -> {refreshTabs(newValue);});
 
 //         refreshClasses(data.getClassDiagram().getClasses());
@@ -101,6 +88,11 @@ public class UMLController {
     void refreshTabs () {
         refreshTabs(data.getSeqDiagrams());
     }
+
+    /**
+     * Aktualizuje vsechny sekvencni diagramy
+     * @param newValue aktualni seznam sekvencnich diagramu
+     */
     void refreshTabs (List<UMLDiagramSequence> newValue) {
 
         try {
@@ -125,6 +117,11 @@ public class UMLController {
     void refreshClasses () {
         refreshClasses(data.getClassDiagram().getClasses());
     }
+
+    /**
+     * Aktualizuje diagram trid vcetne vazeb
+     * @param newValue aktualni seznam trid
+     */
     void refreshClasses (List<UMLClass> newValue) {
 
         Pane p = (Pane) getCurrentTabContent().lookup("#Content");
@@ -221,7 +218,12 @@ public class UMLController {
         }
     }
 
-
+    /**
+     * Aktualizuje sekvencni diagram
+     * @param newValue aktualni seznam objektu
+     * @param msgs aktualni seznam zprav
+     * @param diaIndex index sekvencniho diagramu
+     */
     void refreshObjects (List<UMLObject> newValue, List<UMLMessage> msgs, int diaIndex) {
         Pane p = (Pane) tabs.getTabs().get(diaIndex).getContent().lookup("#Content");
         if (p == null)
@@ -339,14 +341,6 @@ public class UMLController {
         return (Pane) tabs.getSelectionModel().getSelectedItem().getContent();
     }
 
-    @FXML
-    private void generFoo() {
-        UMLClass cl = new UMLClass("aaa", true);
-//         class_diagram.add_class(cl);
-
-      //  GUIGener.createClass(cl);
-    }
-
     /**
      * Nabidne k prohledani soubory k nacteni (pouze JSON)
      */
@@ -391,7 +385,6 @@ public class UMLController {
 
     /**
      * Prida novou tridu do diagramu.
-     * Nazev tridy odpovida textu uvnitr TextFieldu v pravem hornim rohu
      */
     @FXML
     private void addClass () {
@@ -418,6 +411,9 @@ public class UMLController {
         }
     }
 
+    /**
+     * Prida nove rozhrani
+     */
     @FXML
     private void addInterface () {
         TextInputDialog dialog = new TextInputDialog("");
@@ -442,6 +438,10 @@ public class UMLController {
         }
     }
 
+    /**
+     * Odstrani zvolenou tridu.
+     * Trida se voli ve vyskakovacim dialogovem okne
+     */
     @FXML
     private void removeClass(){
 
@@ -585,8 +585,6 @@ public class UMLController {
 
         UMLDiagramSequence newSeq = new UMLDiagramSequence("Sequence Diagram");
 
-//         tabs.getTabs().add(tab);
-
         data.addSeqDiagram(newSeq);
     }
 
@@ -631,7 +629,7 @@ public class UMLController {
 
         alert.setHeaderText("Help - Diagram tříd");
         alert.setContentText("OVLÁDACÍ PRVKY TŘÍDY\n" +
-                "\tZměna názvu -> 'e'\n" +
+                "\tZměna názvu -> 'e' (edit)\n" +
                 "\tPřidání/Odebrání atributu -> '+'/'-'\n" +
                 "\t\tzobrazí dialog pro vyplnění informací o atributu\n" +
                 "\tPřidání/Odebrání metody -> '+'/'-'\n" +
@@ -701,6 +699,9 @@ public class UMLController {
         }
     }
 
+    /**
+     * Odstrani diagram
+     */
     @FXML
     private void removeDiagram(){
 
@@ -720,6 +721,10 @@ public class UMLController {
 
     }
 
+    /**
+     * prida vazbu
+     * vlastnosti vazby se urcuji ve vyskakovacim dialogu
+     */
     @FXML
     private void addRelation(){
 
@@ -783,6 +788,9 @@ public class UMLController {
         });
     }
 
+    /**
+     * odtrani vazbu
+     */
     @FXML
     private void removeRelation(){
 
@@ -831,7 +839,10 @@ public class UMLController {
 
     }
 
-
+    /**
+     * prida novou zpravu
+     * vlastnosti zpravy se voli pomoci vyskakovaciho dialogoveho okna
+     */
     @FXML
     private void addMessage(){
 
@@ -911,10 +922,7 @@ public class UMLController {
 
         Optional<UMLMessage> result = dialog.showAndWait();
         result.ifPresent(msg -> {
-
             current.addMessage(msg);
-
-
         });
     }
 

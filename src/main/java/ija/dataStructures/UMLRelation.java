@@ -19,7 +19,7 @@ public class UMLRelation {
     protected UMLClass begin;
     /** Trida kam vazba smeruje */
     protected UMLClass end;
-
+    /** Typ vazby */
     protected RelationType relationType;
 
     // CONSTRUCTOR
@@ -41,6 +41,9 @@ public class UMLRelation {
         this.relationType = null;
     }
 
+    /**
+     * @return Vrati retezec ve formatu "odkud -> typVazby -> kam" vazba vede
+     */
     public String toString() {
         return begin.toString() + " ->" + relationType + "-> " + end.toString();
     }
@@ -60,6 +63,9 @@ public class UMLRelation {
         return end;
     }
 
+    /**
+     * @return Vrati typ vazby
+     */
     public RelationType getRelationType() {return relationType;}
 
     // SETTERS
@@ -79,6 +85,10 @@ public class UMLRelation {
         this.end = end;
     }
 
+    /**
+     * Nastavi typ vazby
+     * @param relationType novy typ vazby
+     */
     public void setRelationType(RelationType relationType) {
         this.relationType = relationType;
     }

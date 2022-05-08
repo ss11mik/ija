@@ -11,7 +11,7 @@ public class UMLObject {
     protected String name;
     /** Trida jehoz instanci je objekt */
     protected UMLClass instance;
-
+    /** index v GUI */
     public int index = 0;
 
 
@@ -29,6 +29,10 @@ public class UMLObject {
     }
 
     // GETTER
+
+    /**
+     * @return Vraci jmeno objektu
+     */
     public String getName() {return name;}
 
     /**
@@ -38,6 +42,10 @@ public class UMLObject {
 
     // SETTER
 
+    /**
+     * Nastavi jmeno objektu
+     * @param name nove jmeno
+     */
     public void setName(String name) {this.name = name;}
 
     /**
@@ -46,6 +54,8 @@ public class UMLObject {
      */
     public void setInstance(UMLClass instance) {this.instance = instance;}
 
-
+    /**
+     * @return Vrati retezec znaku ve formatu jmeno : instance
+     */
     public String toString(){return name + " : " + instance;}
 }

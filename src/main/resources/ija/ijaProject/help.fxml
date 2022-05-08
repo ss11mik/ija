@@ -3,19 +3,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ija.ijaProject.UMLController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ija.ijaProject.UMLController">
    <children>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="page">
-            <items>
-                  <MenuItem mnemonicParsing="false" onAction="#page1" text="page 1" />
-                  <MenuItem mnemonicParsing="false" onAction="#page2" text="page 2" />
-              <MenuItem mnemonicParsing="false" onAction="#page3" text="page 3" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Page 1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab text="Page 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Page 3">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                </content>
+            </Tab>
+        </tabs>
+      </TabPane>
       <Label fx:id="helptext" layoutX="59.0" layoutY="51.0" text="Label" />
    </children>
 </AnchorPane>

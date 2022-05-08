@@ -258,7 +258,7 @@ public class UMLController {
             line.setStartY(time);
             line.setEndX(toX);
             line.setEndY(time);*/
-            Arrow line = new Arrow(fromX, time, 2, Math.abs(fromX - toX) - 15, 5,5,5,toX, time);
+            Arrow line = new Arrow(fromX, time,toX, time, msg.getType());
 
             Label l = new Label();
             try {

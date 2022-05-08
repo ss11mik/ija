@@ -15,8 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public final class Arrow extends Path{
+import ija.dataStructures.*;
 
+public final class Arrow extends Path{
 
     private final SimpleDoubleProperty startX;
     private final SimpleDoubleProperty startY;
@@ -27,6 +28,8 @@ public final class Arrow extends Path{
     private final SimpleDoubleProperty shoulderLength;
     private final SimpleDoubleProperty endX;
     private final SimpleDoubleProperty endY;
+
+    private UMLMessage.MessageType type;
 
     //used for cloning to not have to recalculate the path
     private Arrow(double startX, double startY, double tailWidth, double tailLength, double shoulderWidth, double shoulderBackLength, double shoulderLength, double endX, double endY,ObservableList<PathElement> path){
@@ -61,6 +64,45 @@ public final class Arrow extends Path{
         updatePath();
     }
 
+    public Arrow(double startX, double startY, double endX, double endY, UMLMessage.MessageType type){
+        super();
+
+        this.startX = new PathUpdatingProperty(this, "startX", startX);
+        this.startY = new PathUpdatingProperty(this, "startY", startY);
+        this.tailWidth = new PathUpdatingProperty(this, "tailWidth", 1);
+        this.tailLength = new PathUpdatingProperty(this, "tailLength", Math.abs(startX - endX) -15);
+        this.shoulderWidth = new PathUpdatingProperty(this, "shoulderWidth", 5);
+        switch(type){
+            case SYNCHRONOUS:
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 0);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", 0);
+                break;
+            case ASYNCHRONOUS:
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
+                break;
+            case RETURN:
+                getStrokeDashArray().setAll(5d, 5d);
+                setStrokeDashOffset(0.5);
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
+                break;
+
+            default:
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
+                break;
+        }
+
+        this.endX = new PathUpdatingProperty(this, "endX", endX);
+        this.endY = new PathUpdatingProperty(this, "endY", endY);
+
+        this.type = type;
+
+        updatePath();
+    }
+
+
 
     public void updatePath(){
 
@@ -77,7 +119,7 @@ public final class Arrow extends Path{
 
         Translate translate1 = new Translate(0, ((double) tailWidth.get() / 2));
         Point2D tailBottomPoint = translate1.transform(startPoint);
-        points.add(tailBottomPoint);
+//         points.add(tailBottomPoint);
 
         Translate translate2 = new Translate(tailLength.getValue(), 0);
         Point2D shoulderStartBottomPoint = translate2.transform(tailBottomPoint);
@@ -112,7 +154,21 @@ public final class Arrow extends Path{
             getElements().add(new LineTo(point.getX(), point.getY()));
         }
 
-        getElements().add(new ClosePath());
+
+            Line line = new Line();
+            line.setStrokeWidth(5);
+//             line.setStroke(Color.BLACK);
+
+            line.setStartX(startX.getValue());
+            line.setStartY(startY.getValue());
+            line.setEndX(endX.getValue());
+            line.setEndY(endY.getValue());
+        line.getStrokeDashArray().addAll(25d, 10d);
+//         getElements().add(line);
+
+
+
+//         getElements().add(new ClosePath());
     }
 
     public double getStartX(){

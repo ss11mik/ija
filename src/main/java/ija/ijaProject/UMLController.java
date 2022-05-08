@@ -493,7 +493,10 @@ public class UMLController {
             alert.showAndWait().ifPresent(rs -> {});
             return;
         }
-        comBoxClass.getItems().setAll(data.getClassDiagram().getClasses());
+        for (UMLClass cl : data.getClassDiagram().getClasses()) {
+            if(cl.isClass())
+                comBoxClass.getItems().add(cl);
+        }
         comBoxClass.getSelectionModel().select(0);
 
         grid.add(new Label("Name of new object:"), 0,0);

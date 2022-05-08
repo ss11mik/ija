@@ -172,22 +172,38 @@ public class UMLController {
 
 
             DoubleBinding startX = Bindings.createDoubleBinding(() -> {
-                Bounds b = l1.get();
-                return b.getMinX() + b.getWidth() / 2 ;
+                Bounds b1 = l1.get();
+                Bounds b2 = l2.get();
+                if (b1.getMinX() > b2.getMaxX())
+                    return b1.getMinX() ;
+                else
+                    return b1.getMinX() + b1.getWidth();
             }, l1);
             DoubleBinding startY = Bindings.createDoubleBinding(() -> {
-                Bounds b = l1.get();
-                return b.getMinY() + b.getHeight() / 2 ;
+                Bounds b1 = l1.get();
+                Bounds b2 = l2.get();
+                if (b1.getMinY() > b2.getMaxY())
+                    return b1.getMinY() ;
+                else
+                    return b1.getMinY() + b1.getHeight();
             }, l1);
 
 
             DoubleBinding endX = Bindings.createDoubleBinding(() -> {
-                Bounds b = l2.get();
-                return b.getMinX() + b.getWidth() / 2 ;
+                Bounds b1 = l1.get();
+                Bounds b2 = l2.get();
+                if (b1.getMinX() < b2.getMaxX())
+                    return b2.getMinX() ;
+                else
+                    return b2.getMinX() + b2.getWidth();
             }, l2);
             DoubleBinding endY = Bindings.createDoubleBinding(() -> {
-                Bounds b = l2.get();
-                return b.getMinY() + b.getHeight() / 2 ;
+                Bounds b1 = l1.get();
+                Bounds b2 = l2.get();
+                if (b1.getMinY() < b2.getMaxY())
+                    return b2.getMinY() ;
+                else
+                    return b2.getMinY() + b2.getHeight();
             }, l2);
 
             line.startXProperty().bind(startX);

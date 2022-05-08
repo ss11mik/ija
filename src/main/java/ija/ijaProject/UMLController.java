@@ -699,10 +699,15 @@ public class UMLController {
 
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
+                int time = 0;
+                try{
+                time = Integer.parseInt(textTime.getText());
+                } catch(NumberFormatException e) {}
+
                 return new UMLMessage((UMLMessage.MessageType) comBoxType.getSelectionModel().getSelectedItem(),
                         (UMLObject) comBoxObjectfrom.getSelectionModel().getSelectedItem(),
                         (UMLObject) comBoxObjectto.getSelectionModel().getSelectedItem(),
-                        Integer.parseInt(textTime.getText()),
+                        time,
                         (UMLMethod) comBoxMethod.getSelectionModel().getSelectedItem());
             }
             return null;

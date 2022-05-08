@@ -131,8 +131,8 @@ public final class Arrow extends Path{
             case GENERALIZATION:
                 getStrokeDashArray().setAll(5d, 5d);
                 setStrokeDashOffset(0.5);
-                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
-                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 0);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", 0);
                 break;
 
             case NULL:
@@ -165,7 +165,7 @@ public final class Arrow extends Path{
 
         Point2D startPoint = new Point2D(startX.getValue(), startY.getValue());
 
-        Translate translate1 = new Translate(0, ((double) tailWidth.get() / 2));
+        Translate translate1 = new Translate(0, 0);
         Point2D tailBottomPoint = translate1.transform(startPoint);
 //         points.add(tailBottomPoint);
 
@@ -173,7 +173,7 @@ public final class Arrow extends Path{
         if (seq)
             translate2 = new Translate(tailLength.getValue(), 0);
         else
-             translate2 = new Translate(Math.sqrt(Math.pow(dY, 2) + Math.pow(dX, 2)), 0);
+             translate2 = new Translate(dX*Math.cos(angle) + dY*Math.sin(angle), 0);
         Point2D shoulderStartBottomPoint = translate2.transform(tailBottomPoint);
         points.add(shoulderStartBottomPoint);
 

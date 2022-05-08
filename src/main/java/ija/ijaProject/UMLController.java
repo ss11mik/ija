@@ -601,7 +601,7 @@ public class UMLController {
             Node cont = FXMLLoader.load(this.getClass().getResource("help.fxml"));
 
             Dialog<String> dialog = new Dialog();
-            dialog.setTitle("Add object");
+            dialog.setTitle("HELP");
             dialog.setHeaderText(null);
 
             dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);

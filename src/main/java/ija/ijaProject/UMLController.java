@@ -204,7 +204,7 @@ public class UMLController {
 
 
             Arrow line = new Arrow(startX.get(), startY.get(), endX.get(), endY.get(), rel.getRelationType());
-            line.setStrokeWidth(5);
+            line.setStrokeWidth(1);
             line.setStroke(Color.BLACK);
 
             line.startXProperty().bind(startX);

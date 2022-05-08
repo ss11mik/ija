@@ -111,28 +111,24 @@ public final class Arrow extends Path{
         this.startX = new PathUpdatingProperty(this, "startX", startX);
         this.startY = new PathUpdatingProperty(this, "startY", startY);
         this.tailWidth = new PathUpdatingProperty(this, "tailWidth", 1);
-        this.tailLength = new PathUpdatingProperty(this, "tailLength", Math.abs(startX - endX) -15);
+        this.tailLength = new PathUpdatingProperty(this, "tailLength", 15);
         this.shoulderWidth = new PathUpdatingProperty(this, "shoulderWidth", 5);
         switch(type){
             case AGGREGATION:
-                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 0);
-                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", 0);
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", -12);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", 24);
                 break;
             case ASSOCIATION:
                 this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
                 this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
                 break;
             case COMPOSITION:
-                getStrokeDashArray().setAll(5d, 5d);
-                setStrokeDashOffset(0.5);
-                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
-                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", -12);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", 24);
                 break;
             case GENERALIZATION:
-                getStrokeDashArray().setAll(5d, 5d);
-                setStrokeDashOffset(0.5);
                 this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 0);
-                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", 0);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", 15);
                 break;
 
             case NULL:
@@ -173,7 +169,7 @@ public final class Arrow extends Path{
         if (seq)
             translate2 = new Translate(tailLength.getValue(), 0);
         else
-             translate2 = new Translate(dX*Math.cos(angle) + dY*Math.sin(angle), 0);
+             translate2 = new Translate((dX*Math.cos(angle) + dY*Math.sin(angle))-shoulderLength.getValue(), 0);
         Point2D shoulderStartBottomPoint = translate2.transform(tailBottomPoint);
         points.add(shoulderStartBottomPoint);
 
@@ -183,7 +179,7 @@ public final class Arrow extends Path{
 
         Translate translate4 = new Translate(shoulderLength.getValue(),0);
         Point2D shoulderEndBottomPoint = translate4.transform(shoulderBackBottomPoint);
-        points.add(shoulderEndBottomPoint);
+//         points.add(shoulderEndBottomPoint);
 
         List<Point2D> topHalf = new ArrayList<>(points.size());
 

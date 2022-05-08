@@ -156,10 +156,6 @@ public class UMLController {
             final Node first = xfirst;
             final Node second = xsecond;
 
-            Line line = new Line();
-            line.setStrokeWidth(5);
-            line.setStroke(Color.BLACK);
-
             Pane content = ((Pane)getCurrentTabContent().lookup("#Content"));
 
             ObjectBinding<Bounds> l1 = Bindings.createObjectBinding(() -> {
@@ -205,6 +201,11 @@ public class UMLController {
                 else
                     return b2.getMinY() + b2.getHeight();
             }, l2);
+
+
+            Arrow line = new Arrow(startX.get(), startY.get(), endX.get(), endY.get(), rel.getRelationType());
+            line.setStrokeWidth(5);
+            line.setStroke(Color.BLACK);
 
             line.startXProperty().bind(startX);
             line.startYProperty().bind(startY);

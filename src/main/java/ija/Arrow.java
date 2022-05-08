@@ -30,6 +30,7 @@ public final class Arrow extends Path{
     private final SimpleDoubleProperty endY;
 
     private UMLMessage.MessageType type;
+    private boolean seq;
 
     //used for cloning to not have to recalculate the path
     private Arrow(double startX, double startY, double tailWidth, double tailLength, double shoulderWidth, double shoulderBackLength, double shoulderLength, double endX, double endY,ObservableList<PathElement> path){
@@ -60,6 +61,7 @@ public final class Arrow extends Path{
         this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", shoulderLength);
         this.endX = new PathUpdatingProperty(this, "endX", endX);
         this.endY = new PathUpdatingProperty(this, "endY", endY);
+        seq = true;
 
         updatePath();
     }
@@ -93,11 +95,57 @@ public final class Arrow extends Path{
                 this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
                 break;
         }
+        seq = true;
 
         this.endX = new PathUpdatingProperty(this, "endX", endX);
         this.endY = new PathUpdatingProperty(this, "endY", endY);
 
         this.type = type;
+
+        updatePath();
+    }
+
+    public Arrow(double startX, double startY, double endX, double endY, UMLRelation.RelationType type){
+        super();
+
+        this.startX = new PathUpdatingProperty(this, "startX", startX);
+        this.startY = new PathUpdatingProperty(this, "startY", startY);
+        this.tailWidth = new PathUpdatingProperty(this, "tailWidth", 1);
+        this.tailLength = new PathUpdatingProperty(this, "tailLength", Math.abs(startX - endX) -15);
+        this.shoulderWidth = new PathUpdatingProperty(this, "shoulderWidth", 5);
+        switch(type){
+            case AGGREGATION:
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 0);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", 0);
+                break;
+            case ASSOCIATION:
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
+                break;
+            case COMPOSITION:
+                getStrokeDashArray().setAll(5d, 5d);
+                setStrokeDashOffset(0.5);
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
+                break;
+            case GENERALIZATION:
+                getStrokeDashArray().setAll(5d, 5d);
+                setStrokeDashOffset(0.5);
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
+                break;
+
+            case NULL:
+            default:
+                this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 10);
+                this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", -4);
+                break;
+        }
+
+        seq = false;
+
+        this.endX = new PathUpdatingProperty(this, "endX", endX);
+        this.endY = new PathUpdatingProperty(this, "endY", endY);
 
         updatePath();
     }
@@ -121,7 +169,11 @@ public final class Arrow extends Path{
         Point2D tailBottomPoint = translate1.transform(startPoint);
 //         points.add(tailBottomPoint);
 
-        Translate translate2 = new Translate(tailLength.getValue(), 0);
+    Translate translate2;
+        if (seq)
+            translate2 = new Translate(tailLength.getValue(), 0);
+        else
+             translate2 = new Translate(Math.sqrt(Math.pow(dY, 2) + Math.pow(dX, 2)), 0);
         Point2D shoulderStartBottomPoint = translate2.transform(tailBottomPoint);
         points.add(shoulderStartBottomPoint);
 
@@ -153,7 +205,7 @@ public final class Arrow extends Path{
         for (Point2D point : points){
             getElements().add(new LineTo(point.getX(), point.getY()));
         }
-
+/*
 
             Line line = new Line();
             line.setStrokeWidth(5);
@@ -163,7 +215,7 @@ public final class Arrow extends Path{
             line.setStartY(startY.getValue());
             line.setEndX(endX.getValue());
             line.setEndY(endY.getValue());
-        line.getStrokeDashArray().addAll(25d, 10d);
+        line.getStrokeDashArray().addAll(25d, 10d);*/
 //         getElements().add(line);
 
 

@@ -604,7 +604,7 @@ public class UMLController {
             dialog.setTitle("HELP");
             dialog.setHeaderText(null);
 
-            dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+            dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
 
 
             dialog.getDialogPane().setContent(cont);

@@ -258,7 +258,9 @@ public class UMLController {
             line.setEndY(time);
 
             Label l = new Label();
+            try {
             l.setText(msg.getMethod().toString());
+            } catch(NullPointerException e) {}
             l.setTranslateX((toX + fromX)/2);
             l.setTranslateY(time - 20);
 

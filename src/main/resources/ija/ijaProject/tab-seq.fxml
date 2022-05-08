@@ -8,7 +8,12 @@
 
 <Tab text="Sequence Diagram">
 <content>
+  <VBox>
+<children>
     <AnchorPane style="-fx-background-color: white;">
+      <VBox.margin>
+                        <Insets left="16.0" right="16.0" top="16" />
+                     </VBox.margin>
     <children>
 <!--         <ScrollPane> -->
 <!--         <content> -->
@@ -27,5 +32,7 @@
 <!--         </ScrollPane> -->
     </children>
     </AnchorPane>
+</children>
+    </VBox>
 </content>
 </Tab>

@@ -117,10 +117,6 @@ public class UMLController {
 
                 tabs.getTabs().add(tab);
 
-                for (UMLObject obj : seqDia.getObjectsProperty()) {
-                    VBox newClass = GUIGener.createSeqObject(this, obj);
-//                     ((Pane) (tab.getContent()).lookup("#Content")).getChildren().add(newClass);
-                }
             }
         } catch (IOException e) {
         }

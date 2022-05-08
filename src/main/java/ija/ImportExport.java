@@ -11,7 +11,7 @@ import java.io.FileReader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.guava.GuavaModule;
+
 
 /**
  * Obsluhuje nacitani diagramu ze souboru a jeho ulozeni do souboru.

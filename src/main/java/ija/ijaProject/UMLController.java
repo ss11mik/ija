@@ -214,6 +214,8 @@ public class UMLController {
         //TODO, need to know the tab
 
 
+        List<UMLMessage> createMsgs = new ArrayList();
+
         VBox lifetime = null;
 
         Pane content = (Pane) (tabs.getTabs().get(diaIndex).getContent().lookup("#formsgs"));
@@ -266,21 +268,33 @@ public class UMLController {
 
 
             if(msg.getType() == UMLMessage.MessageType.CREATE) {
-                lifetime = new VBox();
-                lifetime.setStyle("-fx-background-color: grey" );
-                lifetime.setMinWidth(40);
+                createMsgs.add(msg);
 
-                lifetime.setTranslateX((toX) - 20);
-                lifetime.setTranslateY(time);
 
                 l.setText("Create");
             }
 
-            if(msg.getType() == UMLMessage.MessageType.DELETE && lifetime != null) {
-                lifetime.setMinHeight(time - lifetime.getTranslateY());
+            if(msg.getType() == UMLMessage.MessageType.DELETE) {
 
-                content.getChildren().add(lifetime);
-                lifetime = null;
+                UMLMessage create = null;
+
+                for (UMLMessage cr : createMsgs) {
+                    if (cr.getTo() == msg.getTo())
+                        create = cr;
+                }
+                if (create != null) {
+
+                    lifetime = new VBox();
+                    lifetime.setStyle("-fx-background-color: grey" );
+                    lifetime.setMinWidth(40);
+
+                    lifetime.setTranslateX((toX) - 20);
+                    lifetime.setTranslateY(create.getTimeStart() + 80);
+                    lifetime.setMinHeight(time - lifetime.getTranslateY());
+
+                    content.getChildren().add(lifetime);
+                    lifetime = null;
+                }
 
                 l.setText("Delete");
             }

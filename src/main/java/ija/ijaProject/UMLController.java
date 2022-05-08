@@ -464,15 +464,24 @@ public class UMLController {
 
         Optional<UMLClass> result = dialog.showAndWait();
         result.ifPresent(cl -> {
-            data.getClassDiagram().removeClass(cl);
 
-            Node toRemove = null;
-            Pane content = ((Pane) getCurrentTabContent().lookup("#Content"));
-            for (Node e : content.getChildren()) {
-                if (e.lookup("#name") != null && ((Label) e.lookup("#name")).getText().equals(cl.getName()))
-                    toRemove = e;
+            boolean isUsed = false;
+            for (UMLDiagramSequence seqDia : data.getSeqDiagrams()) {
+                for (UMLObject obj : seqDia.getObjects()) {
+                    if (obj.getInstance().getName().equals(cl.getName()))
+                        isUsed = true;
+                }
             }
-            content.getChildren().remove(toRemove);
+
+            if (isUsed) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("This class is used in Sequence diagram!");
+                alert.setContentText("This class is used in Sequence diagram! Remove its objects first.");
+                alert.showAndWait().ifPresent(rs -> {});
+                return;
+            }
+
+            data.getClassDiagram().removeClass(cl);
         });
 
 

@@ -729,6 +729,54 @@ public class UMLController {
         });
     }
 
+    @FXML
+    private void removeRelation(){
+
+        Dialog<UMLRelation> dialog = new Dialog();
+        dialog.setTitle("Remove Relation");
+        dialog.setHeaderText(null);
+
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20,30,10,30));
+
+        if(data.getClassDiagram().getRelations().size() == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("No relations to remove!");
+            alert.setContentText("No relations to remove!");
+            alert.showAndWait().ifPresent(rs -> {});
+            return;
+        }
+
+        ComboBox comBoxClass = new ComboBox();
+        comBoxClass.getItems().setAll(data.getClassDiagram().getRelations());
+        comBoxClass.getSelectionModel().select(0);
+
+        grid.add(new Label("Please enter relation to remove:"),0,1);
+        grid.add(comBoxClass,1,1);
+
+        dialog.getDialogPane().setContent(grid);
+
+        Platform.runLater(() -> comBoxClass.requestFocus());
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return (UMLRelation) comBoxClass.getSelectionModel().getSelectedItem();
+            }
+            return null;
+        });
+
+        Optional<UMLRelation> result = dialog.showAndWait();
+        result.ifPresent(cl -> {
+
+            data.getClassDiagram().removeRelation(cl);
+        });
+
+    }
+
 
     @FXML
     private void addMessage(){

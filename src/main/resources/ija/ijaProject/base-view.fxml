@@ -58,6 +58,7 @@
                 <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add Interface" onAction="#addInterface" />
                 <Button fx:id="bt_addrelation" mnemonicParsing="false" onAction="#addRelation" prefHeight="30.0" prefWidth="150.0" text="Add Relation" />
                 <Button fx:id="bt_removeclass" layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#removeClass" prefHeight="30.0" prefWidth="150.0" text="Remove Class" />
+                <Button fx:id="bt_removerelation" layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#removeRelation" prefHeight="30.0" prefWidth="150.0" text="Remove Relation" />
               </children>
               </VBox>
           </children>

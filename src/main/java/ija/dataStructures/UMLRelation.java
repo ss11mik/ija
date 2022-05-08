@@ -41,6 +41,10 @@ public class UMLRelation {
         this.relationType = null;
     }
 
+    public String toString() {
+        return begin.toString() + " ->" + relationType + "-> " + end.toString();
+    }
+
     // GETTERS
     /**
      * @return Vrati tridu odkud vazba vychazi

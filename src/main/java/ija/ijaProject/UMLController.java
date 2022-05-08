@@ -597,6 +597,27 @@ public class UMLController {
     @FXML
     private void menuHelp () {
 
+        try {
+            Node cont = FXMLLoader.load(this.getClass().getResource("help.fxml"));
+
+            Dialog<String> dialog = new Dialog();
+            dialog.setTitle("Add object");
+            dialog.setHeaderText(null);
+
+            dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+
+            dialog.getDialogPane().setContent(cont);
+
+            dialog.showAndWait();
+
+        }
+        catch (IOException e) {
+            System.out.println(e);
+            return;
+        }
+
+        /*
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("UML Editor IJA '22 Edition");
         alert.setHeaderText("Help - Diagram tříd");
@@ -653,7 +674,7 @@ public class UMLController {
                 "\t\t\tMessage to - objekt, který zprávu přijímá\n" +
                 "\t\t\tTime - čas zaslání zprávy (pozice zprávy)\n"
         );
-        alert.showAndWait().ifPresent(rs -> {});
+        alert.showAndWait().ifPresent(rs -> {});*/
     }
 
     /**

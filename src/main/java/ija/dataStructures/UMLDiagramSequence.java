@@ -44,6 +44,11 @@ public class UMLDiagramSequence extends UMLDiagram {
         this.messages = new SimpleListProperty(FXCollections.observableArrayList(new ArrayList<UMLMessage>()));
     }
 
+     public UMLDiagramSequence(){
+        this("");
+     }
+
+
     // GETTERS
     /**
      * @return Vrati seznam objektu diagramu

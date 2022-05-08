@@ -14,6 +14,7 @@ import javafx.scene.transform.Translate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.scene.paint.Color;
 
 import ija.dataStructures.*;
 
@@ -125,6 +126,7 @@ public final class Arrow extends Path{
             case COMPOSITION:
                 this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", -12);
                 this.shoulderLength = new PathUpdatingProperty(this, "shoulderLength", 24);
+                setFill(Color.BLACK);
                 break;
             case GENERALIZATION:
                 this.shoulderBackLength = new PathUpdatingProperty(this, "shoulderBackLength", 0);
@@ -139,6 +141,7 @@ public final class Arrow extends Path{
         }
 
         seq = false;
+
 
         this.endX = new PathUpdatingProperty(this, "endX", endX);
         this.endY = new PathUpdatingProperty(this, "endY", endY);

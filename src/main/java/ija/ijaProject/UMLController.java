@@ -74,6 +74,7 @@ public class UMLController {
     protected void initialize() {
 
         refreshTabs();
+        menuHelp();
         data.getSeqDiagramsProperty().addListener((observable, oldValue, newValue) -> {refreshTabs(newValue);});
 
 //         refreshClasses(data.getClassDiagram().getClasses());
@@ -89,7 +90,7 @@ public class UMLController {
 
             data.getSeqDiagrams().get(i-1).getMessagesProperty().addListener((observable1, oldValue1, newValue1) -> {refreshObjects(data.getSeqDiagrams().get(i-1).getObjectsProperty(), newValue1, i);});
             });
-        }
+    }
 
     void refreshTabs () {
         refreshTabs(data.getSeqDiagrams());

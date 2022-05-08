@@ -561,6 +561,24 @@ public class UMLController {
         }
     }
 
+    @FXML
+    private void removeDiagram(){
+
+        int i = tabs.getSelectionModel().getSelectedIndex();
+
+        // expects that class dia is always first
+        if (i == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Cannot remove Class diagram!");
+            alert.setContentText("Cannot remove Class diagram!");
+            alert.showAndWait().ifPresent(rs -> {});
+            return;
+        }
+        else {
+            data.getSeqDiagrams().remove(i-1);
+        }
+
+    }
 
     @FXML
     private void addRelation(){

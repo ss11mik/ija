@@ -84,7 +84,7 @@
         <children>
                   <Region prefHeight="100.0" prefWidth="150.0" />
           <Button fx:id="bt_rename_dia" mnemonicParsing="false" onAction="#renameDiagram" prefHeight="30.0" prefWidth="150.0" text="Rename Diagram" />
-          <Button fx:id="bt_delete" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text=" Delete Diagram" />
+          <Button fx:id="bt_delete" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Delete Diagram" onAction="#removeDiagram" />
         </children>
         </VBox>
 

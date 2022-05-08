@@ -602,7 +602,7 @@ public class UMLController {
                 "\tUložení diagramu -> 'file' -> 'save'\n" +
                 "\t\tpo zvolení umístění uloží ve formátu JSON\n" +
                 "\tNačtení diagramu -> 'file' -> 'load'\n" +
-                "\t\tpo zvolení souboru formátu JSON načte diagram\n" +
+                "\t\tpo zvolení souboru ve formátu JSON načte diagram\n" +
                 "\tZavření aplikace -> 'file' -> 'close'\n" +
                 "\tPřidat sekvenční diagram -> 'new Diagram' -> 'Sequence Diagram'\n" +
                 "\tNápověda -> 'Help' -> 'Help'" +
@@ -922,7 +922,10 @@ public class UMLController {
 
         Optional<UMLMessage> result = dialog.showAndWait();
         result.ifPresent(msg -> {
+
             current.addMessage(msg);
+
+
         });
     }
 

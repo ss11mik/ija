@@ -31,7 +31,7 @@ import javafx.geometry.Bounds;
 import ija.ImportExport;
 import ija.GUIGener;
 import ija.Draggable;
-
+import ija.Arrow;
 
 import ija.dataStructures.*;
 import javafx.stage.Stage;
@@ -249,7 +249,7 @@ public class UMLController {
             double fromX = 120 * msg.getFrom().index + 50;
             double toX = 120 * msg.getTo().index + 50;
             double time = msg.getTimeStart() + 80;
-
+/*
             Line line = new Line();
             line.setStrokeWidth(3);
             line.setStroke(Color.BLACK);
@@ -257,7 +257,8 @@ public class UMLController {
             line.setStartX(fromX);
             line.setStartY(time);
             line.setEndX(toX);
-            line.setEndY(time);
+            line.setEndY(time);*/
+            Arrow line = new Arrow(fromX, time, 2, Math.abs(fromX - toX) - 15, 5,5,5,toX, time);
 
             Label l = new Label();
             try {

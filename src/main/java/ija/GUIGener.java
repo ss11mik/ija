@@ -206,7 +206,9 @@ public class GUIGener {
 
                     Optional<UMLAttribute> result = dialog.showAndWait();
                     result.ifPresent(nameDel -> {
-//                         System.out.println("Name=" + nameDel);
+
+                        //TODO check for usage
+
                         data.removeAttribute(nameDel);
                     });
                 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ija.ijaProject.UMLController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="page">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#page1" text="page 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#page2" text="page 2" />
+              <MenuItem mnemonicParsing="false" onAction="#page3" text="page 3" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label fx:id="helptext" layoutX="59.0" layoutY="51.0" text="Label" />
+   </children>
+</AnchorPane>

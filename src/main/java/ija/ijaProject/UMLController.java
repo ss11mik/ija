@@ -73,6 +73,12 @@ public class UMLController {
     @FXML
     protected void initialize() {
 
+        menuHelp();
+
+        refresh();
+    }
+
+    protected void refresh() {
         refreshTabs();
         menuHelp();
         data.getSeqDiagramsProperty().addListener((observable, oldValue, newValue) -> {refreshTabs(newValue);});
@@ -359,7 +365,7 @@ public class UMLController {
 
         if(file != null){
             data = ImportExport.load(file);
-            initialize();
+            refresh();
         }
     }
 

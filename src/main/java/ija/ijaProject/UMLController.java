@@ -235,7 +235,6 @@ public class UMLController {
             VBox newClass = GUIGener.createSeqObject(this, obj);
             (p).getChildren().add(newClass);
         }
-        //TODO, need to know the tab
 
 
         List<UMLMessage> createMsgs = new ArrayList();

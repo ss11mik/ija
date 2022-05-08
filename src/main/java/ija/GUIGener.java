@@ -84,6 +84,14 @@ public class GUIGener {
 
                     Optional<String> result = dialog.showAndWait();
                     if(result.isPresent()) {
+
+                        if(result.get().length() == 0) {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setHeaderText("Class name cannot be empty!");
+                            alert.setContentText("Class name cannot be empty!");
+                            alert.showAndWait().ifPresent(rs -> {});
+                            return;
+                        }
                         data.setName(result.get());
                     }
             }});

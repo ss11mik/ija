@@ -392,8 +392,6 @@ public class UMLController {
 
     @FXML
     private void removeClass(){
-        //TODO
-        // in UI
 
         Dialog<UMLClass> dialog = new Dialog();
         dialog.setTitle("Remove Class");
@@ -405,6 +403,14 @@ public class UMLController {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20,30,10,30));
+
+        if(data.getClassDiagram().getClasses().size() == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("No classes to remove!");
+            alert.setContentText("No classes to remove!");
+            alert.showAndWait().ifPresent(rs -> {});
+            return;
+        }
 
         ComboBox comBoxClass = new ComboBox();
         comBoxClass.getItems().setAll(data.getClassDiagram().getClasses());

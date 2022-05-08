@@ -541,14 +541,23 @@ public class UMLController {
      */
     @FXML
     private void renameDiagram(){
-        int i = tabs.getSelectionModel().getSelectedIndex();
 
-        // expects that class dia is always first
-        if (i == 0) {
-            data.getClassDiagram().setName(text_renameDiagram.getText());
-        }
-        else {
-            data.getSeqDiagrams().get(i-1).setName(text_renameDiagram.getText());
+        TextInputDialog dialog = new TextInputDialog("enter new name");
+        dialog.setTitle("Rename diagram");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Please enter new name:");
+
+        Optional<String> result = dialog.showAndWait();
+        if(result.isPresent()) {
+            int i = tabs.getSelectionModel().getSelectedIndex();
+
+            // expects that class dia is always first
+            if (i == 0) {
+                data.getClassDiagram().setName(result.get());
+            }
+            else {
+                data.getSeqDiagrams().get(i-1).setName(result.get());
+            }
         }
     }
 

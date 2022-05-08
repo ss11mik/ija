@@ -617,64 +617,6 @@ public class UMLController {
             return;
         }
 
-        /*
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("UML Editor IJA '22 Edition");
-        alert.setHeaderText("Help - Diagram tříd");
-        alert.setContentText("Diagram tříd\n" +
-                "MENU\n" +
-                "\tUložení diagramu -> 'file' -> 'save'\n" +
-                "\t\tpo zvolení umístění uloží ve formátu JSON\n" +
-                "\tNačtení diagramu -> 'file' -> 'load'\n" +
-                "\t\tpo zvolení souboru ve formátu JSON načte diagram\n" +
-                "\tZavření aplikace -> 'file' -> 'close'\n" +
-                "\tPřidat sekvenční diagram -> 'new Diagram' -> 'Sequence Diagram'\n" +
-                "\tNápověda -> 'Help' -> 'Help'" +
-                "\tInfo o aplikaci -> 'Help' -> 'About'\n" +
-                "OVLÁDACÍ PANEL V PRAVÉ ČÁSTI\n" +
-                "\tPřejmenování diagramu -> 'Rename diagram'\n" +
-                "\t\tzobrazí dialog pro vyplnění nového jména\n" +
-                "\tOdebrání diagramu -> 'delete diagram'\n" +
-                "\t\tsmaže aktuální diagram\n" +
-                "\tPřidání nové třídy -> 'Add class'\n" +
-                "\t\tzobrazí dialog pro vyplnění jména třídy\n" +
-                "\tPřidání nového rozhraní -> 'Add interface'\n" +
-                "\t\tzobrazí dialog pro vyplnění jména rozhraní\n" +
-                "\tPřidání nové vazby -> 'Add relation'\n" +
-                "\t\tzobrazí dialog, nutno vyplnit typ vazby a\n" +
-                "\t\tobjekty odkud kam vazba směřuje\n" +
-                "\tOdebrání třídy -> 'Remove Class'\n" +
-                "\t\tnabídne comboBox všech tříd, zvolenou smaže\n" +
-                "\tOdebrání vazby -> 'Remove relation'\n" +
-                "\t\tnabidne comboBox všech vazeb, zvolenou smaže\n"
-        );
-        alert.showAndWait().ifPresent(rs -> {
-        });
-
-        alert.setHeaderText("Help - Diagram tříd");
-        alert.setContentText("OVLÁDACÍ PRVKY TŘÍDY\n" +
-                "\tZměna názvu -> 'e' (edit)\n" +
-                "\tPřidání/Odebrání atributu -> '+'/'-'\n" +
-                "\t\tzobrazí dialog pro vyplnění informací o atributu\n" +
-                "\tPřidání/Odebrání metody -> '+'/'-'\n" +
-                "\t\tzobrazí dialog pro informace o metodě\n" +
-                "\n" +
-                "Třídou lze libovolně hýbat uchycením myší mimo ovládací tlačítka\n");
-        alert.showAndWait().ifPresent(rs -> {
-        });
-
-
-        alert.setHeaderText("Help - Sekvenční diagram");
-        alert.setContentText("OVLÁDACÍ PANEL NA PRAVÉ STRANĚ\n" +
-                "\tPřidání objektu -> 'Add Object'\n" +
-                "\t\tzobrazi dialog pro jméno a třídu objektu\n" +
-                "\tPřidání zprávy -> 'Add Message'\n" +
-                "\t\tzobrazí dialog kde:\n" +
-                "\t\t\tMessage from - objekt, který zprávu zasílá\n" +
-                "\t\t\tMessage to - objekt, který zprávu přijímá\n" +
-                "\t\t\tTime - čas zaslání zprávy (pozice zprávy)\n"
-        );
-        alert.showAndWait().ifPresent(rs -> {});*/
     }
 
     /**

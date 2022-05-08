@@ -362,7 +362,7 @@ public class UMLController {
     @FXML
     private void addClass () {
 
-        TextInputDialog dialog = new TextInputDialog("enter class name");
+        TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("New Class");
         dialog.setHeaderText(null);
         dialog.setContentText("Please enter class name:");
@@ -386,13 +386,22 @@ public class UMLController {
 
     @FXML
     private void addInterface () {
-        TextInputDialog dialog = new TextInputDialog("enter interface name");
+        TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("New Interface");
         dialog.setHeaderText(null);
         dialog.setContentText("Please enter interface name:");
 
         Optional<String> result = dialog.showAndWait();
         if(result.isPresent()) {
+
+            if(result.get().length() == 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Interface name cannot be empty!");
+                alert.setContentText("Interface name cannot be empty!");
+                alert.showAndWait().ifPresent(rs -> {});
+                return;
+            }
+
             UMLClass cl = new UMLClass(result.get(), false);
             refreshClasses();
             data.getClassDiagram().addClass(cl);
@@ -557,13 +566,22 @@ public class UMLController {
     @FXML
     private void renameDiagram(){
 
-        TextInputDialog dialog = new TextInputDialog("enter new name");
+        TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Rename diagram");
         dialog.setHeaderText(null);
         dialog.setContentText("Please enter new name:");
 
         Optional<String> result = dialog.showAndWait();
         if(result.isPresent()) {
+
+             if(result.get().length() == 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Diagram name cannot be empty!");
+                alert.setContentText("Diagram name cannot be empty!");
+                alert.showAndWait().ifPresent(rs -> {});
+                return;
+            }
+
             int i = tabs.getSelectionModel().getSelectedIndex();
 
             // expects that class dia is always first

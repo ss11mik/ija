@@ -3,27 +3,67 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="500.0" prefWidth="600.0">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="500.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Page 1">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <Label id="helptext" layoutX="59.0" layoutY="51.0" text="DIAGRAM TŘÍD &#xD;
+           MENU&#xD;
+               Uložení diagramu -> 'file' -> 'save'&#xD;
+                   po zvolení umístění uloží ve formátu JSON&#xD;
+               Načtení diagramu -> 'file' -> 'load'&#xD;
+                   po zvolení souboru ve formátu JSON načte diagram&#xD;
+               Zavření aplikace -> 'file' -> 'close'&#xD;
+               Přidat sekvenční diagram -> 'new Diagram' -> 'Sequence Diagram'&#xD;
+               Nápověda -> 'Help' -> 'Help'&#xD;
+               Info o aplikaci -> 'Help' -> 'About'&#xD;
+           OVLÁDACÍ PANEL V PRAVÉ ČÁSTI&#xD;
+               Přejmenování diagramu -> 'Rename diagram'&#xD;
+                   zobrazí dialog pro vyplnění nového jména&#xD;
+               Odebrání diagramu -> 'delete diagram'&#xD;
+                   smaže aktuální diagram&#xD;
+               Přidání nové třídy -> 'Add class'&#xD;
+                   zobrazí dialog pro vyplnění jména třídy&#xD;
+               Přidání nového rozhraní -> 'Add interface'&#xD;
+                   zobrazí dialog pro vyplnění jména rozhraní&#xD;
+               Přidání nové vazby -> 'Add relation'&#xD;
+                   zobrazí dialog, nutno vyplnit typ vazby a&#xD;
+                   objekty odkud kam vazba směřuje&#xD;
+               Odebrání třídy -> 'Remove Class'&#xD;
+                   nabídne comboBox všech tříd, zvolenou smaže&#xD;
+               Odebrání vazby -> 'Remove relation'&#xD;
+                   nabidne comboBox všech vazeb, zvolenou smaže" />
             </content>
           </Tab>
           <Tab text="Page 2">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <Label layoutX="59.0" layoutY="51.0" text="OVLÁDACÍ PRVKY TŘÍDY&#xD;
+                    Změna názvu -> 'e' (edit)&#xD;
+                    Přidání/Odebrání atributu -> '+'/'-'&#xD;
+                        zobrazí dialog pro vyplnění informací o atributu&#xD;
+                    Přidání/Odebrání metody -> '+'/'-'&#xD;
+                        zobrazí dialog pro informace o metodě&#xD;
+                &#xD;
+                Třídou lze libovolně hýbat uchycením myší mimo ovládací tlačítka"/>
             </content>
           </Tab>
             <Tab text="Page 3">
                 <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <Label text="SEKVENČNÍ DIAGRAM&#xD;
+            OVLÁDACÍ PANEL NA PRAVÉ STRANĚ&#xD;
+                Přidání objektu -> 'Add Object'&#xD;
+                    zobrazi dialog pro jméno a třídu objektu&#xD;
+                Přidání zprávy -> 'Add Message'&#xD;
+                    zobrazí dialog kde:&#xD;
+                        Message from - objekt, který zprávu zasílá&#xD;
+                        Message to - objekt, který zprávu přijímá&#xD;
+                        Time - čas zaslání zprávy (pozice zprávy)"/>
                 </content>
             </Tab>
         </tabs>
       </TabPane>
-      <Label id="helptext" layoutX="59.0" layoutY="51.0" text="Label" />
+
    </children>
 </AnchorPane>

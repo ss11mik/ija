@@ -128,6 +128,9 @@ public class UMLController {
     void refreshClasses (List<UMLClass> newValue) {
 
         Pane p = (Pane) getCurrentTabContent().lookup("#Content");
+        if (p == null)
+            return;
+
         ArrayList<Node> toRemove = new ArrayList();
         for (Node child : p.getChildren()) {
 //             if (child instanceof VBox)

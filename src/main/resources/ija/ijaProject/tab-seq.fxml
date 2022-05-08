@@ -8,16 +8,16 @@
 
 <Tab text="Sequence Diagram">
 <content>
-  <VBox>
-<children>
+  <VBox style="-fx-background-color: white;">
+  <children>
     <AnchorPane style="-fx-background-color: white;">
-      <VBox.margin>
-                        <Insets left="16.0" right="16.0" top="16" />
-                     </VBox.margin>
+    <VBox.margin>
+        <Insets left="16.0" right="16.0" top="16" />
+    </VBox.margin>
     <children>
 <!--         <ScrollPane> -->
 <!--         <content> -->
-          <HBox id="Content" spacing="20" >
+          <HBox id="Content" spacing="20"  style="-fx-background-color: white;">
           <children>
 
 <!--             <Button mnemonicParsing="false" prefHeight="3000.0" prefWidth="1500.0" text="Add Class" /> -->
@@ -32,7 +32,7 @@
 <!--         </ScrollPane> -->
     </children>
     </AnchorPane>
-</children>
-    </VBox>
+  </children>
+  </VBox>
 </content>
 </Tab>
